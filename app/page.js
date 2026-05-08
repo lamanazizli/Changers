@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import CoursesSection from '../components/CourseCard';
 import HomeSections from '../components/Homesections';
 import Link from 'next/link';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -61,10 +62,7 @@ export default function Home() {
       </section>
       <CoursesSection />
       <HomeSections />
-      <footer style={{ background: '#13131A', borderTop: '1px solid rgba(255,44,168,0.15)', padding: '48px 80px', textAlign: 'center' }}>
-        <div style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', marginBottom: '8px' }}>CHANGERS <span style={{ color: '#FF2CA8' }}>ACADEMY</span></div>
-        <p style={{ fontSize: '13px', color: '#A0A0B0' }}>2024 Changers Academy. Butun huquqlar qorunur.</p>
-      </footer>
+      <Footer />
     </main>
   );
 }
