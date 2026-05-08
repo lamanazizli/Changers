@@ -33,7 +33,7 @@ export default function Footer() {
                 { label: 'Kurslar', href: '/kurslar' },
                 { label: 'Nəticələr', href: '/neticeler' },
                 { label: 'Mentorlar', href: '/mentorlar' },
-                { label: 'Əlaqe', href: '/elaqe' },
+                { label: 'Əlaqə', href: '/elaqe' },
               ].map((item, i) => (
                 <Link key={i} href={item.href} style={{ display: 'block', color: '#A0A0B0', fontSize: '13px', textDecoration: 'none', marginBottom: '10px' }}>{item.label}</Link>
               ))}
