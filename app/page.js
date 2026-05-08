@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
-      <Navbar activePage="Ana Sehife" />
+      <Navbar activePage="Ana Səhifə />
       <section style={{ maxWidth: '1440px', margin: '0 auto', padding: '100px 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '60px', position: 'relative', minHeight: '680px' }}>
         <div style={{ position: 'absolute', left: '-100px', top: '-80px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(123,47,255,0.3) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.25) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
@@ -16,13 +16,13 @@ export default function Home() {
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Azərbaycanın #1 Praktiki Akademiyası</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '72px', lineHeight: 1.05, color: '#FFFFFF', margin: '0 0 24px 0' }}>
-            Gələcəyin<br /><span style={{ color: '#FF2CA8' }}>Pesosini</span><br />4 Hefteve Oyre
+            Gələcəyin<br /><span style={{ color: '#FF2CA8' }}>Peşəsini</span><br />4 Həftəyə Öyrən!
           </h1>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', marginBottom: '8px' }}>Real layiheler. Praktiki tedris. Karyera desteyi.</p>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', marginBottom: '8px' }}>Real layihələr. Praktiki tədris. Karyera dəstəyi.</p>
           <p style={{ fontSize: '14px', color: '#A0A0B0', marginBottom: '48px' }}>Tikinti - Arxitektura - Daxili Dizayn - Digital Marketing - BIM</p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <Link href="/kurslar" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Kurslara bax</Link>
-            <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>Pulsuz Konsultasiya</Link>
+            <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>Ödənişsiz Konsultasiya</Link>
           </div>
         </div>
         <div style={{ position: 'relative', width: '540px', height: '520px', flexShrink: 0, zIndex: 2 }}>
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
           <div style={{ position: 'absolute', top: '0', left: '20px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
             <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>500+</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Mezun</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Məzun</div>
           </div>
           <div style={{ position: 'absolute', top: '26px', right: '-46px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
             <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4.9★</div>
@@ -51,11 +51,11 @@ export default function Home() {
           </div>
           <div style={{ position: 'absolute', top: '240px', left: '0', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
             <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>90%</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Ise Duzaldi</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>İşə düzəldi</div>
           </div>
           <div style={{ position: 'absolute', top: '300px', left: '200px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 hefte</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs Muddeti</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 həftə</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs Müddəti</div>
           </div>
         </div>
       </section>
