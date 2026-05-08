@@ -16,7 +16,7 @@ export default function Home() {
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Azərbaycanın #1 Praktiki Akademiyası</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '72px', lineHeight: 1.05, color: '#FFFFFF', margin: '0 0 24px 0' }}>
-            Geleceyin<br /><span style={{ color: '#FF2CA8' }}>Pesosini</span><br />4 Hefteve Oyre
+            Gələcəyin<br /><span style={{ color: '#FF2CA8' }}>Pesosini</span><br />4 Hefteve Oyre
           </h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', marginBottom: '8px' }}>Real layiheler. Praktiki tedris. Karyera desteyi.</p>
           <p style={{ fontSize: '14px', color: '#A0A0B0', marginBottom: '48px' }}>Tikinti - Arxitektura - Daxili Dizayn - Digital Marketing - BIM</p>
