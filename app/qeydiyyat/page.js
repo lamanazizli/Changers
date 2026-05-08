@@ -4,14 +4,14 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 const steps = [
-  { num: 1, label: 'Shexsi Melumat' },
-  { num: 2, label: 'Kurs Secimi' },
-  { num: 3, label: 'Elaqe' },
-  { num: 4, label: 'Tesdiq' },
+  { num: 1, label: 'Şəxsi məlumat' },
+  { num: 2, label: 'Kurs seçimi' },
+  { num: 3, label: 'Əlaqə' },
+  { num: 4, label: 'Təsdiq' },
 ];
 
 const courses = [
-  'BIM & Tikinti Idareetmesi',
+  'BIM & Tikinti Idarəetmesi',
   'Digital Marketing & SMM Pro',
   'Interior Design & 3D Viz',
   'Arxitektura & BIM',
@@ -37,7 +37,7 @@ export default function QeydiyyatPage() {
       });
       setSubmitted(true);
     } catch (e) {
-      alert('Xeta bas verdi, yeniden cehd edin');
+      alert('Xəta baş verdi, yenidən cəhd edin');
     }
     setLoading(false);
   };
@@ -71,10 +71,10 @@ export default function QeydiyyatPage() {
           <div style={{ fontSize: '80px', marginBottom: '24px' }}>🎉</div>
           <h1 style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Muracietiniz Qebul Edildi!</h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 32px 0' }}>
-            Tesekkurler! Komandamiz 24 saat erzinde sizinle elaqe saxlayacaq. WhatsApp uzzerinden de muraciet ede bilersiniz.
+            Təşəkkürlər! Komandamız 24 saat ərzində sizinlə əlaqə saxlayacaq. WhatsApp üzərindən də müraciət edə bilərsiniz.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-            <a href="/" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>Ana Sehife</a>
+            <a href="/" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>Ana Səhifə</a>
             <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>WhatsApp</a>
           </div>
         </section>
@@ -94,9 +94,9 @@ export default function QeydiyyatPage() {
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📋 Qeydiyyat</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>
-            Karyerana <span style={{ color: '#FF2CA8' }}>Baslat</span>
+            Karyerana <span style={{ color: '#FF2CA8' }}>başla!</span>
           </h1>
-          <p style={{ fontSize: '15px', color: '#A0A0B0' }}>Formu doldurun, komandamiz sizinle elaqe saxlayacaq.</p>
+          <p style={{ fontSize: '15px', color: '#A0A0B0' }}>Formu doldur, komandamız səninlə elaqe saxlayacaq.</p>
         </div>
 
         {/* Steps */}
@@ -130,10 +130,10 @@ export default function QeydiyyatPage() {
 
           {step === 1 && (
             <div>
-              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Shexsi Melumatlar</h2>
+              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Şəxsi məlumatlar</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <label style={labelStyle}>Ad Soyad *</label>
+                  <label style={labelStyle}>Ad, Soyad *</label>
                   <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ornek: Leyla Hasanova" style={inputStyle} />
                 </div>
                 <div>
@@ -146,7 +146,7 @@ export default function QeydiyyatPage() {
 
           {step === 2 && (
             <div>
-              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Kurs Secimi</h2>
+              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Kurs seçimi</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {courses.map((c, i) => (
                   <div key={i} onClick={() => update('course', c)} style={{
@@ -168,15 +168,15 @@ export default function QeydiyyatPage() {
 
           {step === 3 && (
             <div>
-              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Elaqe Melumatlari</h2>
+              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Əlaqə məlumatları</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <label style={labelStyle}>Telefon Nomresi *</label>
+                  <label style={labelStyle}>Telefon nömrəsi *</label>
                   <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>Elave Mesaj (opsional)</label>
-                  <textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Sualiniz veya qeydiniz varsa yazin..." rows={4} style={{ ...inputStyle, resize: 'vertical' }} />
+                  <label style={labelStyle}>Əlavə mesaj (opsional)</label>
+                  <textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Sual və ya qeydin varsa yaz..." rows={4} style={{ ...inputStyle, resize: 'vertical' }} />
                 </div>
                 <div>
                   <label style={labelStyle}>Bizi haradan tapdınız?</label>
@@ -195,7 +195,7 @@ export default function QeydiyyatPage() {
 
           {step === 4 && (
             <div>
-              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Melumatlari Yoxlayin</h2>
+              <h2 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', margin: '0 0 28px 0' }}>Məlumatları yoxla</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '28px' }}>
                 {[
                   { label: 'Ad Soyad', value: form.name },
@@ -211,7 +211,7 @@ export default function QeydiyyatPage() {
                 ))}
               </div>
               <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '12px', padding: '16px', fontSize: '13px', color: '#A0A0B0', textAlign: 'center' }}>
-                🔒 Melumatlariniz guvenle saxlanilir ve ucuncu sehs ile paylasilmir.
+                🔒 Məlumatlarınız güvənlə saxlanılır.
               </div>
             </div>
           )}
