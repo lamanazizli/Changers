@@ -25,30 +25,37 @@ export default function Home() {
             <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>Pulsuz Konsultasiya</Link>
           </div>
         </div>
-        <div style={{ position: 'relative', width: '540px', height: '600px', flexShrink: 0, zIndex: 2 }}>
-          <div style={{ position: 'absolute', top: '20px', left: '-20px', width: '580px', height: '580px', background: 'radial-gradient(circle at 50% 45%, rgba(255,44,168,0.25) 0%, rgba(123,47,255,0.2) 35%, rgba(67,29,135,0.1) 55%, rgba(11,11,15,0) 75%)', borderRadius: '50%', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: '140px', left: '130px', width: '240px', height: '240px' }}>
-            <div style={{ position: 'absolute', top: '0', left: '0', width: '162px', height: '162px', border: '1.5px solid rgba(255,44,168,0.7)', borderRadius: '8px', transform: 'rotate(-10deg)' }} />
-            <div style={{ position: 'absolute', top: '14px', left: '14px', width: '134px', height: '134px', border: '1.5px solid rgba(255,44,168,0.55)', borderRadius: '8px', transform: 'rotate(-28deg)' }} />
-            <div style={{ position: 'absolute', top: '28px', left: '28px', width: '106px', height: '106px', border: '1.5px solid rgba(255,44,168,0.4)', borderRadius: '8px', transform: 'rotate(-46deg)' }} />
-            <div style={{ position: 'absolute', top: '42px', left: '42px', width: '78px', height: '78px', border: '1.5px solid rgba(255,44,168,0.25)', borderRadius: '8px', transform: 'rotate(-64deg)' }} />
-            <div style={{ position: 'absolute', top: '30px', left: '28px', fontSize: '80px', lineHeight: 1 }}>🏗</div>
+        <div style={{ position: 'relative', width: '540px', height: '520px', flexShrink: 0, zIndex: 2 }}>
+          <div style={{ position: 'absolute', left: '78px', top: '1px', width: '360px', height: '360px', borderRadius: '180px', backgroundImage: 'url(/hero-glow.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 0 60px 10px rgba(255,44,168,0.25)', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', left: '110px', top: '86px', width: '162px', height: '162px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '140px', height: '140px', border: '1.5px solid rgba(255,44,168,0.7)', borderRadius: '6px', transform: 'rotate(-10deg)' }} />
+            </div>
+            <div style={{ position: 'absolute', left: '124px', top: '71px', width: '151px', height: '151px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '112px', height: '112px', border: '1.5px solid rgba(255,44,168,0.58)', borderRadius: '6px', transform: 'rotate(-28deg)' }} />
+            </div>
+            <div style={{ position: 'absolute', left: '138px', top: '78px', width: '119px', height: '119px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '84px', height: '84px', border: '1.5px solid rgba(255,44,168,0.46)', borderRadius: '6px', transform: 'rotate(-46deg)' }} />
+            </div>
+            <div style={{ position: 'absolute', left: '152px', top: '102px', width: '75px', height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '56px', height: '56px', border: '1.5px solid rgba(255,44,168,0.34)', borderRadius: '6px', transform: 'rotate(-64deg)' }} />
+            </div>
+            <div style={{ position: 'absolute', left: '140px', top: '132px', fontSize: '72px', lineHeight: 1 }}>🏗</div>
           </div>
-          <div style={{ position: 'absolute', top: '80px', left: '0', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px' }}>
-            <div style={{ fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>500+</div>
-            <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Mezun</div>
+          <div style={{ position: 'absolute', top: '0', left: '20px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>500+</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Mezun</div>
           </div>
-          <div style={{ position: 'absolute', top: '106px', right: '0', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px' }}>
-            <div style={{ fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4.9★</div>
-            <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Reytinq</div>
+          <div style={{ position: 'absolute', top: '26px', right: '-46px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4.9★</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Reytinq</div>
           </div>
-          <div style={{ position: 'absolute', top: '320px', left: '-20px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px' }}>
-            <div style={{ fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>90%</div>
-            <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Ise Duzaldi</div>
+          <div style={{ position: 'absolute', top: '240px', left: '0', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>90%</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Ise Duzaldi</div>
           </div>
-          <div style={{ position: 'absolute', top: '380px', left: '180px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px' }}>
-            <div style={{ fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 hefte</div>
-            <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs Muddeti</div>
+          <div style={{ position: 'absolute', top: '300px', left: '200px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 hefte</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs Muddeti</div>
           </div>
         </div>
       </section>
