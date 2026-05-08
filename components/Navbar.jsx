@@ -3,14 +3,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navLinks = [
-  { href: '/', label: 'Ana Sehife' },
+  { href: '/', label: 'Ana Səhifə' },
   { href: '/kurslar', label: 'Kurslar' },
-  { href: '/neticeler', label: 'Neticeler' },
+  { href: '/neticeler', label: 'Nəticələr' },
   { href: '/mentorlar', label: 'Mentorlar' },
-  { href: '/elaqe', label: 'Elaqe' },
+  { href: '/elaqe', label: 'Əlaqə' },
 ];
 
-export default function Navbar({ activePage = 'Ana Sehife' }) {
+export default function Navbar({ activePage = 'Ana Səhifə' }) {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <nav style={{ background: '#0B0B0F', borderBottom: '1px solid rgba(255,44,168,0.15)', position: 'sticky', top: 0, zIndex: 100, width: '100%', height: '80px' }}>
