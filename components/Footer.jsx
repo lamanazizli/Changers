@@ -9,7 +9,7 @@ export default function Footer() {
           <div style={{ maxWidth: '300px' }}>
             <img src="/logo.png" alt="Changers Academy" style={{ height: '40px', width: 'auto', marginBottom: '16px' }} />
             <p style={{ fontSize: '14px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 20px 0' }}>
-              Azerbaycanin #1 praktiki tehsil platformasi. Real layiheler, real neticeler.
+              Azərbaycanın #1 praktiki təhsil platforması.
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               {['Instagram', 'LinkedIn', 'WhatsApp'].map((s, i) => (
@@ -29,18 +29,18 @@ export default function Footer() {
             <div>
               <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, marginBottom: '16px' }}>Servis</div>
               {[
-                { label: 'Ana Sehife', href: '/' },
+                { label: 'Ana Səhifə', href: '/' },
                 { label: 'Kurslar', href: '/kurslar' },
-                { label: 'Neticeler', href: '/neticeler' },
+                { label: 'Nəticələr', href: '/neticeler' },
                 { label: 'Mentorlar', href: '/mentorlar' },
-                { label: 'Elaqe', href: '/elaqe' },
+                { label: 'Əlaqe', href: '/elaqe' },
               ].map((item, i) => (
                 <Link key={i} href={item.href} style={{ display: 'block', color: '#A0A0B0', fontSize: '13px', textDecoration: 'none', marginBottom: '10px' }}>{item.label}</Link>
               ))}
             </div>
             <div>
-              <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, marginBottom: '16px' }}>Elaqe</div>
-              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>📍 Baki, Azerbaycan</div>
+              <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, marginBottom: '16px' }}>Əlaqə</div>
+              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>📍 Bakı, Azərbaycan</div>
               <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>📞 +994 XX XXX XX XX</div>
               <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>✉️ info@changers.az</div>
               <Link href="/qeydiyyat" style={{ display: 'inline-block', marginTop: '8px', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '8px', boxShadow: '0px 4px 16px rgba(255,44,168,0.35)' }}>
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: 0 }}>© 2024 Changers Academy. Butun huquqlar qorunur.</p>
+          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: 0 }}>© 2024 Changers Academy. Bütün hüquqlar qorunur.</p>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: 0 }}>changers.az</p>
         </div>
       </div>
