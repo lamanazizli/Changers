@@ -134,7 +134,7 @@ export default function QeydiyyatPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
                   <label style={labelStyle}>Ad, Soyad *</label>
-                  <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ornek: Leyla Hasanova" style={inputStyle} />
+                  <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Məsələn: Leyla Əzizli" style={inputStyle} />
                 </div>
                 <div>
                   <label style={labelStyle}>Email *</label>
