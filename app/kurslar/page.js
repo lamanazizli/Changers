@@ -92,7 +92,7 @@ export default function KurslarPage() {
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📚 Bütün kurslar</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
-            Peşəni Seç,<br /><span style={{ color: '#FF2CA8' }}>Karyerana Başla</span>
+            Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>Karyerana başla!</span>
           </h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 48px 0' }}>
             Real layihələr. Praktiki tədris. 4 həftədə peşəkar ol.
@@ -112,7 +112,7 @@ export default function KurslarPage() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around' }}>
           {[
             { v: '6+', l: 'Aktiv kurs' },
-            { v: '500+', l: 'Mezun' },
+            { v: '500+', l: 'Məzun' },
             { v: '90%', l: 'İşə düzəldi' },
             { v: '4.9', l: 'Ortalama reytinq' },
           ].map((s, i) => (
@@ -152,7 +152,7 @@ export default function KurslarPage() {
                     <Link href="/qeydiyyat" style={{ flex: 1, textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px', boxShadow: '0px 4px 16px rgba(255,44,168,0.35)' }}>
                       Qeydiyyat →
                     </Link>
-                    <Link href={'/kurslar/' + course.id} style={{ padding: '12px 16px', background: 'transparent', border: '1px solid rgba(255,44,168,0.4)', borderRadius: '8px', color: '#FF2CA8', fontSize: '13px', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>Etraflı</Link>
+                    <Link href={'/kurslar/' + course.id} style={{ padding: '12px 16px', background: 'transparent', border: '1px solid rgba(255,44,168,0.4)', borderRadius: '8px', color: '#FF2CA8', fontSize: '13px', cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>Ətraflı</Link>
                   </div>
                 </div>
               </div>
@@ -165,11 +165,11 @@ export default function KurslarPage() {
       <section style={{ background: '#13131A', padding: '80px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', textAlign: 'center' }}>
           <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 16px 0' }}>
-            Hansı kursu seçəcəyinizi <span style={{ color: '#FF2CA8' }}>bilmirsinizsə?</span>
+            Hansı kursu seçəcəyini <span style={{ color: '#FF2CA8' }}>bilmirsən?</span>
           </h2>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0' }}>Pulsuz konsultasiya alın — sizin üçün ən uyğun kursu birlikdə seçərik.</p>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0' }}> Konsultasiya al, sənin üçün ən uyğun kursu birlikdə seçək.</p>
           <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)', display: 'inline-block' }}>
-            Pulsuz Konsultasiya Al →
+            Ödənişsiz konsultasiya al →
           </Link>
         </div>
       </section>
