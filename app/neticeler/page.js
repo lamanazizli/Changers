@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
@@ -49,6 +50,11 @@ const mezunlar = [
 ];
 
 export default function NeticelerPage() {
+  const [c, setC] = useState({});
+  useEffect(() => {
+    fetch('/api/content?page=neticeler').then(r=>r.json()).then(d=>{if(d.content)setC(d.content);}).catch(()=>{});
+  }, []);
+
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Nəticələr" />

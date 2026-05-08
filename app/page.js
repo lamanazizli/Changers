@@ -1,63 +1,82 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import CoursesSection from '../components/CourseCard';
 import HomeSections from '../components/Homesections';
-import Link from 'next/link';
 import Footer from '../components/Footer';
+import Link from 'next/link';
 
 export default function Home() {
+  const [c, setC] = useState({
+    hero: {
+      badge: 'Azerbaycanin #1 Praktiki Akademiyasi',
+      title1: 'Geleceyin',
+      title2: 'Pesosini',
+      title3: '4 Hefteve Oyre',
+      subtitle: 'Real layiheler. Praktiki tedris. Karyera desteyi.',
+      tags: 'Tikinti - Arxitektura - Daxili Dizayn - Digital Marketing - BIM',
+      btn1: 'Kurslara bax',
+      btn2: 'Pulsuz Konsultasiya',
+    },
+    stats: {
+      stat1_value: '500+', stat1_label: 'Mezun',
+      stat2_value: '90%', stat2_label: 'Ise Duzaldi',
+      stat3_value: '4.9', stat3_label: 'Reytinq',
+      stat4_value: '4 hefte', stat4_label: 'Kurs Muddeti',
+    }
+  });
+
+  useEffect(() => {
+    fetch('/api/content?page=home')
+      .then(r => r.json())
+      .then(data => { if (data.content && Object.keys(data.content).length > 0) setC(data.content); })
+      .catch(() => {});
+  }, []);
+
+  const stats = [
+    { value: c.stats?.stat1_value, label: c.stats?.stat1_label, color: '#FF2CA8' },
+    { value: c.stats?.stat2_value, label: c.stats?.stat2_label, color: '#00D68F' },
+    { value: c.stats?.stat3_value, label: c.stats?.stat3_label, color: '#FFB800' },
+    { value: c.stats?.stat4_value, label: c.stats?.stat4_label, color: '#7B2FFF' },
+  ];
+
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
-      <Navbar activePage="Ana Səhifə" />
+      <Navbar activePage="Ana Sehife" />
       <section style={{ maxWidth: '1440px', margin: '0 auto', padding: '100px 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '60px', position: 'relative', minHeight: '680px' }}>
-        <div style={{ position: 'absolute', left: '-100px', top: '-80px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(123,47,255,0.3) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.25) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', left: '-100px', top: '-80px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(123,47,255,0.2) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.15) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '32px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Azərbaycanın #1 Praktiki Akademiyası</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>{c.hero?.badge}</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '72px', lineHeight: 1.05, color: '#FFFFFF', margin: '0 0 24px 0' }}>
-            Gələcəyin<br /><span style={{ color: '#FF2CA8' }}>Peşəsini</span><br />4 Həftəyə Öyrən!
+            {c.hero?.title1}<br /><span style={{ color: '#FF2CA8' }}>{c.hero?.title2}</span><br />{c.hero?.title3}
           </h1>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', marginBottom: '8px' }}>Real layihələr. Praktiki tədris. Karyera dəstəyi.</p>
-          <p style={{ fontSize: '14px', color: '#A0A0B0', marginBottom: '48px' }}>Tikinti - Arxitektura - Daxili Dizayn - Digital Marketing - BIM</p>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', marginBottom: '8px' }}>{c.hero?.subtitle}</p>
+          <p style={{ fontSize: '14px', color: '#A0A0B0', marginBottom: '48px' }}>{c.hero?.tags}</p>
           <div style={{ display: 'flex', gap: '16px' }}>
-            <Link href="/kurslar" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Kurslara bax</Link>
-            <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>Ödənişsiz konsultasiya</Link>
+            <Link href="/kurslar" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>{c.hero?.btn1} →</Link>
+            <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>{c.hero?.btn2}</Link>
           </div>
         </div>
         <div style={{ position: 'relative', width: '540px', height: '520px', flexShrink: 0, zIndex: 2 }}>
-          <div style={{ position: 'absolute', left: '78px', top: '1px', width: '360px', height: '360px', borderRadius: '180px', backgroundImage: 'url(/hero-glow.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 0 60px 10px rgba(255,44,168,0.25)', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', left: '110px', top: '86px', width: '162px', height: '162px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: '140px', height: '140px', border: '1.5px solid rgba(255,44,168,0.7)', borderRadius: '6px', transform: 'rotate(-10deg)' }} />
-            </div>
-            <div style={{ position: 'absolute', left: '124px', top: '71px', width: '151px', height: '151px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: '112px', height: '112px', border: '1.5px solid rgba(255,44,168,0.58)', borderRadius: '6px', transform: 'rotate(-28deg)' }} />
-            </div>
-            <div style={{ position: 'absolute', left: '138px', top: '78px', width: '119px', height: '119px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: '84px', height: '84px', border: '1.5px solid rgba(255,44,168,0.46)', borderRadius: '6px', transform: 'rotate(-46deg)' }} />
-            </div>
-            <div style={{ position: 'absolute', left: '152px', top: '102px', width: '75px', height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: '56px', height: '56px', border: '1.5px solid rgba(255,44,168,0.34)', borderRadius: '6px', transform: 'rotate(-64deg)' }} />
-            </div>
-            <div style={{ position: 'absolute', left: '140px', top: '132px', fontSize: '72px', lineHeight: 1 }}>🏗</div>
-          </div>
-          <div style={{ position: 'absolute', top: '0', left: '20px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>500+</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Məzun</div>
-          </div>
-          <div style={{ position: 'absolute', top: '26px', right: '-46px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4.9★</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Reytinq</div>
-          </div>
-          <div style={{ position: 'absolute', top: '240px', left: '0', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>90%</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>İşə düzəldi</div>
-          </div>
-          <div style={{ position: 'absolute', top: '300px', left: '200px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 həftə</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs müddəti</div>
-          </div>
+          <img src="/hero-glow.png" alt="" style={{ position: 'absolute', top: '-60px', left: '-40px', width: '580px', height: '660px', pointerEvents: 'none', objectFit: 'contain' }} />
+          <img src="/hero-visual.png" alt="" style={{ position: 'absolute', top: '60px', left: '80px', width: '360px', height: '360px', pointerEvents: 'none', objectFit: 'contain' }} />
+          {stats.map((stat, i) => {
+            const positions = [
+              { top: '0', left: '20px' },
+              { top: '20px', right: '-40px' },
+              { top: '260px', left: '0' },
+              { top: '320px', left: '180px' },
+            ];
+            return (
+              <div key={i} style={{ position: 'absolute', ...positions[i], background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', minWidth: '148px' }}>
+                <div style={{ fontWeight: 700, fontSize: '26px', color: stat.color }}>{stat.value}</div>
+                <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>{stat.label}</div>
+              </div>
+            );
+          })}
         </div>
       </section>
       <CoursesSection />

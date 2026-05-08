@@ -1,9 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export default function ElaqePage() {
+  const [c, setC] = useState({});
+  useEffect(() => {
+    fetch('/api/content?page=elaqe').then(r=>r.json()).then(d=>{if(d.content)setC(d.content);}).catch(()=>{});
+  }, []);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);

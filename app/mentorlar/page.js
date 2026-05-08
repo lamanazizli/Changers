@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
@@ -55,6 +56,11 @@ const mentorlar = [
 ];
 
 export default function MentorlarPage() {
+  const [c, setC] = useState({});
+  useEffect(() => {
+    fetch('/api/content?page=mentorlar').then(r=>r.json()).then(d=>{if(d.content)setC(d.content);}).catch(()=>{});
+  }, []);
+
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Mentorlar" />
