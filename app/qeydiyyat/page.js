@@ -235,7 +235,7 @@ export default function QeydiyyatPage() {
                 boxShadow: '0px 4px 16px rgba(255,44,168,0.45)',
                 opacity: (step === 1 && (!form.name || !form.email)) || (step === 2 && !form.course) || (step === 3 && !form.phone) ? 0.5 : 1,
               }}>
-                Ireli →
+                İrəli →
               </button>
             ) : (
               <button onClick={handleSubmit} disabled={loading} style={{ padding: '14px 32px', background: '#FF2CA8', border: 'none', borderRadius: '10px', color: '#FFFFFF', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 4px 16px rgba(255,44,168,0.45)' }}>
