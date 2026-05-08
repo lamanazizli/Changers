@@ -9,12 +9,12 @@ const courses = [
     category: 'Tikinti',
     icon: '🏗',
     color: '#FF2CA8',
-    title: 'BIM & Tikinti Idareetmesi',
-    desc: 'AutoCAD, Revit, BIM 360 ile real layihe esasli praktiki tedris kursu.',
-    duration: '4 hefte',
+    title: 'BIM & Tikinti idarəetməsi',
+    desc: 'AutoCAD, Revit, BIM 360 ile real layihə əsaslı praktiki tədris kursu.',
+    duration: '4 həftə',
     price: '299 AZN',
     gradient: 'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.4))',
-    topics: ['AutoCAD', 'Revit', 'BIM 360', 'Layihe idareetmesi'],
+    topics: ['AutoCAD', 'Revit', 'BIM 360', 'Layihə idarəetməsi'],
   },
   {
     id: 2,
@@ -22,8 +22,8 @@ const courses = [
     icon: '📱',
     color: '#7B2FFF',
     title: 'Digital Marketing & SMM Pro',
-    desc: 'Google Ads, Meta Ads, SEO, Analytics ile kampaniya idareetmesi.',
-    duration: '4 hefte',
+    desc: 'Google Ads, Meta Ads, SEO, Analytics ilə kampaniya idarəetmesi.',
+    duration: '4 həftə',
     price: '249 AZN',
     gradient: 'linear-gradient(135deg, rgba(123,47,255,0.3), rgba(0,214,143,0.2))',
     topics: ['Google Ads', 'Meta Ads', 'SEO', 'Analytics'],
@@ -34,8 +34,8 @@ const courses = [
     icon: '🛋',
     color: '#00D68F',
     title: 'Interior Design & 3D Viz',
-    desc: '3ds Max, Lumion, V-Ray ile interior dizayn ve vizualizasiya.',
-    duration: '5 hefte',
+    desc: '3ds Max, Lumion, V-Ray ilə interior dizayn ve vizualizasiya.',
+    duration: '5 həftə',
     price: '319 AZN',
     gradient: 'linear-gradient(135deg, rgba(0,214,143,0.25), rgba(123,47,255,0.2))',
     topics: ['3ds Max', 'Lumion', 'V-Ray', 'AutoCAD'],
@@ -46,7 +46,7 @@ const courses = [
     icon: '🏛',
     color: '#FFB800',
     title: 'Arxitektura & BIM',
-    desc: 'Revit Architecture, ArchiCAD ve muasir layihe metodologiyalari.',
+    desc: 'Revit Architecture, ArchiCAD ve müasir layihə metodologiyaları.',
     duration: '6 hefte',
     price: '349 AZN',
     gradient: 'linear-gradient(135deg, rgba(255,184,0,0.25), rgba(255,44,168,0.2))',
@@ -58,8 +58,8 @@ const courses = [
     icon: '📐',
     color: '#FF2CA8',
     title: 'AutoCAD & Revit Master',
-    desc: '2D ve 3D layihe cizimi, BIM texnologiyalari ve konstruksiya.',
-    duration: '4 hefte',
+    desc: '2D ve 3D layihə çizimi, BIM texnologiyaları ve konstruksiya.',
+    duration: '4 həftə',
     price: '279 AZN',
     gradient: 'linear-gradient(135deg, rgba(255,44,168,0.25), rgba(123,47,255,0.3))',
     topics: ['AutoCAD 2D', 'AutoCAD 3D', 'Revit MEP', 'BIM'],
@@ -70,7 +70,7 @@ const courses = [
     icon: '📊',
     color: '#7B2FFF',
     title: 'E-Commerce & Dropshipping',
-    desc: 'Online magaza qurma, mehsul secimi ve satis strategiyalari.',
+    desc: 'Online mağaza qurma, məhsul seçimi ve satış strategiyaları.',
     duration: '4 hefte',
     price: '229 AZN',
     gradient: 'linear-gradient(135deg, rgba(123,47,255,0.3), rgba(255,44,168,0.2))',
@@ -89,7 +89,7 @@ export default function KurslarPage() {
       <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '80px 0 60px', textAlign: 'center', position: 'relative' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📚 Bütün Kurslar</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📚 Bütün kurslar</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
             Peşəni Seç,<br /><span style={{ color: '#FF2CA8' }}>Karyerana Başla</span>
@@ -111,10 +111,10 @@ export default function KurslarPage() {
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around' }}>
           {[
-            { v: '6+', l: 'Aktiv Kurs' },
+            { v: '6+', l: 'Aktiv kurs' },
             { v: '500+', l: 'Mezun' },
-            { v: '90%', l: 'Ise Duzaldi' },
-            { v: '4.9', l: 'Ortalama Reytinq' },
+            { v: '90%', l: 'İşə düzəldi' },
+            { v: '4.9', l: 'Ortalama reytinq' },
           ].map((s, i) => (
             <div key={i} style={{ padding: '28px 0', textAlign: 'center' }}>
               <div style={{ fontWeight: 700, fontSize: '32px', color: '#FF2CA8' }}>{s.v}</div>
