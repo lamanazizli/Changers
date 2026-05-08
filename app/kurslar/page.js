@@ -86,7 +86,7 @@ export default function KurslarPage() {
       <Navbar activePage="Kurslar" />
 
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '80px 0 60px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '80px 0 60px', textAlign: 'left', position: 'relative' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📚 Bütün kurslar</span>
