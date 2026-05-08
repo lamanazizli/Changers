@@ -5,53 +5,53 @@ import Link from 'next/link';
 
 const mezunlar = [
   {
-    initials: 'AM', name: 'Ayten M.', color: '#FF2CA8',
+    initials: 'AM', name: 'Aytən M.', color: '#FF2CA8',
     course: 'Digital Marketing', rating: 5,
-    evvel: 'SMM bilgisi yox idi', indi: 'Freelance musteri tapdi',
-    quote: '4 heftede SMM mutexessisi oldum. Changers menim karyeramı tamamilə deyisdi!',
+    evvel: 'SMM bilgisi yox idi', indi: 'Freelance müştəri tapdı',
+    quote: '4 həftədə SMM mütəxəssisi oldum. Changers mənim karyeramı tamamilə dəyişdi!',
     company: 'Freelance', salary: '+800 AZN/ay',
   },
   {
-    initials: 'RE', name: 'Rauf E.', color: '#7B2FFF',
+    initials: 'RE', name: 'Rauf Ə.', color: '#7B2FFF',
     course: 'BIM & Tikinti', rating: 5,
-    evvel: 'Insaat fehilesi idi', indi: 'BIM menecer oldu',
-    quote: 'Revit oyrendim, 2 ay sonra BIM menecer kimi ise dusdum. Indi 2x maas alıram.',
-    company: 'Tikinti Şirketi', salary: '+1200 AZN/ay',
+    evvel: 'İnşaat ustası idi', indi: 'BIM menecer oldu',
+    quote: 'Revit öyrəndim, 2 ay sonra BIM menecer kimi işə başladım. İndi 2x maaş alıram.',
+    company: 'Tikinti şirkəti', salary: '+1200 AZN/ay',
   },
   {
-    initials: 'NH', name: 'Nermin H.', color: '#00D68F',
+    initials: 'NH', name: 'Nərmin H.', color: '#00D68F',
     course: 'Daxili Dizayn', rating: 5,
-    evvel: 'Evdar xanim idi', indi: '3D dizayner oldu',
-    quote: 'Portfolio-m ilk hefteden musteri celb etdi. Artiq oz studiyam var!',
-    company: 'Oz Studiyasi', salary: '+1500 AZN/ay',
+    evvel: 'Evdar xanım idi', indi: '3D dizayner oldu',
+    quote: 'Portfolio-m ilk həftədən müştəri cəlb etdi. Artiq öz studiyam var!',
+    company: 'Öz studiyası', salary: '+1500 AZN/ay',
   },
   {
     initials: 'KM', name: 'Kamran M.', color: '#FFB800',
     course: 'Digital Marketing', rating: 5,
-    evvel: 'Satici idi', indi: 'Marketing manager oldu',
-    quote: 'Google Ads ve Meta Ads oyrendim. Ilk ayda 3 musteri tapdim.',
+    evvel: 'Satıcı idi', indi: 'Marketing manager oldu',
+    quote: 'Google Ads ve Meta Ads öyrəndim. İlk ayda 3 müştəri tapdım.',
     company: 'Marketing Agency', salary: '+900 AZN/ay',
   },
   {
     initials: 'LH', name: 'Leyla H.', color: '#FF2CA8',
     course: 'Arxitektura & BIM', rating: 5,
-    evvel: 'Teze mezun idi', indi: 'Arxitekt kimi isleyir',
-    quote: 'Kurs bitenden 2 hefte sonra muesseseye qebul olundum. Changers olmasa bunu bacararmazdim.',
-    company: 'Arxitektura Bürosu', salary: '+1000 AZN/ay',
+    evvel: 'Təzə məzun idi', indi: 'Arxitekt kimi işləyir',
+    quote: 'Kurs bitəndən 2 həftə sonra müəssisəyə qəbul olundum. Changers olmasa bunu bazarmazdım.',
+    company: 'Arxitektura bürosu', salary: '+1000 AZN/ay',
   },
   {
     initials: 'TA', name: 'Tural A.', color: '#7B2FFF',
     course: 'AutoCAD & Revit', rating: 5,
-    evvel: 'Texnik ressam idi', indi: 'BIM spesialisti oldu',
-    quote: 'AutoCAD-dan Revit-e kecidim ve karyeramda boyuk ireli addim atdim.',
-    company: 'Muhendislik Şirketi', salary: '+1100 AZN/ay',
+    evvel: 'Texnik rəssam idi', indi: 'BIM spesialisti oldu',
+    quote: 'AutoCAD-dan Revit-ə keçdim ve karyeramda irəli addım atdım.',
+    company: 'Muhendislik şirkəti', salary: '+1100 AZN/ay',
   },
 ];
 
 export default function NeticelerPage() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
-      <Navbar activePage="Neticeler" />
+      <Navbar activePage="Nəticələr" />
 
       {/* Hero */}
       <section style={{ position: 'relative', padding: '100px 0 80px', overflow: 'hidden' }}>
