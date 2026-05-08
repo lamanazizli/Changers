@@ -30,9 +30,9 @@ export default function HomeSections() {
           <div style={{ marginBottom: '60px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <div style={{ width: '48px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NIYE CHANGERS?</span>
+              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NİYƏ CHANGERS?</span>
             </div>
-            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>Bizim Ferqimiz</h2>
+            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>Bizim fərqimiz</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
             {[
@@ -70,8 +70,8 @@ export default function HomeSections() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
             {[
-              { q: '4 heftede SMM mutexessisi oldum. Ilk ayda freelance is tapdım!', name: 'Ayten Memmedova', course: 'Digital Marketing', initials: 'AM', color: '#FF2CA8' },
-              { q: 'Revit oyrendim, layihemi musabiqede 1-ci yere geldim.', name: 'Rauf Eliyev', course: 'BIM & Tikinti', initials: 'RE', color: '#7B2FFF' },
+              { q: '4 həftədə SMM mütəxəssisi oldum. İlk ayda freelance iş tapdım!', name: 'Aytən Məmmədova', course: 'Digital Marketing', initials: 'AM', color: '#FF2CA8' },
+              { q: 'Revit öyrəndim, layihəm ilə müsabiqədə 1-ci yerə gəldim.', name: 'Rauf Əliyev', course: 'BIM & Tikinti', initials: 'RE', color: '#7B2FFF' },
               { q: 'Portfolio-m ilk hefteden musteri celb etdi. Changers mocuzerdir!', name: 'Nermin Huseynova', course: 'Daxili Dizayn', initials: 'NH', color: '#00D68F' },
             ].map((t, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
@@ -96,16 +96,16 @@ export default function HomeSections() {
           <div style={{ marginBottom: '60px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <div style={{ width: '48px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NECE ISLEYIR?</span>
+              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NECƏ İŞLƏYİR?</span>
             </div>
             <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>4 Addımda Karyerana Basla</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
             {[
-              { num: '01', icon: '📋', title: 'Qeydiyyat ol', desc: 'Forma doldur, kurs sec, konsultasiya al.' },
-              { num: '02', icon: '📚', title: 'Tedrise basla', desc: 'Canlı dersler + video destekl + mentor.' },
-              { num: '03', icon: '🛠', title: 'Layihe hazirla', desc: 'Real sektoral layiheni tamamla.' },
-              { num: '04', icon: '🎓', title: 'Sertifikat al', desc: 'Ise duzel, portfelin hazir olsun.' },
+              { num: '01', icon: '📋', title: 'Qeydiyyatdan keç', desc: 'Formu doldur, kurs seç, konsultasiya al.' },
+              { num: '02', icon: '📚', title: 'Tədrisə başla', desc: 'Canlı dərslər + video dəstək + mentor.' },
+              { num: '03', icon: '🛠', title: 'Layihə hazırla', desc: 'Real sektoral layihəni tamamla.' },
+              { num: '04', icon: '🎓', title: 'Sertifikat al', desc: 'İşə düzəl, portfelin hazır olsun.' },
             ].map((s, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
@@ -124,27 +124,27 @@ export default function HomeSections() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '24px', padding: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '60px' }}>
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontSize: '48px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>Karyeranı Bu Gun<br /><span style={{ color: '#FF2CA8' }}>Basla</span></h2>
-              <p style={{ color: '#A0A0B0', fontSize: '16px', margin: '0 0 24px 0' }}>Qeydiyyatdan kec, pulsuz konsultasiya al.</p>
+              <h2 style={{ fontSize: '48px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>Karyerana bu gün<br /><span style={{ color: '#FF2CA8' }}>başla!</span></h2>
+              <p style={{ color: '#A0A0B0', fontSize: '16px', margin: '0 0 24px 0' }}>Qeydiyyatdan keç, ödənişsiz konsultasiya al.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {['Ohdəliksiz', 'Pulsuz meslehet', 'Derhal cavab'].map((t, i) => (
+                {['Öhdəliksiz', 'Ödənişsiz məsləhət', 'Dərhal cavab'].map((t, i) => (
                   <span key={i} style={{ color: '#A0A0B0', fontSize: '14px' }}>✓ {t}</span>
                 ))}
               </div>
             </div>
             <div style={{ flex: 1, maxWidth: '420px' }}>
               <form onSubmit={e => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <input placeholder="Ad Soyadınız" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '16px 20px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
-                <input placeholder="Telefon nomresi" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '16px 20px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
+                <input placeholder="Ad, Soyadınız" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '16px 20px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
+                <input placeholder="Telefon nömrəsi" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '16px 20px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
                 <select style={{ background: 'rgba(20,20,30,1)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '16px 20px', color: '#A0A0B0', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box' }}>
-                  <option value="">Kurs secin</option>
-                  <option>BIM & Tikinti Idareetmesi</option>
+                  <option value="">Kurs seçin</option>
+                  <option>BIM & Tikinti idarəetməsi</option>
                   <option>Digital Marketing & SMM Pro</option>
                   <option>Interior Design & 3D Viz</option>
                   <option>AutoCAD & Revit Master</option>
                 </select>
                 <button type="submit" style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Qeydiyyatdan Kec →</button>
-                <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '13px' }}>🔒 Melumatlarınız qorunur</div>
+                <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '13px' }}>🔒 Bütün məlumatlar qorunur</div>
               </form>
             </div>
           </div>
