@@ -78,7 +78,7 @@ const courses = [
   },
 ];
 
-const categories = ['Hamisi', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
+const categories = ['Hamısı', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
 
 export default function KurslarPage() {
   return (
