@@ -58,9 +58,9 @@ export default function HomeSections() {
               <div style={{ width: '48px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
               <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NƏTİCƏLƏR</span>
             </div>
-            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 32px 0' }}>Mezunlarımız nə deyir?</h2>
+            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 32px 0' }}>Məzunlarımız nə deyir?</h2>
             <div style={{ display: 'flex', gap: '48px', paddingBottom: '32px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-              {[{ v: '500+', l: 'Məzun sayı' }, { v: '4 Hefte', l: 'Ortalama kurs' }, { v: '90%', l: 'İşə düzəldi' }, { v: '4.9', l: 'Ortalama Reytinq' }].map((s, i) => (
+              {[{ v: '500+', l: 'Məzun sayı' }, { v: '4 həftə', l: 'Ortalama kurs' }, { v: '90%', l: 'İşə düzəldi' }, { v: '4.9', l: 'Ortalama reytinq' }].map((s, i) => (
                 <div key={i}>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: '#FF2CA8' }}>{s.v}</div>
                   <div style={{ fontSize: '13px', color: '#A0A0B0', marginTop: '4px' }}>{s.l}</div>
@@ -72,7 +72,7 @@ export default function HomeSections() {
             {[
               { q: '4 həftədə SMM mütəxəssisi oldum. İlk ayda freelance iş tapdım!', name: 'Aytən Məmmədova', course: 'Digital Marketing', initials: 'AM', color: '#FF2CA8' },
               { q: 'Revit öyrəndim, layihəm ilə müsabiqədə 1-ci yerə gəldim.', name: 'Rauf Əliyev', course: 'BIM & Tikinti', initials: 'RE', color: '#7B2FFF' },
-              { q: 'Portfolio-m ilk hefteden musteri celb etdi. Changers mocuzerdir!', name: 'Nermin Huseynova', course: 'Daxili Dizayn', initials: 'NH', color: '#00D68F' },
+              { q: 'Portfolio-m ilk həftədən müştəri cəlb etdi. Changers möcüzədir!', name: 'Nərmin Hüseynova', course: 'Daxili Dizayn', initials: 'NH', color: '#00D68F' },
             ].map((t, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
                 <div style={{ color: '#FF2CA8', fontSize: '48px', lineHeight: 0.8, marginBottom: '16px' }}>"</div>
@@ -98,7 +98,7 @@ export default function HomeSections() {
               <div style={{ width: '48px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
               <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>NECƏ İŞLƏYİR?</span>
             </div>
-            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>4 Addımda Karyerana Basla</h2>
+            <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: 0 }}>4 addımda karyerana başla!</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
             {[
@@ -143,7 +143,7 @@ export default function HomeSections() {
                   <option>Interior Design & 3D Viz</option>
                   <option>AutoCAD & Revit Master</option>
                 </select>
-                <button type="submit" style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Qeydiyyatdan Kec →</button>
+                <button type="submit" style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Qeydiyyatdan keç →</button>
                 <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '13px' }}>🔒 Bütün məlumatlar qorunur</div>
               </form>
             </div>
