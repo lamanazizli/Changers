@@ -5,48 +5,48 @@ import Link from 'next/link';
 
 const mentorlar = [
   {
-    initials: 'EM', name: 'Elvin Mammadov', color: '#FF2CA8',
+    initials: 'EM', name: 'Elvin Məmmədov', color: '#FF2CA8',
     title: 'Senior BIM Manager',
-    company: 'Tikinti & Layihe Şirketi',
-    exp: '8 il tecrube',
+    company: 'Tikinti Şirkəti',
+    exp: '8 il təcrübə',
     courses: ['BIM & Tikinti Idareetmesi', 'AutoCAD & Revit Master'],
-    bio: 'Elvin 8 ilden cox BIM texnologiyalari sahesinde calismisdir. Azerbaycanin en boyuk tikinti layihelerinde BIM meneceri kimi is aparib. Changers-de telebelerine real layihe tecrubesi kazandirmagi hedifliyir.',
-    skills: ['Revit', 'AutoCAD', 'BIM 360', 'Navisworks', 'Layihe Menecmenti'],
+    bio: 'Elvin 8 ilden cox BIM texnologiyaları sahəsində çalışmışdır. Azərbaycanın ən böyük tikinti layihələrində BIM meneceri kimi işləyib. Changersdə tələbələrinə real layihə təcrübə qazandırmağı hədəfləyir.',
+    skills: ['Revit', 'AutoCAD', 'BIM 360', 'Navisworks', 'Layihə menecmenti'],
     students: '120+',
     rating: '4.9',
     linkedin: '#',
   },
   {
-    initials: 'NA', name: 'Nigar Aliyeva', color: '#7B2FFF',
+    initials: 'NƏ', name: 'Nigar Əliyeva', color: '#7B2FFF',
     title: 'Digital Marketing Lead',
     company: 'Marketing Agency',
-    exp: '6 il tecrube',
+    exp: '6 il təcrübə',
     courses: ['Digital Marketing & SMM Pro', 'E-Commerce & Dropshipping'],
-    bio: 'Nigar Azerbaycanin aparici marketing agentlikleri ile is aparmisdir. Google ve Meta sertifikatli marketoloq kimi 50+ brend ucun ugurlu kampaniyalar heyata kecirmisdir.',
-    skills: ['Meta Ads', 'Google Ads', 'SEO', 'Analytics', 'Content Marketing'],
+    bio: 'Nigar Azərbaycanın aparıcı marketing agentlikləri ilə iş aparmışdır. Google ve Meta sertifikatlı marketoloq kimi 50+ brend üçün uğurlu kampaniyalar həyata keçirmişdir.',
+    skills: ['Meta Ads', 'Google Ads', 'SEO', 'Analytics', 'Content marketing'],
     students: '200+',
     rating: '4.9',
     linkedin: '#',
   },
   {
-    initials: 'SH', name: 'Sevinc Hasanova', color: '#00D68F',
+    initials: 'SH', name: 'Sevinc Həsənova', color: '#00D68F',
     title: 'Interior Designer & 3D Artist',
-    company: 'Oz Studiyasi',
-    exp: '7 il tecrube',
+    company: 'Şəxsi studiyası',
+    exp: '7 il təcrübə',
     courses: ['Interior Design & 3D Viz'],
-    bio: 'Sevinc Azerbaycan ve Turkiyede 100-den cox interior dizayn layihesi heyata kecirmisdir. 3ds Max ve Lumion ustasi kimi telebelerine professional vizualizasiya texnikalarini oyredendir.',
+    bio: 'Sevinc Azərbaycan və Türkiyədə 100-dən çox interior dizayn layihəsi həyata keçirmişdir. 3ds Max ve Lumion ustası kimi tələbələrinə professional vizualizasiya texnikalarını öyrədir.',
     skills: ['3ds Max', 'Lumion', 'V-Ray', 'AutoCAD', 'SketchUp'],
     students: '80+',
     rating: '4.8',
     linkedin: '#',
   },
   {
-    initials: 'KA', name: 'Kamil Agayev', color: '#FFB800',
+    initials: 'KA', name: 'Kamil Ağayev', color: '#FFB800',
     title: 'Arxitekt & BIM Spesialisti',
-    company: 'Arxitektura Burosu',
-    exp: '10 il tecrube',
+    company: 'Arxitektura bürosu',
+    exp: '10 il təcrübə',
     courses: ['Arxitektura & BIM'],
-    bio: 'Kamil Avropa ve Azerbaycanda cox sayda arxitektura layihesinde is aparib. ArchiCAD ve Revit Architecture uzre derin biliyine sahib olan Kamil telim sahesinde de 5 illik tecrubeyə malikdir.',
+    bio: 'Kamil Avropa və Azərbaycanda çox sayda arxitektura layihəsində iş aparıb. ArchiCAD ve Revit Architecture üzrə dərin biliyə sahib olan Kamil təlim sahəsində də 5 illik təcrübəyə malikdir.',
     skills: ['ArchiCAD', 'Revit Architecture', 'SketchUp', 'BIM', 'Renderinq'],
     students: '60+',
     rating: '4.9',
@@ -71,10 +71,10 @@ export default function MentorlarPage() {
             Sahənin <span style={{ color: '#FF2CA8' }}>Ustalarından</span><br />Oyrən
           </h1>
           <p style={{ fontSize: '18px', color: '#A0A0B0', margin: '0 0 48px 0', maxWidth: '600px' }}>
-            Mentorlarimiz real sektorda calisan, tecrubeli mutexessislerdir. Nəzəriyyə deyil, praktika oyredirler.
+            Mentorlarımız real sektorda çalışan, təcrübəli mütəxəssislərdir. Nəzəriyyə deyil, praktika öyrədirik.
           </p>
           <div style={{ display: 'flex', gap: '40px' }}>
-            {[{ v: '4', l: 'Ekspert Mentor' }, { v: '460+', l: 'Mezun Telebe' }, { v: '4.9', l: 'Ortalama Reytinq' }, { v: '15+', l: 'Il Tecrube' }].map((s, i) => (
+            {[{ v: '4', l: 'Ekspert mentor' }, { v: '460+', l: 'Məzun tələbə' }, { v: '4.9', l: 'Ortalama reytinq' }, { v: '15+', l: 'İl təcrübə' }].map((s, i) => (
               <div key={i}>
                 <div style={{ fontWeight: 700, fontSize: '28px', color: '#FF2CA8' }}>{s.v}</div>
                 <div style={{ fontSize: '13px', color: '#A0A0B0', marginTop: '4px' }}>{s.l}</div>
@@ -107,7 +107,7 @@ export default function MentorlarPage() {
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ color: '#FFB800', fontSize: '13px' }}>⭐ {m.rating}</div>
-                      <div style={{ color: '#A0A0B0', fontSize: '11px', marginTop: '2px' }}>{m.students} telebe</div>
+                      <div style={{ color: '#A0A0B0', fontSize: '11px', marginTop: '2px' }}>{m.students} tələbə</div>
                     </div>
                   </div>
 
@@ -122,7 +122,7 @@ export default function MentorlarPage() {
 
                   {/* Courses */}
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '16px' }}>
-                    <div style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, marginBottom: '8px', letterSpacing: '1px' }}>TƏDRIS ETDIYI KURSLAR</div>
+                    <div style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, marginBottom: '8px', letterSpacing: '1px' }}>TƏDRİS ETDİYİ KURSLAR</div>
                     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       {m.courses.map((c, j) => (
                         <span key={j} style={{ background: `${m.color}15`, border: `1px solid ${m.color}40`, color: m.color, fontSize: '11px', fontWeight: 600, padding: '4px 12px', borderRadius: '100px' }}>{c}</span>
@@ -140,15 +140,15 @@ export default function MentorlarPage() {
       <section style={{ background: '#13131A', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', textAlign: 'center' }}>
           <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>
-            Ekspert Mentorlarla <span style={{ color: '#FF2CA8' }}>Birbasa Calis</span>
+            Ekspert mentorlarla <span style={{ color: '#FF2CA8' }}>birbaşa işlə!</span>
           </h2>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 36px 0' }}>Suallarin var? Pulsuz konsultasiya al, sene uygun kursu birlikde secek.</p>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 36px 0' }}>Sualların var? Ödənişsiz konsultasiya al, sənə uyğun kursu birlikdə seçək.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>
-              Qeydiyyatdan Kec →
+              Qeydiyyatdan keç →
             </Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>
-              Kurslara Bax
+              Kurslara bax
             </Link>
           </div>
         </div>
