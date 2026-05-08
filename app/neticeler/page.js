@@ -59,15 +59,15 @@ export default function NeticelerPage() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>MEZUNLARIMIZIN HEKAYELER</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>MƏZUNLARIMIZIN HEKAYƏLƏRİ</span>
           </div>
           <div style={{ marginBottom: '16px' }}>
             <span style={{ color: '#A0A0B0', fontSize: '13px' }}>Ana Sehife / </span>
             <span style={{ color: '#FFFFFF', fontSize: '13px' }}>Neticeler</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FFFFFF', margin: '0 0 8px 0', lineHeight: 1.05 }}>Real Insanlar.</h1>
-          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FF2CA8', margin: '0 0 24px 0', lineHeight: 1.05 }}>Real Neticeler.</h1>
-          <p style={{ fontSize: '18px', color: '#A0A0B0', margin: 0 }}>Her kes oz hekayesini yazdi — sifirdan mutexessise.</p>
+          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FFFFFF', margin: '0 0 8px 0', lineHeight: 1.05 }}>Real insanlar.</h1>
+          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FF2CA8', margin: '0 0 24px 0', lineHeight: 1.05 }}>Real nəticələr.</h1>
+          <p style={{ fontSize: '18px', color: '#A0A0B0', margin: 0 }}>Hər kəs öz hekayəsini yazdı — sıfırdan mütəxəssisə.</p>
         </div>
       </section>
 
@@ -75,10 +75,10 @@ export default function NeticelerPage() {
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around' }}>
           {[
-            { icon: '🏆', value: '500+', label: 'Mezun Sayi' },
-            { icon: '⭐', value: '4.9★', label: 'Ortalama Reytinq' },
-            { icon: '💼', value: '90%', label: 'Ise Duzaldi' },
-            { icon: '⏱', value: '4 Hefte', label: 'Ortalama Kurs' },
+            { icon: '🏆', value: '500+', label: 'Məzun sayı' },
+            { icon: '⭐', value: '4.9★', label: 'Ortalama reytinq' },
+            { icon: '💼', value: '90%', label: 'İşə düzəldi' },
+            { icon: '⏱', value: '4 həftə', label: 'Ortalama kurs' },
           ].map((s, i) => (
             <div key={i} style={{ padding: '36px 0', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '24px' }}>{s.icon}</span>
@@ -95,9 +95,9 @@ export default function NeticelerPage() {
           <div style={{ marginBottom: '56px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>ONE CIXAN HEKAYELER</span>
+              <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>ÖNƏ ÇIXAN HEKAYƏLƏR</span>
             </div>
-            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Zirvəyə Cıxan Mezunlar</h2>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Zirvəyə çıxan məzunlar</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
@@ -116,12 +116,12 @@ export default function NeticelerPage() {
                 {/* Evvel / Indi */}
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '20px' }}>
                   <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '10px 14px' }}>
-                    <div style={{ color: '#A0A0B0', fontSize: '10px', fontWeight: 600, marginBottom: '4px', letterSpacing: '1px' }}>EVVEL</div>
+                    <div style={{ color: '#A0A0B0', fontSize: '10px', fontWeight: 600, marginBottom: '4px', letterSpacing: '1px' }}>ƏVVƏL</div>
                     <div style={{ color: '#FFFFFF', fontSize: '13px' }}>{m.evvel}</div>
                   </div>
                   <div style={{ color: '#FF2CA8', fontSize: '20px' }}>→</div>
                   <div style={{ flex: 1, background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: '10px', padding: '10px 14px' }}>
-                    <div style={{ color: '#00D68F', fontSize: '10px', fontWeight: 600, marginBottom: '4px', letterSpacing: '1px' }}>INDI</div>
+                    <div style={{ color: '#00D68F', fontSize: '10px', fontWeight: 600, marginBottom: '4px', letterSpacing: '1px' }}>İNDİ</div>
                     <div style={{ color: '#FFFFFF', fontSize: '13px' }}>{m.indi}</div>
                   </div>
                 </div>
@@ -144,15 +144,15 @@ export default function NeticelerPage() {
       <section style={{ background: '#13131A', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', textAlign: 'center' }}>
           <h2 style={{ fontWeight: 700, fontSize: '48px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
-            Sıradakı <span style={{ color: '#FF2CA8' }}>Ugur Hekayesi</span><br />Sənin Olsun
+            Sıradakı <span style={{ color: '#FF2CA8' }}>uğur hekayəsi</span><br />sənin olsun!
           </h2>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 40px 0' }}>500+ mezunun yanina qos. Karyerani bu gun basla.</p>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 40px 0' }}>500+ məzuna qoşul, karyeranı bu gün başla!.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>
-              Indi Baslat →
+              İndi başla →
             </Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>
-              Kurslara Bax
+              Kurslara bax
             </Link>
           </div>
         </div>
