@@ -55,7 +55,7 @@ export default function Home() {
           </div>
           <div style={{ position: 'absolute', top: '300px', left: '200px', background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '9px 15px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', width: '148px', height: '76px', overflow: 'hidden' }}>
             <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '26px', color: '#FF2CA8' }}>4 həftə</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs Müddəti</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>Kurs müddəti</div>
           </div>
         </div>
       </section>
