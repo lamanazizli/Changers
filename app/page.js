@@ -13,7 +13,7 @@ export default function Home() {
         <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.25) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '32px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Azerbaycanin #1 Praktiki Akademiyasi</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Azərbaycanın #1 Praktiki Akademiyası</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '72px', lineHeight: 1.05, color: '#FFFFFF', margin: '0 0 24px 0' }}>
             Geleceyin<br /><span style={{ color: '#FF2CA8' }}>Pesosini</span><br />4 Hefteve Oyre
