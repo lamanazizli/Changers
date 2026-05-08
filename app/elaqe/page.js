@@ -21,7 +21,7 @@ export default function ElaqePage() {
       });
       setSent(true);
     } catch (err) {
-      alert('Xeta bas verdi, yeniden cehd edin');
+      alert('Xəta baş verdi, yenidən cəhd edin');
     }
     setLoading(false);
   };
@@ -41,7 +41,7 @@ export default function ElaqePage() {
 
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
-      <Navbar activePage="Elaqe" />
+      <Navbar activePage="Əlaqə" />
 
       {/* Hero */}
       <section style={{ position: 'relative', padding: '80px 0 60px', overflow: 'hidden' }}>
@@ -49,13 +49,13 @@ export default function ElaqePage() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>BIZIMLE ELAQE</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>BİZİMLƏ ƏLAQƏ</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '60px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.05 }}>
-            Sualın var?<br /><span style={{ color: '#FF2CA8' }}>Yazın bizə!</span>
+            Sualın var?<br /><span style={{ color: '#FF2CA8' }}>Bizə yaz!</span>
           </h1>
           <p style={{ fontSize: '18px', color: '#A0A0B0', margin: 0, maxWidth: '500px' }}>
-            24 saat erzinde cavab veririk. WhatsApp uzzerinden de bize cata bilersiniz.
+            24 saat ərzində cavab veririk. WhatsApp üzərindən də bizə müraciət et bilərsən.
           </p>
         </div>
       </section>
@@ -66,14 +66,14 @@ export default function ElaqePage() {
 
           {/* Left — Contact Info */}
           <div>
-            <h2 style={{ fontWeight: 700, fontSize: '28px', color: '#FFFFFF', margin: '0 0 32px 0' }}>Elaqe Melumatlari</h2>
+            <h2 style={{ fontWeight: 700, fontSize: '28px', color: '#FFFFFF', margin: '0 0 32px 0' }}>Əlaqə məlumatları</h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
               {[
-                { icon: '📍', label: 'Unvan', value: 'Baki, Azerbaycan', sub: 'Ofis unvanı tezliklə əlavə ediləcək' },
-                { icon: '📞', label: 'Telefon', value: '+994 XX XXX XX XX', sub: 'Bazar ertesi - Cumə, 09:00 - 18:00' },
-                { icon: '✉️', label: 'Email', value: 'info@changers.az', sub: '24 saat erzinde cavab veririk' },
-                { icon: '💬', label: 'WhatsApp', value: '+994 XX XXX XX XX', sub: 'Ani cavab ucun WhatsApp yazin' },
+                { icon: '📍', label: 'Ünvan', value: 'Bakı, Azərbaycan', sub: 'İnşaatçılar metrostansiyasının yaxınlığı, Abbas Mirzə Şərifzadə küçəsi 110' },
+                { icon: '📞', label: 'Telefon', value: '+994 10 255 75 55', sub: 'Bazar ertəsi - Cümə, 09:00 - 18:00' },
+                { icon: '✉️', label: 'Email', value: 'info@changers.az', sub: '24 saat ərzində cavab' },
+                { icon: '💬', label: 'WhatsApp', value: '+994 10 255 75 55', sub: 'Sürətli cavab üçün WhatsAppda yaz.' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '20px' }}>
                   <div style={{ width: '44px', height: '44px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{item.icon}</div>
@@ -104,11 +104,11 @@ export default function ElaqePage() {
             </div>
 
             {/* WhatsApp CTA */}
-            <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#25D366', borderRadius: '14px', padding: '20px 24px', textDecoration: 'none', marginTop: '32px' }}>
+            <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#25D366', borderRadius: '14px', padding: '20px 24px', textDecoration: 'none', marginTop: '32px' }}>
               <span style={{ fontSize: '28px' }}>💬</span>
               <div>
-                <div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px' }}>WhatsApp ilə Yaz</div>
-                <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', marginTop: '2px' }}>Ani cavab alın</div>
+                <div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px' }}>WhatsApp ilə yaz</div>
+                <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', marginTop: '2px' }}>Sürətli cavab al</div>
               </div>
               <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '20px' }}>→</span>
             </a>
@@ -119,16 +119,16 @@ export default function ElaqePage() {
             {sent ? (
               <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '48px', textAlign: 'center' }}>
                 <div style={{ fontSize: '64px', marginBottom: '20px' }}>✅</div>
-                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '24px', margin: '0 0 12px 0' }}>Mesajınız Gonderildi!</h3>
-                <p style={{ color: '#A0A0B0', fontSize: '15px', margin: 0 }}>24 saat erzinde sizinle elaqe saxlayacayiq.</p>
+                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '24px', margin: '0 0 12px 0' }}>Mesajınız göndərildi!</h3>
+                <p style={{ color: '#A0A0B0', fontSize: '15px', margin: 0 }}>24 saat ərzində sizinlə əlaqə saxlanılacaq.</p>
               </div>
             ) : (
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '20px', padding: '40px' }}>
-                <h2 style={{ fontWeight: 700, fontSize: '24px', color: '#FFFFFF', margin: '0 0 28px 0' }}>Mesaj Gonder</h2>
+                <h2 style={{ fontWeight: 700, fontSize: '24px', color: '#FFFFFF', margin: '0 0 28px 0' }}>Mesaj göndər</h2>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                     <div>
-                      <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px', letterSpacing: '1px' }}>AD SOYAD *</label>
+                      <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px', letterSpacing: '1px' }}>AD, SOYAD *</label>
                       <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Adınız" required style={inputStyle} />
                     </div>
                     <div>
@@ -145,10 +145,10 @@ export default function ElaqePage() {
                     <textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Sualınızı və ya mesajınızı yazın..." required rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
                   <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)', marginTop: '8px', opacity: loading ? 0.7 : 1 }}>
-                    {loading ? 'Gonderilib...' : 'Mesaj Gonder →'}
+                    {loading ? 'Göndərilib...' : 'Mesaj Göndər →'}
                   </button>
                   <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px' }}>
-                    🔒 Melumatlarınız guvenle saxlanilir
+                    🔒 Melumatlarınız güvənlə saxlanılır.
                   </div>
                 </form>
               </div>
@@ -162,14 +162,14 @@ export default function ElaqePage() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px' }}>
             <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>TSS-SORULAN SUALLAR</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>FAQ</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
             {[
-              { q: 'Kurslar nə vaxt baslayır?', a: 'Kurslar her ay yeni qrup ile baslayır. Qeydiyyatdan sonra size en yaxın baslangıc tarixi bildiriləcək.' },
-              { q: 'Tədris onlayn yoxsa offline keçilir?', a: 'Hem onlayn hem offline format var. Siz ozunuze uygun formati sece bilersiniz.' },
-              { q: 'Heç bir bilik olmadan qeydiyyatdan kece bileremmi?', a: 'Beli, kurslarımız sıfırdan baslayır. Heç bir on bilik tələb olunmur.' },
-              { q: 'Sertifikat verilirmi?', a: 'Kursu bitiren hər telebəyə rəsmi Changers Academy sertifikatı verilir.' },
+              { q: 'Kurslar nə vaxt başlayır?', a: 'Kurslar hər ay yeni qrup ilə başlayır. Qeydiyyatdan sonra sizə ən yaxın başlanğıc tarixi bildiriləcək.' },
+              { q: 'Tədris onlayn yoxsa offline keçilir?', a: 'Həm onlayn həm offline format mövcuddur. Siz özünüzə uyğun formatı seçə bilərsiniz.' },
+              { q: 'Heç bir bilik olmadan qeydiyyatdan keçə bilərəmmi?', a: 'Bəli, kurslarımız sıfırdan başlayır. Heç bir ön bilik tələb olunmur.' },
+              { q: 'Sertifikat verilirmi?', a: 'Kursu bitirən hər tələbəyə rəsmi Changers Academy sertifikatı verilir.' },
             ].map((faq, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '24px' }}>
                 <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px', margin: '0 0 10px 0' }}>❓ {faq.q}</h3>
