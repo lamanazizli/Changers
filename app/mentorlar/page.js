@@ -68,7 +68,7 @@ export default function MentorlarPage() {
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>KOMANDAMIZ</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '64px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.05 }}>
-            Sahənin <span style={{ color: '#FF2CA8' }}>Ustalarından</span><br />Oyrən
+            Sahəni <span style={{ color: '#FF2CA8' }}>peşəkarlardan</span><br />öyrən!
           </h1>
           <p style={{ fontSize: '18px', color: '#A0A0B0', margin: '0 0 48px 0', maxWidth: '600px' }}>
             Mentorlarımız real sektorda çalışan, təcrübəli mütəxəssislərdir. Nəzəriyyə deyil, praktika öyrədirik.
