@@ -69,7 +69,7 @@ export default function QeydiyyatPage() {
         <Navbar />
         <section style={{ maxWidth: '600px', margin: '0 auto', padding: '120px 24px', textAlign: 'center' }}>
           <div style={{ fontSize: '80px', marginBottom: '24px' }}>🎉</div>
-          <h1 style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Muracietiniz Qebul Edildi!</h1>
+          <h1 style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Müraciətin qəbul edildi!</h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 32px 0' }}>
             Təşəkkürlər! Komandamız 24 saat ərzində sizinlə əlaqə saxlayacaq. WhatsApp üzərindən də müraciət edə bilərsiniz.
           </p>
@@ -239,7 +239,7 @@ export default function QeydiyyatPage() {
               </button>
             ) : (
               <button onClick={handleSubmit} disabled={loading} style={{ padding: '14px 32px', background: '#FF2CA8', border: 'none', borderRadius: '10px', color: '#FFFFFF', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 4px 16px rgba(255,44,168,0.45)' }}>
-                {loading ? 'Gonderilib...' : 'Muraceiti Gonder →'}
+                {loading ? 'Gonderilib...' : 'Müraciəti göndər →'}
               </button>
             )}
           </div>
