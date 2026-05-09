@@ -5,6 +5,7 @@ import CoursesSection from '../components/CourseCard';
 import HomeSections from '../components/Homesections';
 import Footer from '../components/Footer';
 import Link from 'next/link';
+import HeroVisual from '../components/HeroVisual';
 
 export default function Home() {
   const [c, setC] = useState({
@@ -43,7 +44,7 @@ export default function Home() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Ana Sehife" />
-      <section style={{ maxWidth: '1440px', margin: '0 auto', padding: '100px 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '60px', position: 'relative', minHeight: '680px' }}>
+      <section style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-40px', gap: '60px', position: 'relative', minHeight: 'calc(100vh - 80px)' }}>
         <div style={{ position: 'absolute', left: '-100px', top: '-80px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(123,47,255,0.2) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.15) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
@@ -60,24 +61,7 @@ export default function Home() {
             <Link href="/elaqe" style={{ textDecoration: 'none', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px', border: '1px solid rgba(255,44,168,0.4)' }}>{c.hero?.btn2}</Link>
           </div>
         </div>
-        <div style={{ position: 'relative', width: '540px', height: '520px', flexShrink: 0, zIndex: 2 }}>
-          <img src="/hero-glow.png" alt="" style={{ position: 'absolute', top: '-60px', left: '-40px', width: '580px', height: '660px', pointerEvents: 'none', objectFit: 'contain' }} />
-          <img src="/hero-visual.png" alt="" style={{ position: 'absolute', top: '60px', left: '80px', width: '360px', height: '360px', pointerEvents: 'none', objectFit: 'contain' }} />
-          {stats.map((stat, i) => {
-            const positions = [
-              { top: '0', left: '20px' },
-              { top: '20px', right: '-40px' },
-              { top: '260px', left: '0' },
-              { top: '320px', left: '180px' },
-            ];
-            return (
-              <div key={i} style={{ position: 'absolute', ...positions[i], background: '#13131A', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '16px', padding: '10px 16px', boxShadow: '0 8px 24px rgba(255,44,168,0.15)', minWidth: '148px' }}>
-                <div style={{ fontWeight: 700, fontSize: '26px', color: stat.color }}>{stat.value}</div>
-                <div style={{ fontSize: '12px', color: '#A0A0B0', marginTop: '4px' }}>{stat.label}</div>
-              </div>
-            );
-          })}
-        </div>
+        <HeroVisual />
       </section>
       <CoursesSection />
       <HomeSections />

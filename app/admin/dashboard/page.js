@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 const TABS = [
   { id: 'applications', label: 'Muracietler', icon: '📋' },
+  { id: 'home', label: 'Ana Sehife', icon: '🏠' },
   { id: 'courses', label: 'Kurslar', icon: '📚' },
   { id: 'mentors', label: 'Mentorlar', icon: '👨‍🏫' },
   { id: 'content', label: 'Mezmun', icon: '✏️' },
@@ -20,6 +21,7 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [tab, setTab] = useState('applications');
   const [applications, setApplications] = useState([]);
+  const [homeContent, setHomeContent] = useState({});
   const [courses, setCourses] = useState([]);
   const [mentors, setMentors] = useState([]);
   const [content, setContent] = useState([]);
@@ -43,6 +45,10 @@ export default function AdminDashboard() {
         const res = await fetch('/api/admin/applications');
         const data = await res.json();
         setApplications(data.applications || []);
+      } else if (tab === 'home') {
+        const res = await fetch('/api/content?page=home');
+        const data = await res.json();
+        if (data.content) setHomeContent(data.content);
       } else if (tab === 'courses') {
         const res = await fetch('/api/admin/courses');
         const data = await res.json();
@@ -206,6 +212,48 @@ export default function AdminDashboard() {
                     )}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          )}
+
+          {/* Home */}
+          {!loading && tab === 'home' && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
+              {[
+                { section: 'hero', key: 'badge', label: 'Badge Metni' },
+                { section: 'hero', key: 'title1', label: 'Bashliq 1' },
+                { section: 'hero', key: 'title2', label: 'Bashliq 2 (pink)' },
+                { section: 'hero', key: 'title3', label: 'Bashliq 3' },
+                { section: 'hero', key: 'subtitle', label: 'Alt Bashliq' },
+                { section: 'hero', key: 'tags', label: 'Teqler' },
+                { section: 'hero', key: 'btn1', label: 'Duyma 1' },
+                { section: 'hero', key: 'btn2', label: 'Duyma 2' },
+                { section: 'stats', key: 'stat1_value', label: 'Stat 1 Deyer' },
+                { section: 'stats', key: 'stat1_label', label: 'Stat 1 Ad' },
+                { section: 'stats', key: 'stat2_value', label: 'Stat 2 Deyer' },
+                { section: 'stats', key: 'stat2_label', label: 'Stat 2 Ad' },
+                { section: 'stats', key: 'stat3_value', label: 'Stat 3 Deyer' },
+                { section: 'stats', key: 'stat3_label', label: 'Stat 3 Ad' },
+                { section: 'stats', key: 'stat4_value', label: 'Stat 4 Deyer' },
+                { section: 'stats', key: 'stat4_label', label: 'Stat 4 Ad' },
+              ].map((field, i) => (
+                <div key={i} style={cardStyle}>
+                  <label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '8px', letterSpacing: '1px' }}>{field.label.toUpperCase()}</label>
+                  <input
+                    defaultValue={homeContent[field.section]?.[field.key] || ''}
+                    onBlur={async (e) => {
+                      await fetch('/api/admin/content', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ page: 'home', section: field.section, key: field.key, value: e.target.value }),
+                      });
+                    }}
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '8px', padding: '10px 14px', color: '#FFFFFF', fontSize: '13px', outline: 'none', width: '100%', boxSizing: 'border-box' }}
+                  />
+                </div>
+              ))}
+              <div style={{ gridColumn: '1/-1', padding: '12px 16px', background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: '8px', color: '#00D68F', fontSize: '12px' }}>
+                ✓ Saheden chixdiqda avtomatik saxlanilir. Saytda gorenmek ucun sehifeni yenileyin.
               </div>
             </div>
           )}
