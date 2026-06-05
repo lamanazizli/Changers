@@ -8,6 +8,7 @@ const navLinks = [
   { href: '/neticeler', label: 'Nəticələr' },
   { href: '/mentorlar', label: 'Mentorlar' },
   { href: '/elaqe', label: 'Əlaqə' },
+  { href: '/korporativ', label: 'Korporativ' },
 ];
 
 export default function Navbar({ activePage = 'Ana Səhifə' }) {

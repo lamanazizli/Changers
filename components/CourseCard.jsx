@@ -1,5 +1,7 @@
 'use client';
+import React from 'react';
 import Link from 'next/link';
+
 
 const courses = [
   {
@@ -35,9 +37,16 @@ const courses = [
 ];
 
 export default function CoursesSection() {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   return (
-    <section style={{ background: '#0B0B0F', padding: '80px 0' }}>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+    <section className='courses-section' style={{ background: '#0B0B0F', padding: isMobile ? '48px 0' : '80px 0' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: isMobile ? '0 20px' : '0 80px' }}>
         {/* Section Header */}
         <div style={{ marginBottom: '56px' }}>
           <span style={{
@@ -54,7 +63,7 @@ export default function CoursesSection() {
           <h2 style={{
             fontFamily: 'Inter, sans-serif',
             fontWeight: 700,
-            fontSize: '40px',
+            fontSize: isMobile ? '26px' : '40px',
             color: '#FFFFFF',
             margin: 0,
           }}>
@@ -64,9 +73,19 @@ export default function CoursesSection() {
         </div>
 
         {/* Cards Grid */}
-        <div style={{
+        <style>{`
+          @media (max-width: 768px) {
+            .courses-grid { grid-template-columns: 1fr !important; }
+            .courses-section { padding: 60px 20px !important; }
+            .courses-header { margin-bottom: 36px !important; }
+          }
+          @media (max-width: 480px) {
+            .courses-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+        <div className="courses-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
           gap: '24px',
         }}>
           {courses.map((course) => (

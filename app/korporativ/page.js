@@ -1,0 +1,178 @@
+'use client';
+import { useState } from 'react';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+
+const packages = [
+  { name: 'Baslangic', price: '2,500 AZN', period: '/ay', color: '#7B2FFF', features: ['5 emekdasa qeder telim', 'BIM & AutoCAD kursu', 'Aylik hesabat', 'Online format', 'Sertifikat'] },
+  { name: 'Korporativ', price: '5,000 AZN', period: '/ay', color: '#FF2CA8', popular: true, features: ['15 emekdasa qeder telim', '3 kurs secimi', 'Heftəlik hesabat', 'Offline + Online', 'Sertifikat + Portfolio', 'Mentor desteyi'] },
+  { name: 'Enterprise', price: 'Ferdi', period: '', color: '#00D68F', features: ['Limitsiz emekdas', 'Butun kurslar', 'Gunluk hesabat', 'Offline + Online', 'Dedicated mentor', 'Ferdi sillabus'] },
+];
+
+export default function KorporativPage() {
+  const [form, setForm] = useState({ company: '', name: '', phone: '', email: '', employees: '', message: '' });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: form.name, phone: form.phone, email: form.email, course: 'Korporativ emekdasliq', message: 'Sirket: ' + form.company + ' | Emekdas: ' + form.employees + ' | ' + form.message }),
+      });
+      setSent(true);
+    } catch { alert('Xeta bas verdi'); }
+    setLoading(false);
+  };
+
+  const inp = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '14px 18px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box', fontFamily: 'Inter, sans-serif' };
+
+  return (
+    <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
+      <Navbar />
+      <section style={{ position: 'relative', padding: '100px 0 80px', overflow: 'hidden', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', left: '50%', top: 0, transform: 'translateX(-50%)', width: '800px', height: '500px', background: 'radial-gradient(circle, rgba(123,47,255,0.2), rgba(255,44,168,0.1) 40%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Korporativ Emekdasliq</span>
+          </div>
+          <h1 style={{ fontWeight: 700, fontSize: '60px', color: '#FFFFFF', margin: '0 0 20px 0', lineHeight: 1.1 }}>Komandanizi<br /><span style={{ color: '#FF2CA8' }}>Guclendirik</span></h1>
+          <p style={{ fontSize: '18px', color: '#A0A0B0', margin: '0 auto 48px', maxWidth: '600px' }}>Sirketinizin emekdaslarina praktiki telim verin. Real layiheler, sertifikat, neticə.</p>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)' }}>Muraciet Et</a>
+            <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px' }}>WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+          {[{ v: '50+', l: 'Korporativ Musteri' }, { v: '500+', l: 'Hazirlanmis Kadr' }, { v: '10+', l: 'Sektor' }, { v: '4.9', l: 'Musteri Reytinqi' }].map((s, i) => (
+            <div key={i} style={{ padding: '36px 0', textAlign: 'center' }}>
+              <div style={{ fontWeight: 700, fontSize: '36px', color: '#FF2CA8' }}>{s.v}</div>
+              <div style={{ fontSize: '13px', color: '#A0A0B0', marginTop: '6px' }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ padding: '100px 0' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Korporativ Ustunlukler</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {[
+              { icon: '🎯', title: 'Ferdi Sillabus', desc: 'Sirketinizin ehtiyaclarina uygun xususi tedris proqrami hazirlanir.' },
+              { icon: '📊', title: 'Hesabat Sistemi', desc: 'Heftəlik emekdas tereqqisi hesabati ile neticeni izleyin.' },
+              { icon: '🏆', title: 'Sertifikat', desc: 'Sektorda tanindan resmi Changers Academy sertifikati verilir.' },
+              { icon: '📚', title: 'Dedicated Mentor', desc: 'Her korporativ musteriye ayrica mentor teyin edilir.' },
+              { icon: '🔄', title: 'Cevik Format', desc: 'Offline, online ve ya hibrid format secimi sizin ucundur.' },
+              { icon: '💼', title: 'HR Desteyi', desc: 'Tedris sonrasi kadr yerlesdirilmesinde komeklik edilir.' },
+            ].map((f, i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
+                <div style={{ fontSize: '36px', marginBottom: '16px' }}>{f.icon}</div>
+                <h3 style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0' }}>{f.title}</h3>
+                <p style={{ color: '#A0A0B0', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: '#13131A', padding: '100px 0' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Sirketiniz ucun Plan Secin</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', alignItems: 'start' }}>
+            {packages.map((pkg, i) => (
+              <div key={i} style={{ background: pkg.popular ? 'rgba(255,44,168,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (pkg.popular ? 'rgba(255,44,168,0.5)' : 'rgba(255,255,255,0.08)'), borderRadius: '20px', padding: '40px 32px', position: 'relative' }}>
+                {pkg.popular && <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#FF2CA8', color: '#FFFFFF', fontSize: '12px', fontWeight: 700, padding: '5px 20px', borderRadius: '100px', whiteSpace: 'nowrap' }}>En Populyar</div>}
+                <div style={{ color: pkg.color, fontSize: '14px', fontWeight: 600, marginBottom: '12px' }}>{pkg.name}</div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
+                  <span style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF' }}>{pkg.price}</span>
+                  <span style={{ color: '#A0A0B0', fontSize: '14px' }}>{pkg.period}</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
+                  {pkg.features.map((f, j) => (
+                    <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <span style={{ color: pkg.color, fontWeight: 700 }}>+</span>
+                      <span style={{ color: '#FFFFFF', fontSize: '14px' }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <a href="#forma" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: pkg.popular ? '#FF2CA8' : 'transparent', border: '1px solid ' + pkg.color, color: pkg.popular ? '#FFFFFF' : pkg.color, fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>
+                  {pkg.price === 'Ferdi' ? 'Elaqe saxla' : 'Paket sec'}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="forma" style={{ padding: '100px 0' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Emekdasliq ucun <span style={{ color: '#FF2CA8' }}>Muraciet Et</span></h2>
+            <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>24 saat erzinde sizinle elaqe saxlayacagiq.</p>
+          </div>
+          {sent ? (
+            <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '60px', textAlign: 'center' }}>
+              <div style={{ fontSize: '64px', marginBottom: '20px' }}>🎉</div>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: 0 }}>Muracietiniz Qebul Edildi!</h3>
+            </div>
+          ) : (
+            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '20px', padding: '48px' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>SIRKET ADI</label>
+                    <input value={form.company} onChange={e => update('company', e.target.value)} placeholder="Sirket adiniz" required style={inp} />
+                  </div>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ELAQE SEXSI</label>
+                    <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadiniz" required style={inp} />
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>TELEFON</label>
+                    <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" required style={inp} />
+                  </div>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>EMAIL</label>
+                    <input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@shirket.az" type="email" required style={inp} />
+                  </div>
+                </div>
+                <div>
+                  <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>EMEKDAS SAYI</label>
+                  <select value={form.employees} onChange={e => update('employees', e.target.value)} required style={{ ...inp, background: 'rgba(20,20,30,1)' }}>
+                    <option value="">Secin...</option>
+                    <option>1-5 nefer</option>
+                    <option>6-15 nefer</option>
+                    <option>16-30 nefer</option>
+                    <option>31-50 nefer</option>
+                    <option>50+ nefer</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ELAVE MELUMAT</label>
+                  <textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Hansi sahede telim istediginizi yazin..." rows={4} style={{ ...inp, resize: 'vertical' }} />
+                </div>
+                <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '18px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(255,44,168,0.45)', opacity: loading ? 0.7 : 1 }}>
+                  {loading ? 'Gonderilib...' : 'Muraciet Gonder'}
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}

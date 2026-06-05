@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import CoursesSection from '../components/CourseCard';
@@ -8,6 +9,13 @@ import Link from 'next/link';
 import HeroVisual from '../components/HeroVisual';
 
 export default function Home() {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   const [c, setC] = useState({
     hero: {
       badge: 'Azerbaycanin #1 Praktiki Akademiyasi',
@@ -42,9 +50,9 @@ export default function Home() {
   ];
 
   return (
-    <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
+    <main style={{ background: '#0B0B0F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Navbar activePage="Ana Sehife" />
-      <section style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-40px', gap: '60px', position: 'relative', minHeight: 'calc(100vh - 80px)' }}>
+      <section style={{ maxWidth: '1440px', margin: '0 auto', padding: isMobile ? '0 20px' : '0 80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-40px', gap: '60px', position: 'relative', minHeight: 'calc(100vh - 80px)' }}>
         <div style={{ position: 'absolute', left: '-100px', top: '-80px', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(123,47,255,0.2) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', right: '50px', top: '80px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,44,168,0.15) 0%, transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
         <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
