@@ -1,0 +1,221 @@
+'use client';
+import { useState } from 'react';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+
+const fields = [
+  { id: 1, icon: '🏗', name: 'Tikinti & BIM', desc: 'BIM menecer, Revit mutexessisi, tikinti muhendisi' },
+  { id: 2, icon: '📐', name: 'Arxitektura', desc: 'Arxitekt, ArchiCAD, layihe muhendisi' },
+  { id: 3, icon: '🛋', name: 'Daxili Dizayn', desc: 'Interior dizayner, 3D vizualizator' },
+  { id: 4, icon: '📱', name: 'Digital Marketing', desc: 'SMM mutexessisi, Meta/Google Ads, content manager' },
+  { id: 5, icon: '📊', name: 'E-Commerce', desc: 'Online magaza meneceri, dropshipping mutexessisi' },
+  { id: 6, icon: '💻', name: 'IT & QA', desc: 'QA muhendisi, test mutexessisi, texniki destek' },
+];
+
+const benefits = [
+  { icon: '✅', title: 'Yoxlanılmış Namizədlər', desc: 'Bütün məzunlar praktiki layihə ilə sertifikatlaşdırılıb.' },
+  { icon: '⚡', title: 'Sürətli Uyğunlaşma', desc: 'Real layihə təcrübəsi olan məzunlar dərhal işə başlaya bilər.' },
+  { icon: '🎯', title: 'Sahə üzrə Seçim', desc: 'Tikinti, dizayn, marketing — hansı sahə lazımdırsa, bizdə var.' },
+  { icon: '🤝', title: 'Pulsuz Xidmət', desc: 'İlk namizəd yerləşdirməsi tamamilə ödənişsizdir.' },
+];
+
+export default function HRPage() {
+  const [form, setForm] = useState({ company: '', name: '', phone: '', email: '', field: '', count: '', requirements: '' });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [selectedField, setSelectedField] = useState(null);
+  const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name, phone: form.phone, email: form.email,
+          course: 'HR - Kadrinizi bizde tapın',
+          message: 'Sirket: ' + form.company + ' | Saha: ' + form.field + ' | Say: ' + form.count + ' | ' + form.requirements
+        }),
+      });
+      setSent(true);
+    } catch { alert('Xeta bas verdi'); }
+    setLoading(false);
+  };
+
+  const inp = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '14px 18px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box', fontFamily: 'Inter, sans-serif' };
+
+  return (
+    <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
+      <Navbar />
+
+      {/* Hero */}
+      <section style={{ position: 'relative', padding: '100px 0 80px', overflow: 'hidden', textAlign: 'center' }}>
+        <div style={{ position: 'absolute', left: '50%', top: 0, transform: 'translateX(-50%)', width: '800px', height: '500px', background: 'radial-gradient(circle, rgba(0,214,143,0.15), rgba(123,47,255,0.1) 40%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
+            <span style={{ color: '#00D68F', fontSize: '12px', fontWeight: 500 }}>HR & İşə Qəbul</span>
+          </div>
+          <h1 style={{ fontWeight: 700, fontSize: '60px', color: '#FFFFFF', margin: '0 0 20px 0', lineHeight: 1.1 }}>
+            Kadrınızı<br /><span style={{ color: '#00D68F' }}>Bizdə Tapın</span>
+          </h1>
+          <p style={{ fontSize: '18px', color: '#A0A0B0', margin: '0 auto 48px', maxWidth: '600px' }}>
+            Changers Academy məzunları praktiki hazırlıqlı, sertifikatlı mütəxəssislərdir. Sizin üçün doğru namizədi tapırıq.
+          </p>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#forma" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', boxShadow: '0px 8px 28px rgba(0,214,143,0.45)' }}>Namizəd Tap →</a>
+            <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px' }}>💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+          {[{ v: '500+', l: 'Sertifikatlı Məzun' }, { v: '90%', l: 'İşə Düzəldi' }, { v: '6', l: 'Sahə' }, { v: '4.9', l: 'Şirkət Reytinqi' }].map((s, i) => (
+            <div key={i} style={{ padding: '36px 0', textAlign: 'center' }}>
+              <div style={{ fontWeight: 700, fontSize: '36px', color: '#00D68F' }}>{s.v}</div>
+              <div style={{ fontSize: '13px', color: '#A0A0B0', marginTop: '6px' }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Üstünlüklər */}
+      <section style={{ padding: '100px 0' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Niyə Changers Məzunları?</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+            {benefits.map((b, i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px', textAlign: 'center' }}>
+                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{b.icon}</div>
+                <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 12px 0' }}>{b.title}</h3>
+                <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.6, margin: 0 }}>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sahələr */}
+      <section style={{ background: '#13131A', padding: '100px 0' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Hansı Sahələrdə Namizəd Var?</h2>
+            <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>Aşağıdakı sahələrdə sertifikatlı məzunlarımız mövcuddur.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+            {fields.map((f) => (
+              <div key={f.id} onClick={() => { setSelectedField(f.id); update('field', f.name); }} style={{ background: selectedField === f.id ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (selectedField === f.id ? 'rgba(0,214,143,0.4)' : 'rgba(255,255,255,0.08)'), borderRadius: '16px', padding: '28px 24px', cursor: 'pointer', transition: 'all 0.2s' }}>
+                <div style={{ fontSize: '36px', marginBottom: '12px' }}>{f.icon}</div>
+                <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 8px 0' }}>{f.name}</h3>
+                <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
+                {selectedField === f.id && <div style={{ color: '#00D68F', fontSize: '12px', fontWeight: 600, marginTop: '12px' }}>✓ Seçildi</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Proses */}
+      <section style={{ padding: '100px 0' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Proses Necə İşləyir?</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+            {[
+              { num: '01', icon: '📋', title: 'Müraciət Et', desc: 'Formu doldurun, hansı mütəxəssisə ehtiyacınız olduğunu yazın.' },
+              { num: '02', icon: '🔍', title: 'Namizəd Seçimi', desc: '24 saat ərzində uyğun namizədləri sizə göndəririk.' },
+              { num: '03', icon: '🤝', title: 'Müsahibə', desc: 'Namizədlərlə birbaşa əlaqə saxlayıb müsahibə aparırsınız.' },
+              { num: '04', icon: '✅', title: 'İşə Qəbul', desc: 'Seçdiyiniz namizədi işə götürürsünüz. Pulsuz!' },
+            ].map((s, i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px', position: 'relative' }}>
+                <div style={{ width: '40px', height: '40px', background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00D68F', fontSize: '12px', fontWeight: 700, marginBottom: '16px' }}>{s.num}</div>
+                <div style={{ fontSize: '28px', marginBottom: '12px' }}>{s.icon}</div>
+                <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 10px 0' }}>{s.title}</h3>
+                <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Forma */}
+      <section id="forma" style={{ background: '#13131A', padding: '100px 0' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>
+              Namizəd <span style={{ color: '#00D68F' }}>Müraciəti</span>
+            </h2>
+            <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>24 saat ərzində sizə uyğun namizədləri göndərəcəyik.</p>
+          </div>
+          {sent ? (
+            <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '60px', textAlign: 'center' }}>
+              <div style={{ fontSize: '64px', marginBottom: '20px' }}>🎉</div>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: '0 0 12px 0' }}>Müraciətiniz Qəbul Edildi!</h3>
+              <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>24 saat ərzində sizə uyğun namizədlər göndəriləcək.</p>
+            </div>
+          ) : (
+            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: '20px', padding: '48px' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ŞİRKƏT ADI *</label>
+                    <input value={form.company} onChange={e => update('company', e.target.value)} placeholder="Şirkət adınız" required style={inp} />
+                  </div>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ƏLAQƏ ŞƏXSİ *</label>
+                    <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadınız" required style={inp} />
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>TELEFON *</label>
+                    <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" required style={inp} />
+                  </div>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>EMAIL *</label>
+                    <input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@shirket.az" type="email" required style={inp} />
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>SAHA *</label>
+                    <select value={form.field} onChange={e => update('field', e.target.value)} required style={{ ...inp, background: 'rgba(20,20,30,1)' }}>
+                      <option value="">Saha secin...</option>
+                      {fields.map(f => <option key={f.id}>{f.name}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>NAMİZƏD SAYI *</label>
+                    <select value={form.count} onChange={e => update('count', e.target.value)} required style={{ ...inp, background: 'rgba(20,20,30,1)' }}>
+                      <option value="">Secin...</option>
+                      <option>1 nefer</option>
+                      <option>2-3 nefer</option>
+                      <option>4-5 nefer</option>
+                      <option>5+ nefer</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>TƏLƏBLƏR</label>
+                  <textarea value={form.requirements} onChange={e => update('requirements', e.target.value)} placeholder="Namizəddən gözlədiklərinizi yazın: iş təcrübəsi, bacarıqlar, iş şəraiti və s." rows={4} style={{ ...inp, resize: 'vertical' }} />
+                </div>
+                <button type="submit" disabled={loading} style={{ background: '#00D68F', color: '#0B0B0F', border: 'none', borderRadius: '10px', padding: '18px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 8px 28px rgba(0,214,143,0.45)', opacity: loading ? 0.7 : 1 }}>
+                  {loading ? 'Gonderilib...' : 'Namizəd Tap →'}
+                </button>
+                <div style={{ textAlign: 'center', color: '#00D68F', fontSize: '13px' }}>✓ İlk namizəd yerləşdirməsi tamamilə ödənişsizdir</div>
+              </form>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
