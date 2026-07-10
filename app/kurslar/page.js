@@ -2,85 +2,26 @@
 import Navbar from '../../components/Navbar';
 import Link from 'next/link';
 import Footer from '../../components/Footer';
+import { useState, useEffect } from 'react';
 
-const courses = [
-  {
-    id: 1,
-    category: 'Tikinti',
-    icon: '🏗',
-    color: '#FF2CA8',
-    title: 'BIM & Tikinti idarəetməsi',
-    desc: 'AutoCAD, Revit, BIM 360 ile real layihə əsaslı praktiki tədris.',
-    duration: '4 həftə',
-    price: '299 AZN',
-    gradient: 'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.4))',
-    topics: ['AutoCAD', 'Revit', 'BIM 360', 'Layihə idarəetməsi'],
-  },
-  {
-    id: 2,
-    category: 'Digital Marketing',
-    icon: '📱',
-    color: '#7B2FFF',
-    title: 'Digital Marketing & SMM Pro',
-    desc: 'Google Ads, Meta Ads ilə kampaniya idarəetmesi.',
-    duration: '4 həftə',
-    price: '249 AZN',
-    gradient: 'linear-gradient(135deg, rgba(123,47,255,0.3), rgba(0,214,143,0.2))',
-    topics: ['Google Ads', 'Meta Ads', 'SEO', 'Analytics'],
-  },
-  {
-    id: 3,
-    category: 'Daxili Dizayn',
-    icon: '🛋',
-    color: '#00D68F',
-    title: 'Interior Design & 3D Viz',
-    desc: '3ds Max, Lumion, V-Ray ilə interior dizayn ve vizualizasiya.',
-    duration: '5 həftə',
-    price: '319 AZN',
-    gradient: 'linear-gradient(135deg, rgba(0,214,143,0.25), rgba(123,47,255,0.2))',
-    topics: ['3ds Max', 'Lumion', 'V-Ray', 'AutoCAD'],
-  },
-  {
-    id: 4,
-    category: 'Arxitektura',
-    icon: '🏛',
-    color: '#FFB800',
-    title: 'Arxitektura & BIM',
-    desc: 'Revit Architecture, ArchiCAD ve müasir layihə metodologiyaları.',
-    duration: '6 hefte',
-    price: '349 AZN',
-    gradient: 'linear-gradient(135deg, rgba(255,184,0,0.25), rgba(255,44,168,0.2))',
-    topics: ['Revit', 'ArchiCAD', 'SketchUp', 'BIM'],
-  },
-  {
-    id: 5,
-    category: 'BIM & AutoCAD',
-    icon: '📐',
-    color: '#FF2CA8',
-    title: 'AutoCAD & Revit Master',
-    desc: '2D ve 3D layihə çizimi, BIM texnologiyaları ve konstruksiya.',
-    duration: '4 həftə',
-    price: '279 AZN',
-    gradient: 'linear-gradient(135deg, rgba(255,44,168,0.25), rgba(123,47,255,0.3))',
-    topics: ['AutoCAD 2D', 'AutoCAD 3D', 'Revit MEP', 'BIM'],
-  },
-  {
-    id: 6,
-    category: 'Digital Marketing',
-    icon: '📊',
-    color: '#7B2FFF',
-    title: 'E-Commerce & Dropshipping',
-    desc: 'Online mağaza qurma, məhsul seçimi ve satış strategiyaları.',
-    duration: '4 hefte',
-    price: '229 AZN',
-    gradient: 'linear-gradient(135deg, rgba(123,47,255,0.3), rgba(255,44,168,0.2))',
-    topics: ['Shopify', 'WooCommerce', 'Facebook Ads', 'Email Marketing'],
-  },
-];
+
 
 const categories = ['Hamısı', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
 
 export default function KurslarPage() {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/admin/courses')
+      .then(r => r.json())
+      .then(data => {
+        if (data.courses) setCourses(data.courses);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Kurslar" />
@@ -131,19 +72,20 @@ export default function KurslarPage() {
             {courses.map((course) => (
               <div key={course.id} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '16px', overflow: 'hidden', position: 'relative' }}>
               <Link href={'/kurslar/' + course.id} style={{ position: 'absolute', inset: 0, zIndex: 1 }} />
-                <div style={{ height: '180px', background: course.gradient, position: 'relative', display: 'flex', alignItems: 'flex-start', padding: '16px' }}>
+                <div style={{ height: '180px', background: course.image ? 'none' : (course.gradient || ['linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.4))','linear-gradient(135deg, rgba(123,47,255,0.3), rgba(0,214,143,0.2))','linear-gradient(135deg, rgba(0,214,143,0.25), rgba(123,47,255,0.2))','linear-gradient(135deg, rgba(255,184,0,0.2), rgba(255,44,168,0.3))','linear-gradient(135deg, rgba(45,125,210,0.3), rgba(123,47,255,0.3))'][course.id % 5]), position: 'relative', display: 'flex', alignItems: 'flex-start', padding: '16px', overflow: 'hidden' }}>
+                  {course.image && <img src={course.image} alt={course.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                   <span style={{ background: course.color, color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px' }}>
                     {course.icon} {course.category}
                   </span>
                   <div style={{ position: 'absolute', bottom: '16px', right: '16px', display: 'flex', gap: '6px' }}>
-                    {course.topics.map((t, i) => (
+                    {(course.topics || []).map((t, i) => (
                       <span key={i} style={{ background: 'rgba(0,0,0,0.4)', color: '#FFFFFF', fontSize: '10px', padding: '4px 8px', borderRadius: '4px' }}>{t}</span>
                     ))}
                   </div>
                 </div>
                 <div style={{ padding: '20px' }}>
                   <h3 style={{ fontWeight: 700, fontSize: '17px', color: '#FFFFFF', margin: '0 0 10px 0' }}>{course.title}</h3>
-                  <p style={{ fontSize: '13px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 20px 0' }}>{course.desc}</p>
+                  <p style={{ fontSize: '13px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 20px 0' }}>{course.description || course.desc}</p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '0 0 16px 0', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontSize: '13px', color: '#A0A0B0' }}>⏱ {course.duration}</span>
                     <span style={{ fontSize: '18px', fontWeight: 700, color: '#FF2CA8' }}>{course.price}</span>

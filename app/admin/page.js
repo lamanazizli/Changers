@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 const TABS = [
   { id: 'applications', label: 'Muracietler', icon: '📋' },
   { id: 'home', label: 'Ana Sehife', icon: '🏠' },
+  { id: 'banners', label: 'Bannerler', icon: '🖼' },
   { id: 'courses', label: 'Kurslar', icon: '📚' },
   { id: 'mentors', label: 'Mentorlar', icon: '👨‍🏫' },
   { id: 'pages', label: 'Sehifeler', icon: '📄' },
@@ -18,22 +19,13 @@ const STATUS_COLORS = {
 };
 
 const HOME_FIELDS = [
-  { section: 'hero', key: 'badge', label: 'Badge Metni' },
-  { section: 'hero', key: 'title1', label: 'Bashliq 1 (ağ)' },
-  { section: 'hero', key: 'title2', label: 'Bashliq 2 (çəhrayı)' },
-  { section: 'hero', key: 'title3', label: 'Bashliq 3 (ağ)' },
-  { section: 'hero', key: 'subtitle', label: 'Alt Bashliq' },
-  { section: 'hero', key: 'tags', label: 'Teqler' },
-  { section: 'hero', key: 'btn1', label: 'Duyma 1 (Kurslar)' },
-  { section: 'hero', key: 'btn2', label: 'Duyma 2 (Konsultasiya)' },
-  { section: 'stats', key: 'stat1_value', label: 'Stat 1 Deyer (500+)' },
-  { section: 'stats', key: 'stat1_label', label: 'Stat 1 Ad (Mezun)' },
-  { section: 'stats', key: 'stat2_value', label: 'Stat 2 Deyer (90%)' },
-  { section: 'stats', key: 'stat2_label', label: 'Stat 2 Ad (Ise Duzaldi)' },
-  { section: 'stats', key: 'stat3_value', label: 'Stat 3 Deyer (4.9)' },
-  { section: 'stats', key: 'stat3_label', label: 'Stat 3 Ad (Reytinq)' },
-  { section: 'stats', key: 'stat4_value', label: 'Stat 4 Deyer (4 hefte)' },
-  { section: 'stats', key: 'stat4_label', label: 'Stat 4 Ad (Kurs Muddeti)' },
+  { section: 'hero_visual', key: 'folder_badge', label: 'Sol Banner - Badge Metni (meselen Azerbaycanin #1 Praktiki Akademiyasi)' },
+  { section: 'hero_visual', key: 'folder_title1', label: 'Sol Banner - Bashliq 1 (meselen GELECEYIN)' },
+  { section: 'hero_visual', key: 'folder_title2', label: 'Sol Banner - Bashliq 2 (meselen PESESINI)' },
+  { section: 'hero_visual', key: 'folder_title3', label: 'Sol Banner - Bashliq 3 (meselen OYREN)' },
+  { section: 'hero_visual', key: 'folder_stat_value', label: 'Sol Banner - Stat Deyer (meselen 500+)' },
+  { section: 'hero_visual', key: 'folder_stat_label', label: 'Sol Banner - Stat Ad (meselen MEZUN)' },
+  { section: 'hero_visual', key: 'folder_btn', label: 'Sol Banner - Button Metni (meselen BASLA)' },
 ];
 
 const PAGES_FIELDS = {
@@ -69,6 +61,9 @@ export default function AdminDashboard() {
   const [tab, setTab] = useState('applications');
   const [applications, setApplications] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [banners, setBanners] = useState([]);
+  const [bannerLink, setBannerLink] = useState('/kurslar');
+  const [bannerTitle, setBannerTitle] = useState('');
   const [mentors, setMentors] = useState([]);
   const [homeContent, setHomeContent] = useState({});
   const [pagesContent, setPagesContent] = useState({});
@@ -82,7 +77,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem('admin_token');
-    if (!token) { router.push('/admin'); return; }
+    if (!token) { router.push('/admin/login'); return; }
     fetchData();
   }, [tab]);
 
@@ -97,6 +92,10 @@ export default function AdminDashboard() {
         const res = await fetch('/api/content?page=home');
         const data = await res.json();
         if (data.content) setHomeContent(data.content);
+      } else if (tab === 'banners') {
+        const res = await fetch('/api/admin/banners');
+        const data = await res.json();
+        setBanners(data.banners || []);
       } else if (tab === 'courses') {
         const res = await fetch('/api/admin/courses');
         const data = await res.json();
@@ -134,6 +133,7 @@ export default function AdminDashboard() {
       applications: '/api/admin/applications',
       courses: '/api/admin/courses',
       mentors: '/api/admin/mentors',
+      banners: '/api/admin/banners',
     };
     await fetch(endpoints[type], {
       method: 'DELETE',
@@ -167,7 +167,7 @@ export default function AdminDashboard() {
 
   const logout = () => {
     localStorage.removeItem('admin_token');
-    router.push('/admin');
+    router.push('/admin/login');
   };
 
   const filteredApps = applications.filter(a => {
@@ -318,6 +318,38 @@ export default function AdminDashboard() {
                   💡 Saheden chixdiqda (blur) avtomatik saxlanilir. Saytda gorenmek ucun sehifeni yenilayin.
                 </p>
               </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>
+                {[
+                  { label: 'Sol Banner (folder şəkli)', key: 'left_image' },
+                  { label: 'Sağ Banner (preview şəkli)', key: 'right_image' },
+                ].map(({ label, key }) => (
+                  <div key={key} style={s.card}>
+                    <label style={s.label}>{label.toUpperCase()}</label>
+                    {homeContent?.hero_visual?.[key] && (
+                      <img src={homeContent.hero_visual[key]} alt={label} style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '8px', marginBottom: '10px' }} />
+                    )}
+                    <label style={{ display: 'block', cursor: 'pointer', background: '#FF2CA8', color: '#FFFFFF', padding: '10px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, textAlign: 'center' }}>
+                      📷 Şəkil yüklə
+                      <input type="file" accept="image/*" style={{ display: 'none' }} onChange={async (e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const fd = new FormData();
+                        fd.append('file', file);
+                        fd.append('type', 'hero_' + key);
+                        fd.append('id', key);
+                        const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+                        const data = await res.json();
+                        if (data.success) {
+                          await fetch('/api/admin/content', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: 'home', section: 'hero_visual', key, value: data.path }) });
+                          fetchData();
+                          setSaveMsg('Saxlanildi ✓');
+                          setTimeout(() => setSaveMsg(''), 2000);
+                        }
+                      }} />
+                    </label>
+                  </div>
+                ))}
+              </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
                 {HOME_FIELDS.map((field, i) => (
                   <div key={i} style={s.card}>
@@ -336,6 +368,69 @@ export default function AdminDashboard() {
             </div>
           )}
 
+          {/* === BANNERS === */}
+          {!loading && tab === 'banners' && (
+            <div>
+              <div style={{ ...s.card, marginBottom: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <label style={s.label}>LINK (meselen /kurslar/3)</label>
+                  <input value={bannerLink} onChange={e => setBannerLink(e.target.value)} placeholder="/kurslar/3" style={{ ...s.input, marginBottom: 0 }} />
+                </div>
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <label style={s.label}>BASHLIQ (opsional)</label>
+                  <input value={bannerTitle} onChange={e => setBannerTitle(e.target.value)} placeholder="Tikinti kursu" style={{ ...s.input, marginBottom: 0 }} />
+                </div>
+                <label style={{ ...s.btn, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                  + Yeni Banner Yukle
+                  <input type="file" accept="image/*" style={{ display: 'none' }} onChange={async (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const fd = new FormData();
+                    fd.append('file', file);
+                    fd.append('type', 'banner');
+                    fd.append('link', bannerLink);
+                    fd.append('title', bannerTitle);
+                    const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+                    const data = await res.json();
+                    if (data.success) { setBannerLink('/kurslar'); setBannerTitle(''); fetchData(); }
+                  }} />
+                </label>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                {banners.map(banner => (
+                  <div key={banner.id} style={s.card}>
+                    <div style={{ borderRadius: '8px', overflow: 'hidden', height: '160px', marginBottom: '10px', background: 'rgba(255,255,255,0.04)' }}>
+                      <img src={banner.image} alt={banner.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <p style={{ color: '#FFFFFF', fontSize: '13px', margin: '0 0 4px 0' }}>{banner.title || '(başlıqsız)'}</p>
+                    <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 12px 0' }}>🔗 {banner.link} · Sıra: {banner.sort_order}</p>
+                    <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+                      <button onClick={async () => {
+                        await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, sort_order: (banner.sort_order || 0) - 1 }) });
+                        fetchData();
+                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↑ Yuxarı</button>
+                      <button onClick={async () => {
+                        await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, sort_order: (banner.sort_order || 0) + 1 }) });
+                        fetchData();
+                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↓ Aşağı</button>
+                    </div>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      <button onClick={async () => {
+                        await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, is_active: !banner.is_active }) });
+                        fetchData();
+                      }} style={{ ...s.btn, background: banner.is_active ? 'rgba(0,214,143,0.15)' : 'rgba(160,160,176,0.15)', color: banner.is_active ? '#00D68F' : '#A0A0B0', border: 'none', flex: 1 }}>
+                        {banner.is_active ? '✓ Aktiv' : '✗ Deaktiv'}
+                      </button>
+                      <button onClick={() => handleDelete('banners', banner.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)' }}>Sil</button>
+                    </div>
+                  </div>
+                ))}
+                {banners.length === 0 && <div style={{ color: '#A0A0B0', gridColumn: '1/-1', textAlign: 'center', padding: '40px' }}>Banner yoxdur</div>}
+              </div>
+            </div>
+          )}
+
           {/* === COURSES === */}
           {!loading && tab === 'courses' && (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
@@ -346,6 +441,26 @@ export default function AdminDashboard() {
                       {course.icon} {course.category}
                     </span>
                     <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: course.is_active ? '#00D68F' : '#A0A0B0', display: 'inline-block', marginTop: '6px' }} />
+                  </div>
+                  <div style={{ marginBottom: '12px', borderRadius: '8px', overflow: 'hidden', height: '120px', background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                    {course.image
+                      ? <img src={course.image} alt={course.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      : <span style={{ color: '#A0A0B0', fontSize: '12px' }}>Şəkil yoxdur</span>
+                    }
+                    <label style={{ position: 'absolute', bottom: '6px', right: '6px', background: 'rgba(0,0,0,0.7)', color: '#FFFFFF', fontSize: '11px', padding: '4px 8px', borderRadius: '6px', cursor: 'pointer' }}>
+                      📷 Yüklə
+                      <input type="file" accept="image/*" style={{ display: 'none' }} onChange={async (e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const fd = new FormData();
+                        fd.append('file', file);
+                        fd.append('type', 'course');
+                        fd.append('id', course.id);
+                        const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+                        const data = await res.json();
+                        if (data.success) fetchData();
+                      }} />
+                    </label>
                   </div>
                   <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px', margin: '0 0 8px 0' }}>{course.title}</h3>
                   <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0', lineHeight: 1.5 }}>{course.description}</p>
