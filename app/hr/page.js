@@ -3,29 +3,30 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
+import { HardHat, Ruler, Sofa, Smartphone, ShoppingCart, Monitor, CheckCircle, Zap, Target, Handshake, ClipboardList, Search, PartyPopper } from 'lucide-react';
 import useIsTablet from '../../lib/useIsTablet';
 
 const fields = [
-  { id: 1, icon: '🏗', name: 'Tikinti & BIM', desc: 'BIM menecer, Revit mutexessisi, tikinti muhendisi' },
-  { id: 2, icon: '📐', name: 'Arxitektura', desc: 'Arxitekt, ArchiCAD, layihe muhendisi' },
-  { id: 3, icon: '🛋', name: 'Daxili Dizayn', desc: 'Interior dizayner, 3D vizualizator' },
-  { id: 4, icon: '📱', name: 'Digital Marketing', desc: 'SMM mutexessisi, Meta/Google Ads, content manager' },
-  { id: 5, icon: '📊', name: 'E-Commerce', desc: 'Online magaza meneceri, dropshipping mutexessisi' },
-  { id: 6, icon: '💻', name: 'IT & QA', desc: 'QA muhendisi, test mutexessisi, texniki destek' },
+  { id: 1, icon: HardHat, name: 'Tikinti & BIM', desc: 'BIM menecer, Revit mutexessisi, tikinti muhendisi' },
+  { id: 2, icon: Ruler, name: 'Arxitektura', desc: 'Arxitekt, ArchiCAD, layihe muhendisi' },
+  { id: 3, icon: Sofa, name: 'Daxili Dizayn', desc: 'Interior dizayner, 3D vizualizator' },
+  { id: 4, icon: Smartphone, name: 'Digital Marketing', desc: 'SMM mutexessisi, Meta/Google Ads, content manager' },
+  { id: 5, icon: ShoppingCart, name: 'E-Commerce', desc: 'Online magaza meneceri, dropshipping mutexessisi' },
+  { id: 6, icon: Monitor, name: 'IT & QA', desc: 'QA muhendisi, test mutexessisi, texniki destek' },
 ];
 
 const benefits = [
-  { icon: '✅', title: 'Yoxlanılmış Namizədlər', desc: 'Bütün məzunlar praktiki layihə ilə sertifikatlaşdırılıb.' },
-  { icon: '⚡', title: 'Sürətli Uyğunlaşma', desc: 'Real layihə təcrübəsi olan məzunlar dərhal işə başlaya bilər.' },
-  { icon: '🎯', title: 'Sahə üzrə Seçim', desc: 'Tikinti, dizayn, marketing — hansı sahə lazımdırsa, bizdə var.' },
-  { icon: '🤝', title: 'Pulsuz Xidmət', desc: 'İlk namizəd yerləşdirməsi tamamilə ödənişsizdir.' },
+  { icon: CheckCircle, title: 'Yoxlanılmış Namizədlər', desc: 'Bütün məzunlar praktiki layihə ilə sertifikatlaşdırılıb.' },
+  { icon: Zap, title: 'Sürətli Uyğunlaşma', desc: 'Real layihə təcrübəsi olan məzunlar dərhal işə başlaya bilər.' },
+  { icon: Target, title: 'Sahə üzrə Seçim', desc: 'Tikinti, dizayn, marketing — hansı sahə lazımdırsa, bizdə var.' },
+  { icon: Handshake, title: 'Pulsuz Xidmət', desc: 'İlk namizəd yerləşdirməsi tamamilə ödənişsizdir.' },
 ];
 
 const processSteps = [
-  { num: '01', icon: '📋', title: 'Müraciət Et', desc: 'Formu doldurun, hansı mütəxəssisə ehtiyacınız olduğunu yazın.' },
-  { num: '02', icon: '🔍', title: 'Namizəd Seçimi', desc: '24 saat ərzində uyğun namizədləri sizə göndəririk.' },
-  { num: '03', icon: '🤝', title: 'Müsahibə', desc: 'Namizədlərlə birbaşa əlaqə saxlayıb müsahibə aparırsınız.' },
-  { num: '04', icon: '✅', title: 'İşə Qəbul', desc: 'Seçdiyiniz namizədi işə götürürsünüz. Pulsuz!' },
+  { num: '01', icon: ClipboardList, title: 'Müraciət Et', desc: 'Formu doldurun, hansı mütəxəssisə ehtiyacınız olduğunu yazın.' },
+  { num: '02', icon: Search, title: 'Namizəd Seçimi', desc: '24 saat ərzində uyğun namizədləri sizə göndəririk.' },
+  { num: '03', icon: Handshake, title: 'Müsahibə', desc: 'Namizədlərlə birbaşa əlaqə saxlayıb müsahibə aparırsınız.' },
+  { num: '04', icon: CheckCircle, title: 'İşə Qəbul', desc: 'Seçdiyiniz namizədi işə götürürsünüz. Pulsuz!' },
 ];
 
 const inp = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '14px 18px', color: '#FFFFFF', fontSize: '15px', outline: 'none', width: '100%', boxSizing: 'border-box', fontFamily: 'Inter, sans-serif' };
@@ -92,7 +93,7 @@ function DesktopHR() {
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {benefits.map((b, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px', textAlign: 'center' }}>
-                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{b.icon}</div>
+                <div style={{ marginBottom: '16px', color: '#00D68F' }}><b.icon size={36} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 12px 0' }}>{b.title}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.6, margin: 0 }}>{b.desc}</p>
               </div>
@@ -109,7 +110,7 @@ function DesktopHR() {
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '20px' }}>
             {fields.map((f) => (
               <div key={f.id} onClick={() => { setSelectedField(f.id); update('field', f.name); }} style={{ background: selectedField === f.id ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (selectedField === f.id ? 'rgba(0,214,143,0.4)' : 'rgba(255,255,255,0.08)'), borderRadius: '16px', padding: '28px 24px', cursor: 'pointer' }}>
-                <div style={{ fontSize: '36px', marginBottom: '12px' }}>{f.icon}</div>
+                <div style={{ marginBottom: '12px', color: '#00D68F' }}><f.icon size={32} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 8px 0' }}>{f.name}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
                 {selectedField === f.id && <div style={{ color: '#00D68F', fontSize: '12px', fontWeight: 600, marginTop: '12px' }}>✓ Seçildi</div>}
@@ -125,7 +126,7 @@ function DesktopHR() {
             {processSteps.map((s, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
                 <div style={{ width: '40px', height: '40px', background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00D68F', fontSize: '12px', fontWeight: 700, marginBottom: '16px' }}>{s.num}</div>
-                <div style={{ fontSize: '28px', marginBottom: '12px' }}>{s.icon}</div>
+                <div style={{ marginBottom: '12px', color: '#00D68F' }}><s.icon size={26} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, margin: '0 0 10px 0' }}>{s.title}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
               </div>
@@ -141,7 +142,7 @@ function DesktopHR() {
           </div>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '60px', textAlign: 'center' }}>
-              <div style={{ fontSize: '64px', marginBottom: '20px' }}>🎉</div>
+              <div style={{ marginBottom: '20px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={56} /></div>
               <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: '0 0 12px 0' }}>Müraciətiniz Qəbul Edildi!</h3>
               <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>24 saat ərzində sizə uyğun namizədlər göndəriləcək.</p>
             </div>
@@ -218,7 +219,7 @@ function MobileHR() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {benefits.map((b, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ fontSize: '28px', flexShrink: 0 }}>{b.icon}</div>
+                <div style={{ flexShrink: 0, color: '#00D68F' }}><b.icon size={26} /></div>
                 <div><h3 style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, margin: '0 0 3px 0' }}>{b.title}</h3><p style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.5, margin: 0 }}>{b.desc}</p></div>
               </div>
             ))}
@@ -232,7 +233,7 @@ function MobileHR() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {fields.map((f) => (
               <div key={f.id} onClick={() => { setSelectedField(f.id); update('field', f.name); }} style={{ background: selectedField === f.id ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (selectedField === f.id ? 'rgba(0,214,143,0.4)' : 'rgba(255,255,255,0.08)'), borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ fontSize: '26px', flexShrink: 0 }}>{f.icon}</div>
+                <div style={{ flexShrink: 0, color: '#00D68F' }}><f.icon size={24} /></div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h3 style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, margin: '0 0 3px 0' }}>{f.name}</h3>
                   <p style={{ color: '#A0A0B0', fontSize: '11px', lineHeight: 1.4, margin: 0 }}>{f.desc}</p>
@@ -250,7 +251,7 @@ function MobileHR() {
             {processSteps.map((s, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '16px' }}>
                 <div style={{ width: '30px', height: '30px', background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00D68F', fontSize: '10px', fontWeight: 700, marginBottom: '10px' }}>{s.num}</div>
-                <div style={{ fontSize: '22px', marginBottom: '8px' }}>{s.icon}</div>
+                <div style={{ marginBottom: '8px', color: '#00D68F' }}><s.icon size={20} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 700, margin: '0 0 6px 0' }}>{s.title}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '11px', lineHeight: 1.5, margin: 0 }}>{s.desc}</p>
               </div>
@@ -264,7 +265,7 @@ function MobileHR() {
           <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 20px 0', textAlign: 'center' }}>24 saat ərzində uyğun namizədləri göndərəcəyik.</p>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '16px', padding: '32px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '14px' }}>🎉</div>
+              <div style={{ marginBottom: '14px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={42} /></div>
               <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '18px', margin: '0 0 8px 0' }}>Müraciətiniz Qəbul Edildi!</h3>
               <p style={{ color: '#A0A0B0', fontSize: '13px', margin: 0 }}>24 saat ərzində namizədlər göndəriləcək.</p>
             </div>

@@ -2,19 +2,20 @@
 import Link from 'next/link';
 import useIsMobile from '../lib/useIsMobile';
 import useIsTablet from '../lib/useIsTablet';
+import { HardHat, Landmark, Smartphone, Sofa, Ruler, Target, GraduationCap, Briefcase, Award } from 'lucide-react';
 
 const categories = [
-  { icon: '🏗', name: 'Tikinti', sub: 'İnşaat & Layihə' },
-  { icon: '🏛', name: 'Arxitektura', sub: 'Dizayn & BIM' },
-  { icon: '📱', name: 'Digital Marketing', sub: 'SMM & Ads' },
-  { icon: '🛋', name: 'Daxili Dizayn', sub: 'Interior & 3D' },
-  { icon: '📐', name: 'BIM & AutoCAD', sub: 'Revit & CAD' },
+  { icon: HardHat, name: 'Tikinti', sub: 'İnşaat & Layihə' },
+  { icon: Landmark, name: 'Arxitektura', sub: 'Dizayn & BIM' },
+  { icon: Smartphone, name: 'Digital Marketing', sub: 'SMM & Ads' },
+  { icon: Sofa, name: 'Daxili Dizayn', sub: 'Interior & 3D' },
+  { icon: Ruler, name: 'BIM & AutoCAD', sub: 'Revit & CAD' },
 ];
 const features = [
-  { icon: '🎯', title: 'Real Layihələr', desc: 'Nəzəri deyil, real işlərlə öyrən' },
-  { icon: '👨‍🏫', title: 'Sahə Mütəxəssisləri', desc: 'Təcrübəli mentorlardan öyrən' },
-  { icon: '💼', title: 'Karyera Dəstəyi', desc: 'İşə düzəlməkdə köməklik' },
-  { icon: '🏆', title: 'Sertifikat', desc: 'Rəsmi bitirmə sertifikatı' },
+  { icon: Target, title: 'Real Layihələr', desc: 'Nəzəri deyil, real işlərlə öyrən' },
+  { icon: GraduationCap, title: 'Sahə Mütəxəssisləri', desc: 'Təcrübəli mentorlardan öyrən' },
+  { icon: Briefcase, title: 'Karyera Dəstəyi', desc: 'İşə düzəlməkdə köməklik' },
+  { icon: Award, title: 'Sertifikat', desc: 'Rəsmi bitirmə sertifikatı' },
 ];
 const testimonials = [
   { name: 'Aygün M.', course: 'Tikinti', text: 'Kursdan sonra dərhal işə düzəldim!' },
@@ -36,7 +37,7 @@ function DesktopSections() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', boxSizing: 'border-box' }}>
           {categories.map((cat, i) => (
             <Link key={i} href="/kurslar" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px', padding: '32px 24px', flex: 1, borderRight: i < categories.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-              <div style={{ width: '44px', height: '44px', background: 'rgba(255,44,168,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{cat.icon}</div>
+              <div style={{ width: '44px', height: '44px', background: 'rgba(255,44,168,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', flexShrink: 0 }}><cat.icon size={20} /></div>
               <div>
                 <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 600 }}>{cat.name}</div>
                 <div style={{ color: '#A0A0B0', fontSize: '12px', marginTop: '2px' }}>{cat.sub}</div>
@@ -52,7 +53,7 @@ function DesktopSections() {
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {features.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px', textAlign: 'center' }}>
-                <div style={{ fontSize: '36px', marginBottom: '12px' }}>{f.icon}</div>
+                <div style={{ marginBottom: '12px', color: '#FF2CA8' }}><f.icon size={32} /></div>
                 <div style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>{f.title}</div>
                 <div style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.4 }}>{f.desc}</div>
               </div>
@@ -110,7 +111,7 @@ function MobileSections() {
         <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', boxSizing: 'border-box' }}>
           {categories.map((cat, i) => (
             <Link key={i} href="/kurslar" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 10px', width: '50%', boxSizing: 'border-box', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-              <div style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', flexShrink: 0 }}>{cat.icon}</div>
+              <div style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', flexShrink: 0 }}><cat.icon size={16} /></div>
               <div style={{ minWidth: 0 }}>
                 <div style={{ color: '#FFFFFF', fontSize: '12px', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{cat.name}</div>
                 <div style={{ color: '#A0A0B0', fontSize: '10px', marginTop: '2px' }}>{cat.sub}</div>
@@ -126,7 +127,7 @@ function MobileSections() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {features.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ fontSize: '26px', flexShrink: 0 }}>{f.icon}</div>
+                <div style={{ flexShrink: 0, color: '#FF2CA8' }}><f.icon size={24} /></div>
                 <div>
                   <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, marginBottom: '3px' }}>{f.title}</div>
                   <div style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.4 }}>{f.desc}</div>

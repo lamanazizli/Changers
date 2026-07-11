@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Link from 'next/link';
 import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
+import { Star } from 'lucide-react';
 
 const mentorlar = [
   {
@@ -85,7 +86,7 @@ function DesktopMentorlar() {
                       <div style={{ color: '#A0A0B0', fontSize: '12px', marginTop: '2px' }}>{m.company} · {m.exp}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ color: '#FFB800', fontSize: '13px' }}>⭐ {m.rating}</div>
+                      <div style={{ color: '#FFB800', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px' }}><Star size={13} fill="#FFB800" /> {m.rating}</div>
                       <div style={{ color: '#A0A0B0', fontSize: '11px', marginTop: '2px' }}>{m.students} tələbə</div>
                     </div>
                   </div>
@@ -155,7 +156,7 @@ function MobileMentorlar() {
                 <div style={{ minWidth: 0 }}>
                   <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', margin: '0 0 3px 0' }}>{m.name}</h3>
                   <div style={{ color: m.color, fontSize: '12px', fontWeight: 500 }}>{m.title}</div>
-                  <div style={{ color: '#A0A0B0', fontSize: '11px', marginTop: '2px' }}>⭐ {m.rating} · {m.students} tələbə</div>
+                  <div style={{ color: '#A0A0B0', fontSize: '11px', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}><Star size={11} fill="#FFB800" style={{ color: '#FFB800' }} /> {m.rating} · {m.students} tələbə</div>
                 </div>
               </div>
               <p style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.6, margin: '0 0 12px 0' }}>{m.bio}</p>

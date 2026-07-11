@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
+import { Clock, BookOpen } from 'lucide-react';
 
 const categories = ['Hamısı', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
 const GRADIENTS = [
@@ -40,7 +41,7 @@ function CourseCard({ course }) {
         <h3 style={{ fontWeight: 700, fontSize: '17px', color: '#FFFFFF', margin: '0 0 10px 0' }}>{course.title}</h3>
         <p style={{ fontSize: '13px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 20px 0' }}>{course.description || course.desc}</p>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '0 0 16px 0', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: '13px', color: '#A0A0B0' }}>⏱ {course.duration}</span>
+          <span style={{ fontSize: '13px', color: '#A0A0B0', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><Clock size={14} /> {course.duration}</span>
           <span style={{ fontSize: '18px', fontWeight: 700, color: '#FF2CA8' }}>{course.price}</span>
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
@@ -63,7 +64,7 @@ function DesktopKurslar() {
       <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '80px 0 60px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📚 Bütün kurslar</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={14} /> Bütün kurslar</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
             Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>Karyerana başla!</span>
@@ -115,7 +116,7 @@ function MobileKurslar() {
       <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 12px', marginBottom: '16px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500 }}>📚 Bütün kurslar</span>
+            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={14} /> Bütün kurslar</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>
             Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>Karyerana başla!</span>

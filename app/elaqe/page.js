@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
+import { MapPin, Phone, Mail, MessageCircle, CheckCircle2, HelpCircle } from 'lucide-react';
 
 const inputStyle = {
   background: 'rgba(255,255,255,0.06)',
@@ -18,10 +19,10 @@ const inputStyle = {
 };
 
 const contactItems = [
-  { icon: '📍', label: 'Ünvan', value: 'Bakı, Azərbaycan', sub: 'İnşaatçılar metrostansiyasının yaxınlığı, Abbas Mirzə Şərifzadə küçəsi 110' },
-  { icon: '📞', label: 'Telefon', value: '+994 10 255 75 55', sub: 'Bazar ertəsi - Cümə, 09:00 - 18:00' },
-  { icon: '✉️', label: 'Email', value: 'info@changers.az', sub: '24 saat ərzində cavab' },
-  { icon: '💬', label: 'WhatsApp', value: '+994 10 255 75 55', sub: 'Sürətli cavab üçün WhatsAppda yaz.' },
+  { icon: MapPin, label: 'Ünvan', value: 'Bakı, Azərbaycan', sub: 'İnşaatçılar metrostansiyasının yaxınlığı, Abbas Mirzə Şərifzadə küçəsi 110' },
+  { icon: Phone, label: 'Telefon', value: '+994 10 255 75 55', sub: 'Bazar ertəsi - Cümə, 09:00 - 18:00' },
+  { icon: Mail, label: 'Email', value: 'info@changers.az', sub: '24 saat ərzində cavab' },
+  { icon: MessageCircle, label: 'WhatsApp', value: '+994 10 255 75 55', sub: 'Sürətli cavab üçün WhatsAppda yaz.' },
 ];
 
 const faqItems = [
@@ -75,7 +76,7 @@ function DesktopElaqe() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
               {contactItems.map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '20px' }}>
-                  <div style={{ width: '44px', height: '44px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{item.icon}</div>
+                  <div style={{ width: '44px', height: '44px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', flexShrink: 0 }}><item.icon size={19} /></div>
                   <div>
                     <div style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>{item.label.toUpperCase()}</div>
                     <div style={{ color: '#FFFFFF', fontSize: '15px', fontWeight: 600 }}>{item.value}</div>
@@ -85,7 +86,7 @@ function DesktopElaqe() {
               ))}
             </div>
             <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#25D366', borderRadius: '14px', padding: '20px 24px', textDecoration: 'none' }}>
-              <span style={{ fontSize: '28px' }}>💬</span>
+              <MessageCircle size={26} color="#FFFFFF" />
               <div><div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px' }}>WhatsApp ilə yaz</div><div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', marginTop: '2px' }}>Sürətli cavab al</div></div>
               <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '20px' }}>→</span>
             </a>
@@ -93,7 +94,7 @@ function DesktopElaqe() {
           <div>
             {sent ? (
               <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '48px', textAlign: 'center' }}>
-                <div style={{ fontSize: '64px', marginBottom: '20px' }}>✅</div>
+                <div style={{ marginBottom: '20px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><CheckCircle2 size={56} /></div>
                 <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '24px', margin: '0 0 12px 0' }}>Mesajınız göndərildi!</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '15px', margin: 0 }}>24 saat ərzində sizinlə əlaqə saxlanılacaq.</p>
               </div>
@@ -123,7 +124,7 @@ function DesktopElaqe() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
             {faqItems.map((faq, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '24px' }}>
-                <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px', margin: '0 0 10px 0' }}>❓ {faq.q}</h3>
+                <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}><HelpCircle size={16} color="#FF2CA8" /> {faq.q}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{faq.a}</p>
               </div>
             ))}
@@ -156,7 +157,7 @@ function MobileElaqe() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
             {contactItems.map((item, i) => (
               <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '14px' }}>
-                <div style={{ width: '38px', height: '38px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '17px', flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ width: '38px', height: '38px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', flexShrink: 0 }}><item.icon size={16} /></div>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ color: '#A0A0B0', fontSize: '10px', fontWeight: 600, marginBottom: '3px' }}>{item.label.toUpperCase()}</div>
                   <div style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 600 }}>{item.value}</div>
@@ -166,13 +167,13 @@ function MobileElaqe() {
             ))}
           </div>
           <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#25D366', borderRadius: '12px', padding: '16px', textDecoration: 'none', marginBottom: '24px' }}>
-            <span style={{ fontSize: '22px' }}>💬</span>
+            <MessageCircle size={20} color="#FFFFFF" />
             <div><div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px' }}>WhatsApp ilə yaz</div></div>
             <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '16px' }}>→</span>
           </a>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '16px', padding: '28px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '44px', marginBottom: '14px' }}>✅</div>
+              <div style={{ marginBottom: '14px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><CheckCircle2 size={40} /></div>
               <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '18px', margin: '0 0 10px 0' }}>Mesajınız göndərildi!</h3>
               <p style={{ color: '#A0A0B0', fontSize: '13px', margin: 0 }}>24 saat ərzində əlaqə saxlanılacaq.</p>
             </div>
@@ -199,7 +200,7 @@ function MobileElaqe() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {faqItems.map((faq, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '16px' }}>
-                <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '13px', margin: '0 0 8px 0' }}>❓ {faq.q}</h3>
+                <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '13px', margin: '0 0 8px 0', display: 'flex', alignItems: 'center', gap: '6px' }}><HelpCircle size={14} color="#FF2CA8" /> {faq.q}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.6, margin: 0 }}>{faq.a}</p>
               </div>
             ))}

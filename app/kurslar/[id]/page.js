@@ -3,6 +3,7 @@ import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Link from 'next/link';
 import useIsMobile from '../../../lib/useIsMobile';
+import { Clock, Users, Star, Lock, GraduationCap, MessageCircle } from 'lucide-react';
 
 const courses = {
   '1': {
@@ -75,15 +76,15 @@ function DesktopCourseDetail({ course }) {
               <h1 style={{ fontWeight: 700, fontSize: '48px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>{course.title}</h1>
               <p style={{ fontSize: '17px', color: '#A0A0B0', margin: '0 0 32px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
               <div style={{ display: 'flex', gap: '24px', marginBottom: '40px', flexWrap: 'wrap' }}>
-                {[{ icon: '⏱', label: course.duration }, { icon: '👥', label: course.students + ' telebe' }, { icon: '⭐', label: course.rating + ' reytinq' }].map((s, i) => (
+                {[{ icon: Clock, label: course.duration }, { icon: Users, label: course.students + ' telebe' }, { icon: Star, label: course.rating + ' reytinq' }].map((s, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.06)', padding: '8px 16px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span style={{ fontSize: '14px' }}>{s.icon}</span><span style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 500 }}>{s.label}</span>
+                    <s.icon size={14} /><span style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 500 }}>{s.label}</span>
                   </div>
                 ))}
               </div>
               <div style={{ display: 'flex', gap: '16px' }}>
                 <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>Indi Qeydiyyatdan Kec →</Link>
-                <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>💬 WhatsApp</a>
+                <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
               </div>
             </div>
             <div style={{ background: '#13131A', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '20px', padding: '32px', minWidth: '300px', flexShrink: 0 }}>
@@ -98,7 +99,7 @@ function DesktopCourseDetail({ course }) {
                 ))}
               </div>
               <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px', borderRadius: '10px' }}>Qeydiyyatdan Kec →</Link>
-              <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px', marginTop: '12px' }}>🔒 Odenis taminatimiz var</div>
+              <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px', marginTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><Lock size={13} /> Odenis taminatimiz var</div>
             </div>
           </div>
         </div>
@@ -155,10 +156,10 @@ function DesktopCourseDetail({ course }) {
               </div>
             </div>
             <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '16px', padding: '24px', textAlign: 'center' }}>
-              <div style={{ fontSize: '24px', marginBottom: '12px' }}>🎓</div>
+              <div style={{ marginBottom: '12px', color: '#FF2CA8' }}><GraduationCap size={22} /></div>
               <p style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 600, margin: '0 0 8px 0' }}>Hala sualin var?</p>
               <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0' }}>Pulsuz konsultasiya al</p>
-              <a href="https://wa.me/994000000000" style={{ display: 'block', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}>💬 WhatsApp ile Yaz</a>
+              <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ile Yaz</a>
             </div>
           </div>
         </div>
@@ -180,9 +181,9 @@ function MobileCourseDetail({ course }) {
           <h1 style={{ fontWeight: 700, fontSize: '24px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.2 }}>{course.title}</h1>
           <p style={{ fontSize: '14px', color: '#A0A0B0', margin: '0 0 20px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
           <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
-            {[{ icon: '⏱', label: course.duration }, { icon: '👥', label: course.students }, { icon: '⭐', label: course.rating }].map((s, i) => (
+            {[{ icon: Clock, label: course.duration }, { icon: Users, label: course.students }, { icon: Star, label: course.rating }].map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.06)', padding: '6px 12px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <span style={{ fontSize: '12px' }}>{s.icon}</span><span style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 500 }}>{s.label}</span>
+                <s.icon size={13} /><span style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 500 }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -199,7 +200,7 @@ function MobileCourseDetail({ course }) {
             </div>
             <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan Keç →</Link>
           </div>
-          <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>💬 WhatsApp</a>
+          <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}><MessageCircle size={16} /> WhatsApp</a>
         </div>
       </section>
       <section style={{ padding: '32px 0' }}>
@@ -251,10 +252,10 @@ function MobileCourseDetail({ course }) {
             </div>
           </div>
           <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '14px', padding: '20px', textAlign: 'center' }}>
-            <div style={{ fontSize: '22px', marginBottom: '10px' }}>🎓</div>
+            <div style={{ marginBottom: '10px', color: '#FF2CA8' }}><GraduationCap size={20} /></div>
             <p style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 600, margin: '0 0 6px 0' }}>Hala sualin var?</p>
             <p style={{ color: '#A0A0B0', fontSize: '11px', margin: '0 0 14px 0' }}>Pulsuz konsultasiya al</p>
-            <a href="https://wa.me/994000000000" style={{ display: 'block', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}>💬 WhatsApp ile Yaz</a>
+            <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ile Yaz</a>
           </div>
         </div>
       </section>

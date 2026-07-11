@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import { PartyPopper, ClipboardList, Check, Lock } from 'lucide-react';
 import useIsMobile from '../../lib/useIsMobile';
 
 const steps = [
@@ -70,7 +71,7 @@ export default function QeydiyyatPage() {
       <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
         <Navbar />
         <section style={{ maxWidth: '600px', margin: '0 auto', padding: isMobile ? '60px 20px' : '120px 24px', textAlign: 'center', boxSizing: 'border-box' }}>
-          <div style={{ fontSize: '80px', marginBottom: '24px' }}>🎉</div>
+          <div style={{ marginBottom: '24px', color: '#FF2CA8', display: 'flex', justifyContent: 'center' }}><PartyPopper size={72} /></div>
           <h1 style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Müraciətin qəbul edildi!</h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 32px 0' }}>
             Təşəkkürlər! Komandamız 24 saat ərzində sizinlə əlaqə saxlayacaq. WhatsApp üzərindən də müraciət edə bilərsiniz.
@@ -93,7 +94,7 @@ export default function QeydiyyatPage() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '20px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📋 Qeydiyyat</span>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><ClipboardList size={14} /> Qeydiyyat</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: isMobile ? '26px' : '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>
             Karyerana <span style={{ color: '#FF2CA8' }}>başla!</span>
@@ -116,7 +117,7 @@ export default function QeydiyyatPage() {
                   boxShadow: step === s.num ? '0 0 20px rgba(255,44,168,0.4)' : 'none',
                   transition: 'all 0.3s',
                 }}>
-                  {step > s.num ? '✓' : s.num}
+                  {step > s.num ? <Check size={16} /> : s.num}
                 </div>
                 <span style={{ fontSize: isMobile ? '9px' : '11px', color: step >= s.num ? '#FF2CA8' : '#A0A0B0', fontWeight: step === s.num ? 600 : 400, whiteSpace: 'nowrap', display: isMobile ? 'none' : 'block' }}>{s.label}</span>
               </div>
@@ -161,7 +162,7 @@ export default function QeydiyyatPage() {
                     transition: 'all 0.2s',
                   }}>
                     {c}
-                    {form.course === c && <span style={{ color: '#FF2CA8' }}>✓</span>}
+                    {form.course === c && <Check size={16} color="#FF2CA8" />}
                   </div>
                 ))}
               </div>
@@ -212,8 +213,8 @@ export default function QeydiyyatPage() {
                   </div>
                 ))}
               </div>
-              <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '12px', padding: '16px', fontSize: '13px', color: '#A0A0B0', textAlign: 'center' }}>
-                🔒 Məlumatlarınız güvənlə saxlanılır.
+              <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '12px', padding: '16px', fontSize: '13px', color: '#A0A0B0', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <Lock size={13} /> Məlumatlarınız güvənlə saxlanılır.
               </div>
             </div>
           )}

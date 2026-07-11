@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Clock, BookOpen } from 'lucide-react';
 import useIsMobile from '../lib/useIsMobile';
 import useIsTablet from '../lib/useIsTablet';
 
@@ -39,7 +40,7 @@ function Card({ course }) {
         <p style={{ fontSize: '12px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 18px 0', flex: 1 }}>{course.description || course.desc}</p>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '0 0 14px 0' }} />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-          <span style={{ fontSize: '12px', color: '#A0A0B0' }}>⏱ {course.duration}</span>
+          <span style={{ fontSize: '12px', color: '#A0A0B0', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><Clock size={13} /> {course.duration}</span>
           <span style={{ fontSize: '14px', fontWeight: 700, color: '#FF2CA8' }}>{course.price}</span>
         </div>
         <Link href="/kurslar" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}>
@@ -57,7 +58,7 @@ function DesktopCourses() {
     <section style={{ background: '#0B0B0F', padding: '80px 0' }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', boxSizing: 'border-box' }}>
         <div style={{ marginBottom: '56px' }}>
-          <span style={{ display: 'inline-block', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 14px', fontSize: '12px', color: '#FF2CA8', fontWeight: 500, marginBottom: '16px' }}>📚 Kurslarımız</span>
+          <span style={{ display: 'inline-block', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 14px', fontSize: '12px', color: '#FF2CA8', fontWeight: 500, marginBottom: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={13} /> Kurslarımız</span>
           <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: 0 }}>Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>karyerana başla</span></h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
@@ -79,7 +80,7 @@ function MobileCourses() {
     <section style={{ background: '#0B0B0F', padding: '40px 0' }}>
       <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
         <div style={{ marginBottom: '24px' }}>
-          <span style={{ display: 'inline-block', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '5px 12px', fontSize: '11px', color: '#FF2CA8', fontWeight: 500, marginBottom: '12px' }}>📚 Kurslarımız</span>
+          <span style={{ display: 'inline-block', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '5px 12px', fontSize: '11px', color: '#FF2CA8', fontWeight: 500, marginBottom: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={13} /> Kurslarımız</span>
           <h2 style={{ fontWeight: 700, fontSize: '24px', color: '#FFFFFF', margin: 0 }}>Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>karyerana başla</span></h2>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

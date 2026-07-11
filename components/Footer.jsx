@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -21,11 +22,15 @@ export default function Footer() {
               Azərbaycanın #1 praktiki təhsil platforması.
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
-              {['Instagram', 'LinkedIn', 'WhatsApp'].map((s, i) => (
-                <a key={i} href="#" style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', fontSize: '11px', textDecoration: 'none', fontWeight: 600 }}>
-                  {s[0]}
-                </a>
-              ))}
+              <a href="https://instagram.com/changers.az" style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', textDecoration: 'none' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="#" style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', textDecoration: 'none' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              </a>
+              <a href="https://wa.me/994102557555" style={{ width: '36px', height: '36px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', textDecoration: 'none' }}>
+                <MessageCircle size={16} />
+              </a>
             </div>
           </div>
           <div style={{ display: 'flex', gap: isMobile ? '32px' : '60px', flexWrap: 'wrap', width: isMobile ? '100%' : 'auto' }}>
@@ -49,9 +54,9 @@ export default function Footer() {
             </div>
             <div style={{ flex: isMobile ? '1 1 100%' : 'none' }}>
               <div style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, marginBottom: '16px' }}>Əlaqə</div>
-              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>📍 Bakı, Azərbaycan</div>
-              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>📞 +994 XX XXX XX XX</div>
-              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px' }}>✉️ info@changers.az</div>
+              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><MapPin size={14} /> Bakı, Azərbaycan</div>
+              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><Phone size={14} /> +994 XX XXX XX XX</div>
+              <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><Mail size={14} /> info@changers.az</div>
               <Link href="/qeydiyyat" style={{ display: 'inline-block', marginTop: '8px', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '8px' }}>
                 Qeydiyyat →
               </Link>

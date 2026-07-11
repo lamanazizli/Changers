@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
+import { Target, BarChart3, Trophy, BookOpen, RefreshCw, Briefcase, PartyPopper } from 'lucide-react';
 import useIsTablet from '../../lib/useIsTablet';
 
 const packages = [
@@ -69,15 +70,15 @@ function DesktopKorporativ() {
           <div style={{ textAlign: 'center', marginBottom: '60px' }}><h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Korporativ Ustunlukler</h2></div>
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {[
-              { icon: '🎯', title: 'Ferdi Sillabus', desc: 'Sirketinizin ehtiyaclarina uygun xususi tedris proqrami hazirlanir.' },
-              { icon: '📊', title: 'Hesabat Sistemi', desc: 'Heftəlik emekdas tereqqisi hesabati ile neticeni izleyin.' },
-              { icon: '🏆', title: 'Sertifikat', desc: 'Sektorda tanindan resmi Changers Academy sertifikati verilir.' },
-              { icon: '📚', title: 'Dedicated Mentor', desc: 'Her korporativ musteriye ayrica mentor teyin edilir.' },
-              { icon: '🔄', title: 'Cevik Format', desc: 'Offline, online ve ya hibrid format secimi sizin ucundur.' },
-              { icon: '💼', title: 'HR Desteyi', desc: 'Tedris sonrasi kadr yerlesdirilmesinde komeklik edilir.' },
+              { icon: Target, title: 'Ferdi Sillabus', desc: 'Sirketinizin ehtiyaclarina uygun xususi tedris proqrami hazirlanir.' },
+              { icon: BarChart3, title: 'Hesabat Sistemi', desc: 'Heftəlik emekdas tereqqisi hesabati ile neticeni izleyin.' },
+              { icon: Trophy, title: 'Sertifikat', desc: 'Sektorda tanindan resmi Changers Academy sertifikati verilir.' },
+              { icon: BookOpen, title: 'Dedicated Mentor', desc: 'Her korporativ musteriye ayrica mentor teyin edilir.' },
+              { icon: RefreshCw, title: 'Cevik Format', desc: 'Offline, online ve ya hibrid format secimi sizin ucundur.' },
+              { icon: Briefcase, title: 'HR Desteyi', desc: 'Tedris sonrasi kadr yerlesdirilmesinde komeklik edilir.' },
             ].map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
-                <div style={{ fontSize: '36px', marginBottom: '16px' }}>{f.icon}</div>
+                <div style={{ marginBottom: '16px', color: '#FF2CA8' }}><f.icon size={32} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0' }}>{f.title}</h3>
                 <p style={{ color: '#A0A0B0', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
               </div>
@@ -114,7 +115,7 @@ function DesktopKorporativ() {
           </div>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '60px', textAlign: 'center' }}>
-              <div style={{ fontSize: '64px', marginBottom: '20px' }}>🎉</div>
+              <div style={{ marginBottom: '20px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={56} /></div>
               <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: 0 }}>Muracietiniz Qebul Edildi!</h3>
             </div>
           ) : (
@@ -179,15 +180,15 @@ function MobileKorporativ() {
           <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 20px 0', textAlign: 'center' }}>Korporativ Üstünlüklər</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              { icon: '🎯', title: 'Fərdi Sillabus', desc: 'Şirkətin ehtiyaclarına uyğun xüsusi tədris.' },
-              { icon: '📊', title: 'Hesabat Sistemi', desc: 'Həftəlik tərəqqi hesabatı.' },
-              { icon: '🏆', title: 'Sertifikat', desc: 'Rəsmi Changers Academy sertifikatı.' },
-              { icon: '📚', title: 'Dedicated Mentor', desc: 'Hər müştəriyə ayrıca mentor.' },
-              { icon: '🔄', title: 'Çevik Format', desc: 'Offline, online və ya hibrid.' },
-              { icon: '💼', title: 'HR Dəstəyi', desc: 'Kadr yerləşdirilməsində köməklik.' },
+              { icon: Target, title: 'Fərdi Sillabus', desc: 'Şirkətin ehtiyaclarına uyğun xüsusi tədris.' },
+              { icon: BarChart3, title: 'Hesabat Sistemi', desc: 'Həftəlik tərəqqi hesabatı.' },
+              { icon: Trophy, title: 'Sertifikat', desc: 'Rəsmi Changers Academy sertifikatı.' },
+              { icon: BookOpen, title: 'Dedicated Mentor', desc: 'Hər müştəriyə ayrıca mentor.' },
+              { icon: RefreshCw, title: 'Çevik Format', desc: 'Offline, online və ya hibrid.' },
+              { icon: Briefcase, title: 'HR Dəstəyi', desc: 'Kadr yerləşdirilməsində köməklik.' },
             ].map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ fontSize: '26px', flexShrink: 0 }}>{f.icon}</div>
+                <div style={{ flexShrink: 0, color: '#FF2CA8' }}><f.icon size={24} /></div>
                 <div><h3 style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, margin: '0 0 3px 0' }}>{f.title}</h3><p style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.5, margin: 0 }}>{f.desc}</p></div>
               </div>
             ))}
@@ -221,7 +222,7 @@ function MobileKorporativ() {
           <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 20px 0', textAlign: 'center' }}>24 saat ərzində sizinlə əlaqə saxlayacağıq.</p>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '16px', padding: '32px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '14px' }}>🎉</div>
+              <div style={{ marginBottom: '14px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={42} /></div>
               <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '18px', margin: 0 }}>Müraciətiniz Qəbul Edildi!</h3>
             </div>
           ) : (
