@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import useIsMobile from '../../lib/useIsMobile';
 
 const steps = [
   { num: 1, label: 'Şəxsi məlumat' },
@@ -20,6 +21,7 @@ const courses = [
 ];
 
 export default function QeydiyyatPage() {
+  const isMobile = useIsMobile();
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({ name: '', phone: '', email: '', course: '', message: '', howFound: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -67,7 +69,7 @@ export default function QeydiyyatPage() {
     return (
       <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
         <Navbar />
-        <section style={{ maxWidth: '600px', margin: '0 auto', padding: '120px 24px', textAlign: 'center' }}>
+        <section style={{ maxWidth: '600px', margin: '0 auto', padding: isMobile ? '60px 20px' : '120px 24px', textAlign: 'center', boxSizing: 'border-box' }}>
           <div style={{ fontSize: '80px', marginBottom: '24px' }}>🎉</div>
           <h1 style={{ fontWeight: 700, fontSize: '36px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Müraciətin qəbul edildi!</h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 32px 0' }}>
@@ -87,13 +89,13 @@ export default function QeydiyyatPage() {
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Qeydiyyat" />
 
-      <section style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 24px' }}>
+      <section style={{ maxWidth: '760px', margin: '0 auto', padding: isMobile ? '32px 16px' : '80px 24px', boxSizing: 'border-box' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '20px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>📋 Qeydiyyat</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>
+          <h1 style={{ fontWeight: 700, fontSize: isMobile ? '26px' : '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>
             Karyerana <span style={{ color: '#FF2CA8' }}>başla!</span>
           </h1>
           <p style={{ fontSize: '15px', color: '#A0A0B0' }}>Formu doldur, komandamız səninlə elaqe saxlayacaq.</p>
@@ -105,7 +107,7 @@ export default function QeydiyyatPage() {
             <div key={s.num} style={{ display: 'flex', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                 <div style={{
-                  width: '40px', height: '40px', borderRadius: '50%',
+                  width: isMobile ? '32px' : '40px', height: isMobile ? '32px' : '40px', borderRadius: '50%',
                   background: step >= s.num ? '#FF2CA8' : 'rgba(255,255,255,0.06)',
                   border: step === s.num ? '2px solid #FF2CA8' : step > s.num ? '2px solid #FF2CA8' : '2px solid rgba(255,255,255,0.12)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -116,17 +118,17 @@ export default function QeydiyyatPage() {
                 }}>
                   {step > s.num ? '✓' : s.num}
                 </div>
-                <span style={{ fontSize: '11px', color: step >= s.num ? '#FF2CA8' : '#A0A0B0', fontWeight: step === s.num ? 600 : 400, whiteSpace: 'nowrap' }}>{s.label}</span>
+                <span style={{ fontSize: isMobile ? '9px' : '11px', color: step >= s.num ? '#FF2CA8' : '#A0A0B0', fontWeight: step === s.num ? 600 : 400, whiteSpace: 'nowrap', display: isMobile ? 'none' : 'block' }}>{s.label}</span>
               </div>
               {i < steps.length - 1 && (
-                <div style={{ width: '80px', height: '2px', background: step > s.num ? '#FF2CA8' : 'rgba(255,255,255,0.1)', margin: '0 8px', marginBottom: '24px', transition: 'all 0.3s' }} />
+                <div style={{ width: isMobile ? '20px' : '80px', height: '2px', background: step > s.num ? '#FF2CA8' : 'rgba(255,255,255,0.1)', margin: isMobile ? '0 3px' : '0 8px', marginBottom: '24px', transition: 'all 0.3s' }} />
               )}
             </div>
           ))}
         </div>
 
         {/* Form Card */}
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '20px', padding: '40px' }}>
+        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '20px', padding: isMobile ? '20px' : '40px', boxSizing: 'border-box' }}>
 
           {step === 1 && (
             <div>
@@ -217,7 +219,7 @@ export default function QeydiyyatPage() {
           )}
 
           {/* Buttons */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '32px', gap: '12px' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column-reverse' : 'row', justifyContent: 'space-between', marginTop: '32px', gap: '12px' }}>
             {step > 1 && (
               <button onClick={() => setStep(s => s - 1)} style={{ padding: '14px 28px', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '10px', color: '#A0A0B0', fontSize: '14px', cursor: 'pointer', fontWeight: 500 }}>
                 ← Geri
