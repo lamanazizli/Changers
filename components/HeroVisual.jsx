@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import useIsMobile from '../lib/useIsMobile';
+import useIsTablet from '../lib/useIsTablet';
 
 function useHeroData() {
   const [left, setLeft] = useState('');
@@ -30,8 +31,9 @@ function useHeroData() {
 
 function DesktopHero() {
   const { left, banners, current, setCurrent } = useHeroData();
+  const isTablet = useIsTablet();
   return (
-    <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '24px 40px', boxSizing: 'border-box', height: '620px' }}>
+    <div style={{ display: 'flex', gap: '20px', width: '100%', maxWidth: '1440px', margin: '0 auto', padding: isTablet ? '20px 24px' : '24px 40px', boxSizing: 'border-box', height: isTablet ? '420px' : '620px' }}>
       <div style={{ flex: '1.6', height: '100%', borderRadius: '20px', overflow: 'hidden', background: '#111116', border: '1px solid rgba(255,255,255,0.06)' }}>
         {left ? <img src={left} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /> :
           <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#444', fontSize: '13px' }}>Sol banner</div>}

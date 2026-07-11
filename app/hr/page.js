@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
+import useIsTablet from '../../lib/useIsTablet';
 
 const fields = [
   { id: 1, icon: '🏗', name: 'Tikinti & BIM', desc: 'BIM menecer, Revit mutexessisi, tikinti muhendisi' },
@@ -57,6 +58,7 @@ function useHRForm() {
 
 function DesktopHR() {
   const { form, update, sent, loading, handleSubmit, selectedField, setSelectedField } = useHRForm();
+  const isTablet = useIsTablet();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar />
@@ -87,7 +89,7 @@ function DesktopHR() {
       <section style={{ padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}><h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Niyə Changers Məzunları?</h2></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {benefits.map((b, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px', textAlign: 'center' }}>
                 <div style={{ fontSize: '40px', marginBottom: '16px' }}>{b.icon}</div>
@@ -104,7 +106,7 @@ function DesktopHR() {
             <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Hansı Sahələrdə Namizəd Var?</h2>
             <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>Aşağıdakı sahələrdə sertifikatlı məzunlarımız mövcuddur.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '20px' }}>
             {fields.map((f) => (
               <div key={f.id} onClick={() => { setSelectedField(f.id); update('field', f.name); }} style={{ background: selectedField === f.id ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (selectedField === f.id ? 'rgba(0,214,143,0.4)' : 'rgba(255,255,255,0.08)'), borderRadius: '16px', padding: '28px 24px', cursor: 'pointer' }}>
                 <div style={{ fontSize: '36px', marginBottom: '12px' }}>{f.icon}</div>
@@ -119,7 +121,7 @@ function DesktopHR() {
       <section style={{ padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}><h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Proses Necə İşləyir?</h2></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {processSteps.map((s, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
                 <div style={{ width: '40px', height: '40px', background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00D68F', fontSize: '12px', fontWeight: 700, marginBottom: '16px' }}>{s.num}</div>

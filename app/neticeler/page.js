@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import useIsMobile from '../../lib/useIsMobile';
+import useIsTablet from '../../lib/useIsTablet';
 
 const telebeler = [
   { initials: 'AM', name: 'Ayten M.', color: '#FF2CA8', course: 'Digital Marketing', rating: 5, evvel: 'SMM bilgisi yox idi', indi: 'Freelance musteri tapdi', quote: '4 heftede SMM mutexessisi oldum. Changers menim karyeramı tamamilə deyisdi!', company: 'Freelance', salary: '+800 AZN/ay' },
@@ -14,6 +15,7 @@ const telebeler = [
 ];
 
 function DesktopTelebeler() {
+  const isTablet = useIsTablet();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Telebeler" />
@@ -69,7 +71,7 @@ function DesktopTelebeler() {
             </div>
             <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Zirvəyə Cıxan Mezunlar</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {telebeler.map((m, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '28px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>

@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import useIsMobile from '../../lib/useIsMobile';
+import useIsTablet from '../../lib/useIsTablet';
 
 const categories = ['Hamısı', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
 const GRADIENTS = [
@@ -55,6 +56,7 @@ function CourseCard({ course }) {
 
 function DesktopKurslar() {
   const courses = useCourses();
+  const isTablet = useIsTablet();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Kurslar" />
@@ -86,7 +88,7 @@ function DesktopKurslar() {
       </section>
       <section style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {courses.map(c => <CourseCard key={c.id} course={c} />)}
           </div>
         </div>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
+import useIsTablet from '../../lib/useIsTablet';
 
 const packages = [
   { name: 'Baslangic', price: '2,500 AZN', period: '/ay', color: '#7B2FFF', features: ['5 emekdasa qeder telim', 'BIM & AutoCAD kursu', 'Aylik hesabat', 'Online format', 'Sertifikat'] },
@@ -35,6 +36,7 @@ const inp = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,
 
 function DesktopKorporativ() {
   const { form, update, sent, loading, handleSubmit } = useForm();
+  const isTablet = useIsTablet();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar />
@@ -65,7 +67,7 @@ function DesktopKorporativ() {
       <section style={{ padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}><h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Korporativ Ustunlukler</h2></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {[
               { icon: '🎯', title: 'Ferdi Sillabus', desc: 'Sirketinizin ehtiyaclarina uygun xususi tedris proqrami hazirlanir.' },
               { icon: '📊', title: 'Hesabat Sistemi', desc: 'Heftəlik emekdas tereqqisi hesabati ile neticeni izleyin.' },
@@ -86,7 +88,7 @@ function DesktopKorporativ() {
       <section style={{ background: '#13131A', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}><h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: 0 }}>Sirketiniz ucun Plan Secin</h2></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : 'repeat(3, 1fr)', gap: '24px', alignItems: 'start' }}>
             {packages.map((pkg, i) => (
               <div key={i} style={{ background: pkg.popular ? 'rgba(255,44,168,0.08)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (pkg.popular ? 'rgba(255,44,168,0.5)' : 'rgba(255,255,255,0.08)'), borderRadius: '20px', padding: '40px 32px', position: 'relative' }}>
                 {pkg.popular && <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#FF2CA8', color: '#FFFFFF', fontSize: '12px', fontWeight: 700, padding: '5px 20px', borderRadius: '100px', whiteSpace: 'nowrap' }}>En Populyar</div>}

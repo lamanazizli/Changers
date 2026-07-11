@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import useIsMobile from '../lib/useIsMobile';
+import useIsTablet from '../lib/useIsTablet';
 
 const categories = [
   { icon: '🏗', name: 'Tikinti', sub: 'İnşaat & Layihə' },
@@ -28,6 +29,7 @@ const steps = [
 ];
 
 function DesktopSections() {
+  const isTablet = useIsTablet();
   return (
     <>
       <section style={{ background: '#0B0B0F', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
@@ -47,7 +49,7 @@ function DesktopSections() {
       <section style={{ background: '#0B0B0F', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', boxSizing: 'border-box' }}>
           <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 32px 0' }}>Bizim fərqimiz</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {features.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px', textAlign: 'center' }}>
                 <div style={{ fontSize: '36px', marginBottom: '12px' }}>{f.icon}</div>
@@ -62,7 +64,7 @@ function DesktopSections() {
       <section style={{ background: '#0B0B0F', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', boxSizing: 'border-box' }}>
           <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 32px 0' }}>Məzunlarımız nə deyir?</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {testimonials.map((t, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.15)', borderRadius: '16px', padding: '28px' }}>
                 <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: 1.6, margin: '0 0 16px 0' }}>"{t.text}"</p>
@@ -77,7 +79,7 @@ function DesktopSections() {
       <section style={{ background: '#13131A', padding: '100px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', boxSizing: 'border-box' }}>
           <h2 style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', margin: '0 0 32px 0' }}>4 addımda karyerana başla!</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {steps.map((s, i) => (
               <div key={i}>
                 <div style={{ color: '#FF2CA8', fontSize: '32px', fontWeight: 900, marginBottom: '8px' }}>{s.n}</div>

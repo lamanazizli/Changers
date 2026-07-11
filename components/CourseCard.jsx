@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import useIsMobile from '../lib/useIsMobile';
+import useIsTablet from '../lib/useIsTablet';
 
 const GRADIENTS = [
   'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.4))',
@@ -51,6 +52,7 @@ function Card({ course }) {
 
 function DesktopCourses() {
   const courses = useCourses();
+  const isTablet = useIsTablet();
   return (
     <section style={{ background: '#0B0B0F', padding: '80px 0' }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', boxSizing: 'border-box' }}>
@@ -58,7 +60,7 @@ function DesktopCourses() {
           <span style={{ display: 'inline-block', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 14px', fontSize: '12px', color: '#FF2CA8', fontWeight: 500, marginBottom: '16px' }}>📚 Kurslarımız</span>
           <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: 0 }}>Peşəni seç,<br /><span style={{ color: '#FF2CA8' }}>karyerana başla</span></h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
           {courses.map(c => <Card key={c.id} course={c} />)}
         </div>
         <div style={{ textAlign: 'center', marginTop: '48px' }}>

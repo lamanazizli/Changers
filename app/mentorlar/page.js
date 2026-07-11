@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import useIsMobile from '../../lib/useIsMobile';
+import useIsTablet from '../../lib/useIsTablet';
 
 const mentorlar = [
   {
@@ -41,6 +42,7 @@ const mentorlar = [
 ];
 
 function DesktopMentorlar() {
+  const isTablet = useIsTablet();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Mentorlar" />
@@ -69,7 +71,7 @@ function DesktopMentorlar() {
       </section>
       <section style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : 'repeat(2, 1fr)', gap: '28px' }}>
             {mentorlar.map((m, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '32px', display: 'flex', gap: '28px' }}>
                 <div style={{ flexShrink: 0 }}>
