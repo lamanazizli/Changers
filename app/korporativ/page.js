@@ -150,7 +150,7 @@ function DesktopKorporativ() {
       </section>
       <section style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}><h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: 0 }}>Korporativ Üstünlüklər</h2></div>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}><h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: 0 }}>Korporativ üstünlüklər</h2></div>
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
             {c.benefits.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
@@ -165,7 +165,7 @@ function DesktopKorporativ() {
       <section style={{ background: '#13131A', padding: '80px 0' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>Şirkətiniz üçün Paket Seçin</h2>
+            <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 12px 0' }}>Şirkətiniz üçün paket seçin</h2>
             <p style={{ color: '#A0A0B0', fontSize: '15px', margin: 0 }}>Qiymət təklifi ehtiyaclarınıza uyğun hazırlanır — bizimlə əlaqə saxlayın.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : 'repeat(3, 1fr)', gap: '24px', alignItems: 'start' }}>
@@ -176,20 +176,20 @@ function DesktopKorporativ() {
       <section id="forma" style={{ padding: '80px 0' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Əməkdaşlıq üçün <span style={{ color: '#FF2CA8' }}>Müraciət Et</span></h2>
+            <h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Əməkdaşlıq üçün <span style={{ color: '#FF2CA8' }}>müraciət et</span></h2>
             <p style={{ color: '#A0A0B0', fontSize: '16px', margin: 0 }}>24 saat ərzində sizinlə əlaqə saxlayacağıq.</p>
           </div>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '20px', padding: '60px', textAlign: 'center' }}>
               <div style={{ marginBottom: '20px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={56} /></div>
-              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: 0 }}>Müraciətiniz Qəbul Edildi!</h3>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '28px', margin: 0 }}>Müraciətiniz qəbul edildi!</h3>
             </div>
           ) : (
             <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '20px', padding: '48px' }}>
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ŞİRKƏT ADI</label><input value={form.company} onChange={e => update('company', e.target.value)} placeholder="Şirkət adınız" required style={inp} /></div>
-                  <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ƏLAQƏ ŞƏXSİ</label><input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadınız" required style={inp} /></div>
+                  <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>ƏLAQƏLƏNDİRİCİ ŞƏXS</label><input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadınız" required style={inp} /></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>TELEFON</label><input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" required style={inp} /></div>
@@ -222,12 +222,12 @@ function MobileKorporativ() {
       <section style={{ background: '#0B0B0F', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 12px', marginBottom: '16px' }}>
-            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Building2 size={13} /> Korporativ Əməkdaşlıq</span>
+            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Building2 size={13} /> Korporativ əməkdaşlıq</span>
           </div>
           <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>{c.hero.title}</h1>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>{c.hero.subtitle}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət Et</a>
+            <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət et</a>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>WhatsApp</a>
           </div>
         </div>
@@ -244,7 +244,7 @@ function MobileKorporativ() {
       </section>
       <section style={{ padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
-          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 20px 0', textAlign: 'center' }}>Korporativ Üstünlüklər</h2>
+          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 20px 0', textAlign: 'center' }}>Korporativ üstünlüklər</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {c.benefits.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -257,7 +257,7 @@ function MobileKorporativ() {
       </section>
       <section style={{ background: '#13131A', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
-          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 6px 0', textAlign: 'center' }}>Şirkətiniz üçün Paket Seçin</h2>
+          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 6px 0', textAlign: 'center' }}>Şirkətiniz üçün paket seçin</h2>
           <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 20px 0', textAlign: 'center' }}>Qiymət təklifi ehtiyaclarınıza uyğun hazırlanır.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {c.packages.map((pkg, i) => <PackageCard key={i} pkg={pkg} compact={true} />)}
@@ -266,18 +266,18 @@ function MobileKorporativ() {
       </section>
       <section id="forma" style={{ padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
-          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 6px 0', textAlign: 'center' }}>Əməkdaşlıq üçün <span style={{ color: '#FF2CA8' }}>Müraciət Et</span></h2>
+          <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 6px 0', textAlign: 'center' }}>Əməkdaşlıq üçün <span style={{ color: '#FF2CA8' }}>müraciət et</span></h2>
           <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 20px 0', textAlign: 'center' }}>24 saat ərzində sizinlə əlaqə saxlayacağıq.</p>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '16px', padding: '32px 20px', textAlign: 'center' }}>
               <div style={{ marginBottom: '14px', color: '#00D68F', display: 'flex', justifyContent: 'center' }}><PartyPopper size={42} /></div>
-              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '18px', margin: 0 }}>Müraciətiniz Qəbul Edildi!</h3>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '18px', margin: 0 }}>Müraciətiniz qəbul edildi!</h3>
             </div>
           ) : (
             <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '16px', padding: '20px' }}>
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>ŞİRKƏT ADI</label><input value={form.company} onChange={e => update('company', e.target.value)} placeholder="Şirkət adınız" required style={inp} /></div>
-                <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>ƏLAQƏ ŞƏXSİ</label><input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadınız" required style={inp} /></div>
+                <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>ƏLAQƏLƏNDİRİCİ ŞƏXS</label><input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Ad Soyadınız" required style={inp} /></div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>TELEFON</label><input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" required style={inp} /></div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>EMAIL</label><input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@shirket.az" type="email" required style={inp} /></div>
                 <div>
