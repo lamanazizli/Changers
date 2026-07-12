@@ -30,10 +30,29 @@ export async function POST(request) {
 
 export async function PATCH(request) {
   try {
-    const { id, category, icon, color, title, description, duration, price, topics, is_active } = await request.json();
+    const body = await request.json();
+    const {
+      id, category, icon, color, title, description, duration, price, topics, is_active,
+      subtitle, about, skills, students, rating,
+      mentor_name, mentor_title, mentor_exp, mentor_initials, curriculum,
+    } = body;
+
     await pool.query(
-      'UPDATE site_courses SET category=$1,icon=$2,color=$3,title=$4,description=$5,duration=$6,price=$7,topics=$8,is_active=$9 WHERE id=$10',
-      [category, icon, color, title, description, duration, price, topics, is_active, id]
+      `UPDATE site_courses SET
+        category=COALESCE($1,category), icon=COALESCE($2,icon), color=COALESCE($3,color),
+        title=COALESCE($4,title), description=COALESCE($5,description), duration=COALESCE($6,duration),
+        price=COALESCE($7,price), topics=COALESCE($8,topics), is_active=COALESCE($9,is_active),
+        subtitle=COALESCE($10,subtitle), about=COALESCE($11,about), skills=COALESCE($12,skills),
+        students=COALESCE($13,students), rating=COALESCE($14,rating),
+        mentor_name=COALESCE($15,mentor_name), mentor_title=COALESCE($16,mentor_title),
+        mentor_exp=COALESCE($17,mentor_exp), mentor_initials=COALESCE($18,mentor_initials),
+        curriculum=COALESCE($19,curriculum)
+      WHERE id=$20`,
+      [category, icon, color, title, description, duration, price, topics, is_active,
+       subtitle, about, skills, students, rating,
+       mentor_name, mentor_title, mentor_exp, mentor_initials,
+       curriculum ? JSON.stringify(curriculum) : null,
+       id]
     );
     return Response.json({ success: true });
   } catch (error) {

@@ -3,6 +3,9 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { PartyPopper, ClipboardList, Check, Lock } from 'lucide-react';
+
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isValidPhone = (phone) => /^(\+994|0)(10|50|51|55|60|70|77|99)\d{7}$/.test(phone.replace(/[\s\-()]/g, ''));
 import useIsMobile from '../../lib/useIsMobile';
 
 const steps = [
@@ -24,8 +27,9 @@ const courses = [
 export default function QeydiyyatPage() {
   const isMobile = useIsMobile();
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState({ name: '', phone: '', email: '', course: '', message: '', howFound: '' });
+  const [form, setForm] = useState({ name: '', phone: '+994 ', email: '', course: '', message: '', howFound: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const update = (k, v) => setForm(f => ({ ...f, [k]: v }));
@@ -141,7 +145,8 @@ export default function QeydiyyatPage() {
                 </div>
                 <div>
                   <label style={labelStyle}>Email *</label>
-                  <input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@example.com" type="email" style={inputStyle} />
+                  <input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@example.com" type="email" style={{ ...inputStyle, border: form.email && !isValidEmail(form.email) ? '1px solid #FF4D4D' : inputStyle.border }} />
+                  {form.email && !isValidEmail(form.email) && <div style={{ color: '#FF4D4D', fontSize: '12px', marginTop: '6px' }}>Düzgün email daxil edin (məsələn: ad@example.com)</div>}
                 </div>
               </div>
             </div>
@@ -175,7 +180,12 @@ export default function QeydiyyatPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
                   <label style={labelStyle}>Telefon nömrəsi *</label>
-                  <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" style={inputStyle} />
+                  <input value={form.phone} onChange={e => {
+                    let v = e.target.value;
+                    if (!v.startsWith('+994')) v = '+994 ' + v.replace(/^\+994\s*/, '');
+                    update('phone', v);
+                  }} placeholder="+994 50 XXX XX XX" style={{ ...inputStyle, border: form.phone && !isValidPhone(form.phone) ? '1px solid #FF4D4D' : inputStyle.border }} />
+                  {form.phone && !isValidPhone(form.phone) && <div style={{ color: '#FF4D4D', fontSize: '12px', marginTop: '6px' }}>Düzgün nömrə daxil edin (məsələn: +994 50 123 45 67)</div>}
                 </div>
                 <div>
                   <label style={labelStyle}>Əlavə mesaj (opsional)</label>
@@ -229,14 +239,14 @@ export default function QeydiyyatPage() {
             <div style={{ flex: 1 }} />
             {step < 4 ? (
               <button onClick={() => setStep(s => s + 1)} disabled={
-                (step === 1 && (!form.name || !form.email)) ||
+                (step === 1 && (!form.name || !form.email || !isValidEmail(form.email))) ||
                 (step === 2 && !form.course) ||
-                (step === 3 && !form.phone)
+                (step === 3 && (!form.phone || !isValidPhone(form.phone)))
               } style={{
                 padding: '14px 32px', background: '#FF2CA8', border: 'none', borderRadius: '10px',
                 color: '#FFFFFF', fontSize: '15px', fontWeight: 700, cursor: 'pointer',
                 boxShadow: '0px 4px 16px rgba(255,44,168,0.45)',
-                opacity: (step === 1 && (!form.name || !form.email)) || (step === 2 && !form.course) || (step === 3 && !form.phone) ? 0.5 : 1,
+                opacity: (step === 1 && (!form.name || !form.email || !isValidEmail(form.email))) || (step === 2 && !form.course) || (step === 3 && (!form.phone || !isValidPhone(form.phone))) ? 0.5 : 1,
               }}>
                 İrəli →
               </button>

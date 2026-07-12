@@ -32,6 +32,15 @@ const PAGES_FIELDS = {
   kurslar: [
     { section: 'hero', key: 'title', label: 'Bashliq' },
     { section: 'hero', key: 'subtitle', label: 'Alt Bashliq' },
+    { section: 'hero', key: 'categories', label: 'Kateqoriyalar (vergulle ayirin: Hamisi,Tikinti,Digital Marketing)' },
+    { section: 'stats', key: 'stat1_value', label: 'Stat 1 Deyer (meselen 6+)' },
+    { section: 'stats', key: 'stat1_label', label: 'Stat 1 Ad (meselen Aktiv kurs)' },
+    { section: 'stats', key: 'stat2_value', label: 'Stat 2 Deyer (meselen 500+)' },
+    { section: 'stats', key: 'stat2_label', label: 'Stat 2 Ad (meselen Mezun)' },
+    { section: 'stats', key: 'stat3_value', label: 'Stat 3 Deyer (meselen 90%)' },
+    { section: 'stats', key: 'stat3_label', label: 'Stat 3 Ad (meselen Ise duzeldi)' },
+    { section: 'stats', key: 'stat4_value', label: 'Stat 4 Deyer (meselen 4.9)' },
+    { section: 'stats', key: 'stat4_label', label: 'Stat 4 Ad (meselen Ortalama reytinq)' },
   ],
   neticeler: [
     { section: 'hero', key: 'title1', label: 'Bashliq 1 (ag)' },
@@ -580,6 +589,74 @@ export default function AdminDashboard() {
                 ))}
                 <label style={s.label}>ACIQLAMASI</label>
                 <textarea value={formData.description || ''} onChange={e => setFormData(d => ({ ...d, description: e.target.value }))} placeholder="Kurs haqqında qısa məlumat..." rows={3} style={{ ...s.input }} />
+
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '20px 0 16px 0', paddingTop: '16px' }}>
+                  <div style={{ color: '#FF2CA8', fontSize: '13px', fontWeight: 700, marginBottom: '12px' }}>KURS DETAL SƏHİFƏSİ</div>
+                </div>
+
+                <label style={s.label}>ALT BAŞLIQ (kurs detal səhifəsində)</label>
+                <input value={formData.subtitle || ''} onChange={e => setFormData(d => ({ ...d, subtitle: e.target.value }))} placeholder="AutoCAD, Revit, BIM 360 ilə praktiki tədris" style={s.input} />
+
+                <label style={s.label}>KURS HAQQINDA (uzun mətn)</label>
+                <textarea value={formData.about || ''} onChange={e => setFormData(d => ({ ...d, about: e.target.value }))} placeholder="Bu kurs haqqında ətraflı izah..." rows={3} style={s.input} />
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div>
+                    <label style={s.label}>TƏLƏBƏ SAYI</label>
+                    <input value={formData.students || ''} onChange={e => setFormData(d => ({ ...d, students: e.target.value }))} placeholder="120+" style={s.input} />
+                  </div>
+                  <div>
+                    <label style={s.label}>REYTİNQ</label>
+                    <input value={formData.rating || ''} onChange={e => setFormData(d => ({ ...d, rating: e.target.value }))} placeholder="4.9" style={s.input} />
+                  </div>
+                </div>
+
+                <label style={s.label}>BACARIQLAR (vergüllə ayırın)</label>
+                <input value={formData.skills || ''} onChange={e => setFormData(d => ({ ...d, skills: e.target.value }))} placeholder="AutoCAD, Revit, BIM 360, Navisworks" style={s.input} />
+
+                <div style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 700, marginBottom: '8px', marginTop: '12px' }}>MENTOR MƏLUMATI</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div>
+                    <label style={s.label}>MENTOR ADI</label>
+                    <input value={formData.mentor_name || ''} onChange={e => setFormData(d => ({ ...d, mentor_name: e.target.value }))} placeholder="Elvin Məmmədov" style={s.input} />
+                  </div>
+                  <div>
+                    <label style={s.label}>BAŞ HƏRFLƏR</label>
+                    <input value={formData.mentor_initials || ''} onChange={e => setFormData(d => ({ ...d, mentor_initials: e.target.value }))} placeholder="EM" style={s.input} />
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div>
+                    <label style={s.label}>MENTOR VƏZİFƏSİ</label>
+                    <input value={formData.mentor_title || ''} onChange={e => setFormData(d => ({ ...d, mentor_title: e.target.value }))} placeholder="Senior BIM Manager" style={s.input} />
+                  </div>
+                  <div>
+                    <label style={s.label}>TƏCRÜBƏ</label>
+                    <input value={formData.mentor_exp || ''} onChange={e => setFormData(d => ({ ...d, mentor_exp: e.target.value }))} placeholder="8 il təcrübə" style={s.input} />
+                  </div>
+                </div>
+
+                <label style={s.label}>CURRICULUM (hər həftə YENİ SƏTIRDƏ, format: Həftə Adı | Mövzu1, Mövzu2, Mövzu3)</label>
+                <textarea
+                  value={(formData.curriculum || []).map(w => `${w.week} - ${w.title} | ${(w.topics || []).join(', ')}`).join('\n')}
+                  onChange={e => {
+                    const lines = e.target.value.split('\n').filter(Boolean);
+                    const parsed = lines.map((line, i) => {
+                      const [left, topicsStr] = line.split('|');
+                      const [week, ...titleParts] = (left || '').split(' - ');
+                      return {
+                        week: (week || `Hefte ${i + 1}`).trim(),
+                        title: titleParts.join(' - ').trim(),
+                        topics: (topicsStr || '').split(',').map(t => t.trim()).filter(Boolean),
+                      };
+                    });
+                    setFormData(d => ({ ...d, curriculum: parsed }));
+                  }}
+                  placeholder={"Hefte 1 - AutoCAD Esaslari | 2D cizim, Bloklar, Annotation\nHefte 2 - Revit Architecture | BIM konsepti, Walls, Sheet"}
+                  rows={5}
+                  style={{ ...s.input, fontFamily: 'monospace', fontSize: '12px' }}
+                />
+
                 <label style={s.label}>AKTIV STATUS</label>
                 <select value={formData.is_active === false ? 'false' : 'true'} onChange={e => setFormData(d => ({ ...d, is_active: e.target.value === 'true' }))} style={s.input}>
                   <option value="true">Aktiv ✓</option>

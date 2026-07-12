@@ -40,9 +40,8 @@ function Card({ course }) {
         <h3 style={{ fontWeight: 700, fontSize: '16px', color: '#FFFFFF', margin: '0 0 10px 0' }}>{course.title}</h3>
         <p style={{ fontSize: '12px', color: '#A0A0B0', lineHeight: 1.6, margin: '0 0 18px 0', flex: 1 }}>{course.description || course.desc}</p>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', margin: '0 0 14px 0' }} />
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '14px' }}>
           <span style={{ fontSize: '12px', color: '#A0A0B0', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><Clock size={13} /> {course.duration}</span>
-          <span style={{ fontSize: '14px', fontWeight: 700, color: '#FF2CA8' }}>{course.price}</span>
         </div>
         <Link href="/kurslar" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}>
           Ətraflı bax →
