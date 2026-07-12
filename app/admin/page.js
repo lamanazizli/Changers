@@ -60,6 +60,20 @@ const PAGES_FIELDS = {
     { section: 'contact', key: 'email', label: 'Email' },
     { section: 'contact', key: 'whatsapp', label: 'WhatsApp' },
   ],
+  korporativ: [
+    { section: 'hero', key: 'title', label: 'Bashliq (meselen Guclendirin)' },
+    { section: 'hero', key: 'subtitle', label: 'Alt Bashliq' },
+    { section: 'stats', key: 'stat1_value', label: 'Stat 1 Deyer (meselen 50+)' },
+    { section: 'stats', key: 'stat1_label', label: 'Stat 1 Ad (meselen Korporativ Musteri)' },
+    { section: 'stats', key: 'stat2_value', label: 'Stat 2 Deyer (meselen 500+)' },
+    { section: 'stats', key: 'stat2_label', label: 'Stat 2 Ad (meselen Hazirlanmis Kadr)' },
+    { section: 'stats', key: 'stat3_value', label: 'Stat 3 Deyer (meselen 10+)' },
+    { section: 'stats', key: 'stat3_label', label: 'Stat 3 Ad (meselen Sektor)' },
+    { section: 'stats', key: 'stat4_value', label: 'Stat 4 Deyer (meselen 4.9)' },
+    { section: 'stats', key: 'stat4_label', label: 'Stat 4 Ad (meselen Musteri Reytinqi)' },
+    { section: 'content', key: 'benefits', label: 'Ustunlukler (her setir: Bashliq | Aciqlama)', textarea: true, rows: 8 },
+    { section: 'content', key: 'packages', label: 'Paketler (her setir: Ad | xususiyyet1, xususiyyet2, xususiyyet3)', textarea: true, rows: 5 },
+  ],
   footer: [
     { section: 'main', key: 'tagline', label: 'Teqlayn' },
     { section: 'main', key: 'copyright', label: 'Copyright' },
@@ -631,14 +645,26 @@ export default function AdminDashboard() {
                 {(PAGES_FIELDS[activePage] || []).map((field, i) => (
                   <div key={i} style={s.card}>
                     <label style={s.label}>{field.label.toUpperCase()}</label>
-                    <input
-                      key={activePage + field.section + field.key + JSON.stringify(pagesContent[activePage])}
-                      defaultValue={pagesContent[activePage]?.[field.section]?.[field.key] || ''}
-                      onBlur={async (e) => {
-                        await saveContent(activePage, field.section, field.key, e.target.value);
-                      }}
-                      style={{ ...s.input, marginBottom: 0 }}
-                    />
+                    {field.textarea ? (
+                      <textarea
+                        key={activePage + field.section + field.key + JSON.stringify(pagesContent[activePage])}
+                        defaultValue={pagesContent[activePage]?.[field.section]?.[field.key] || ''}
+                        onBlur={async (e) => {
+                          await saveContent(activePage, field.section, field.key, e.target.value);
+                        }}
+                        rows={field.rows || 6}
+                        style={{ ...s.input, marginBottom: 0, fontFamily: 'monospace', fontSize: '12px' }}
+                      />
+                    ) : (
+                      <input
+                        key={activePage + field.section + field.key + JSON.stringify(pagesContent[activePage])}
+                        defaultValue={pagesContent[activePage]?.[field.section]?.[field.key] || ''}
+                        onBlur={async (e) => {
+                          await saveContent(activePage, field.section, field.key, e.target.value);
+                        }}
+                        style={{ ...s.input, marginBottom: 0 }}
+                      />
+                    )}
                   </div>
                 ))}
               </div>

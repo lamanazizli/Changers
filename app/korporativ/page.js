@@ -1,16 +1,75 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
 import { Target, BarChart3, Trophy, BookOpen, RefreshCw, Briefcase, PartyPopper, Building2 } from 'lucide-react';
 
-const packages = [
+const DEFAULT_BENEFITS = [
+  { icon: Target, title: 'Fərdi Sillabus', desc: 'Şirkətinizin ehtiyaclarına uyğun xüsusi tədris proqramı hazırlanır.' },
+  { icon: BarChart3, title: 'Hesabat Sistemi', desc: 'Həftəlik əməkdaş tərəqqisi hesabatı ilə nəticəni izləyin.' },
+  { icon: Trophy, title: 'Sertifikat', desc: 'Sektorda tanınan rəsmi Changers Academy sertifikatı verilir.' },
+  { icon: BookOpen, title: 'Ayrıca Mentor', desc: 'Hər korporativ müştəriyə ayrıca mentor təyin edilir.' },
+  { icon: RefreshCw, title: 'Çevik Format', desc: 'Offline, online və ya hibrid format seçimi sizin üçündür.' },
+  { icon: Briefcase, title: 'HR Dəstəyi', desc: 'Tədris sonrası kadr yerləşdirilməsində köməklik edilir.' },
+];
+
+const BENEFIT_ICONS = [Target, BarChart3, Trophy, BookOpen, RefreshCw, Briefcase];
+
+const DEFAULT_PACKAGES = [
   { name: 'Başlanğıc', color: '#7B2FFF', features: ['5 əməkdaşa qədər təlim', 'BIM & AutoCAD kursu', 'Aylıq hesabat', 'Online format', 'Sertifikat'] },
   { name: 'Korporativ', color: '#FF2CA8', popular: true, features: ['15 əməkdaşa qədər təlim', '3 kurs seçimi', 'Həftəlik hesabat', 'Offline + Online', 'Sertifikat + Portfolio', 'Mentor dəstəyi'] },
   { name: 'Enterprise', color: '#00D68F', features: ['Limitsiz əməkdaş', 'Bütün kurslar', 'Günlük hesabat', 'Offline + Online', 'Ayrıca mentor', 'Fərdi sillabus'] },
 ];
+
+const PACKAGE_COLORS = ['#7B2FFF', '#FF2CA8', '#00D68F', '#FFB800', '#2D7DD2'];
+
+function parseBenefits(raw) {
+  if (!raw || !raw.trim()) return DEFAULT_BENEFITS;
+  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  return lines.map((line, i) => {
+    const [title, desc] = line.split('|').map(s => (s || '').trim());
+    return { icon: BENEFIT_ICONS[i % BENEFIT_ICONS.length], title: title || '', desc: desc || '' };
+  });
+}
+
+function parsePackages(raw) {
+  if (!raw || !raw.trim()) return DEFAULT_PACKAGES;
+  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  return lines.map((line, i) => {
+    const [name, featuresStr] = line.split('|').map(s => (s || '').trim());
+    return {
+      name: name || '',
+      color: PACKAGE_COLORS[i % PACKAGE_COLORS.length],
+      popular: i === 1,
+      features: (featuresStr || '').split(',').map(f => f.trim()).filter(Boolean),
+    };
+  });
+}
+
+function usePageContent() {
+  const [c, setC] = useState({
+    hero: { title: 'Gücləndirin', subtitle: 'Şirkətinizin əməkdaşlarına praktiki təlim verin. Real layihələr, sertifikat, nəticə.' },
+    stats: { stat1_value: '50+', stat1_label: 'Korporativ Müştəri', stat2_value: '500+', stat2_label: 'Hazırlanmış Kadr', stat3_value: '10+', stat3_label: 'Sektor', stat4_value: '4.9', stat4_label: 'Müştəri Reytinqi' },
+    content: { benefits: '', packages: '' },
+  });
+  useEffect(() => {
+    fetch('/api/content?page=korporativ')
+      .then(r => r.json())
+      .then(data => { if (data.content) setC(prev => ({
+        hero: { ...prev.hero, ...data.content.hero },
+        stats: { ...prev.stats, ...data.content.stats },
+        content: { ...prev.content, ...data.content.content },
+      })); })
+      .catch(() => {});
+  }, []);
+
+  const benefits = parseBenefits(c.content.benefits);
+  const packages = parsePackages(c.content.packages);
+
+  return { ...c, benefits, packages };
+}
 
 function useForm() {
   const [form, setForm] = useState({ company: '', name: '', phone: '', email: '', employees: '', message: '' });
@@ -62,6 +121,7 @@ function PackageCard({ pkg, compact }) {
 function DesktopKorporativ() {
   const { form, update, sent, loading, handleSubmit } = useForm();
   const isTablet = useIsTablet();
+  const c = usePageContent();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Korporativ" />
@@ -70,10 +130,8 @@ function DesktopKorporativ() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Building2 size={14} /> Korporativ Əməkdaşlıq</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
-            Komandanızı<br /><span style={{ color: '#FF2CA8' }}>Gücləndirin</span>
-          </h1>
-          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0', maxWidth: '600px' }}>Şirkətinizin əməkdaşlarına praktiki təlim verin. Real layihələr, sertifikat, nəticə.</p>
+          <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>{c.hero.title}</h1>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0', maxWidth: '600px' }}>{c.hero.subtitle}</p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Müraciət Et</a>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px' }}>WhatsApp</a>
@@ -82,7 +140,7 @@ function DesktopKorporativ() {
       </section>
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-          {[{ v: '50+', l: 'Korporativ Müştəri' }, { v: '500+', l: 'Hazırlanmış Kadr' }, { v: '10+', l: 'Sektor' }, { v: '4.9', l: 'Müştəri Reytinqi' }].map((s, i) => (
+          {[{ v: c.stats.stat1_value, l: c.stats.stat1_label }, { v: c.stats.stat2_value, l: c.stats.stat2_label }, { v: c.stats.stat3_value, l: c.stats.stat3_label }, { v: c.stats.stat4_value, l: c.stats.stat4_label }].map((s, i) => (
             <div key={i} style={{ padding: '36px 0', textAlign: 'center' }}>
               <div style={{ fontWeight: 700, fontSize: '36px', color: '#FF2CA8' }}>{s.v}</div>
               <div style={{ fontSize: '13px', color: '#A0A0B0', marginTop: '6px' }}>{s.l}</div>
@@ -94,14 +152,7 @@ function DesktopKorporativ() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}><h2 style={{ fontWeight: 700, fontSize: '40px', color: '#FFFFFF', margin: 0 }}>Korporativ Üstünlüklər</h2></div>
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: '24px' }}>
-            {[
-              { icon: Target, title: 'Fərdi Sillabus', desc: 'Şirkətinizin ehtiyaclarına uyğun xüsusi tədris proqramı hazırlanır.' },
-              { icon: BarChart3, title: 'Hesabat Sistemi', desc: 'Həftəlik əməkdaş tərəqqisi hesabatı ilə nəticəni izləyin.' },
-              { icon: Trophy, title: 'Sertifikat', desc: 'Sektorda tanınan rəsmi Changers Academy sertifikatı verilir.' },
-              { icon: BookOpen, title: 'Ayrıca Mentor', desc: 'Hər korporativ müştəriyə ayrıca mentor təyin edilir.' },
-              { icon: RefreshCw, title: 'Çevik Format', desc: 'Offline, online və ya hibrid format seçimi sizin üçündür.' },
-              { icon: Briefcase, title: 'HR Dəstəyi', desc: 'Tədris sonrası kadr yerləşdirilməsində köməklik edilir.' },
-            ].map((f, i) => (
+            {c.benefits.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '32px 24px' }}>
                 <div style={{ marginBottom: '16px', color: '#FF2CA8' }}><f.icon size={32} /></div>
                 <h3 style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0' }}>{f.title}</h3>
@@ -118,7 +169,7 @@ function DesktopKorporativ() {
             <p style={{ color: '#A0A0B0', fontSize: '15px', margin: 0 }}>Qiymət təklifi ehtiyaclarınıza uyğun hazırlanır — bizimlə əlaqə saxlayın.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : 'repeat(3, 1fr)', gap: '24px', alignItems: 'start' }}>
-            {packages.map((pkg, i) => <PackageCard key={i} pkg={pkg} compact={false} />)}
+            {c.packages.map((pkg, i) => <PackageCard key={i} pkg={pkg} compact={false} />)}
           </div>
         </div>
       </section>
@@ -164,6 +215,7 @@ function DesktopKorporativ() {
 
 function MobileKorporativ() {
   const { form, update, sent, loading, handleSubmit } = useForm();
+  const c = usePageContent();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'clip' }}>
       <Navbar activePage="Korporativ" />
@@ -172,10 +224,8 @@ function MobileKorporativ() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 12px', marginBottom: '16px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Building2 size={13} /> Korporativ Əməkdaşlıq</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>
-            Komandanızı<br /><span style={{ color: '#FF2CA8' }}>Gücləndirin</span>
-          </h1>
-          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>Şirkətinizin əməkdaşlarına praktiki təlim verin.</p>
+          <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>{c.hero.title}</h1>
+          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>{c.hero.subtitle}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət Et</a>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>WhatsApp</a>
@@ -184,7 +234,7 @@ function MobileKorporativ() {
       </section>
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {[{ v: '50+', l: 'Korporativ Müştəri' }, { v: '500+', l: 'Hazırlanmış Kadr' }, { v: '10+', l: 'Sektor' }, { v: '4.9', l: 'Reytinq' }].map((s, i) => (
+          {[{ v: c.stats.stat1_value, l: c.stats.stat1_label }, { v: c.stats.stat2_value, l: c.stats.stat2_label }, { v: c.stats.stat3_value, l: c.stats.stat3_label }, { v: c.stats.stat4_value, l: c.stats.stat4_label }].map((s, i) => (
             <div key={i} style={{ padding: '18px 0', textAlign: 'center' }}>
               <div style={{ fontWeight: 700, fontSize: '20px', color: '#FF2CA8' }}>{s.v}</div>
               <div style={{ fontSize: '11px', color: '#A0A0B0', marginTop: '4px' }}>{s.l}</div>
@@ -196,14 +246,7 @@ function MobileKorporativ() {
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
           <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 20px 0', textAlign: 'center' }}>Korporativ Üstünlüklər</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-              { icon: Target, title: 'Fərdi Sillabus', desc: 'Şirkətin ehtiyaclarına uyğun xüsusi tədris.' },
-              { icon: BarChart3, title: 'Hesabat Sistemi', desc: 'Həftəlik tərəqqi hesabatı.' },
-              { icon: Trophy, title: 'Sertifikat', desc: 'Rəsmi Changers Academy sertifikatı.' },
-              { icon: BookOpen, title: 'Ayrıca Mentor', desc: 'Hər müştəriyə ayrıca mentor.' },
-              { icon: RefreshCw, title: 'Çevik Format', desc: 'Offline, online və ya hibrid.' },
-              { icon: Briefcase, title: 'HR Dəstəyi', desc: 'Kadr yerləşdirilməsində köməklik.' },
-            ].map((f, i) => (
+            {c.benefits.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{ flexShrink: 0, color: '#FF2CA8' }}><f.icon size={24} /></div>
                 <div><h3 style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 700, margin: '0 0 3px 0' }}>{f.title}</h3><p style={{ color: '#A0A0B0', fontSize: '12px', lineHeight: 1.5, margin: 0 }}>{f.desc}</p></div>
@@ -217,7 +260,7 @@ function MobileKorporativ() {
           <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 6px 0', textAlign: 'center' }}>Şirkətiniz üçün Paket Seçin</h2>
           <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 20px 0', textAlign: 'center' }}>Qiymət təklifi ehtiyaclarınıza uyğun hazırlanır.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {packages.map((pkg, i) => <PackageCard key={i} pkg={pkg} compact={true} />)}
+            {c.packages.map((pkg, i) => <PackageCard key={i} pkg={pkg} compact={true} />)}
           </div>
         </div>
       </section>
