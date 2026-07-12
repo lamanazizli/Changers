@@ -76,7 +76,7 @@ function DesktopCourseDetail({ course }) {
                 ))}
               </div>
               <div style={{ display: 'flex', gap: '16px' }}>
-                <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>Indi Qeydiyyatdan Kec →</Link>
+                <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
                 <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
               </div>
             </div>
@@ -91,8 +91,8 @@ function DesktopCourseDetail({ course }) {
                   </div>
                 ))}
               </div>
-              <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px', borderRadius: '10px' }}>Qeydiyyatdan Kec →</Link>
-              <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px', marginTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><Lock size={13} /> Odenis taminatimiz var</div>
+              <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
+              <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px', marginTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><Lock size={13} /> Ödəniş təminatımız mövcuddur</div>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ function DesktopCourseDetail({ course }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {course.skills.length > 0 && (
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px' }}>
-                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', margin: '0 0 20px 0' }}>Oyrenecekleriniz</h3>
+                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', margin: '0 0 20px 0' }}>Öyrənəcəklərin</h3>
                 {course.skills.map((skill, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
                     <div style={{ width: '20px', height: '20px', background: 'rgba(255,44,168,0.15)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', fontSize: '9px', flexShrink: 0 }}>✓</div>
@@ -143,7 +143,7 @@ function DesktopCourseDetail({ course }) {
             )}
             {course.mentor.name && course.mentor.name !== 'Changers Academy' && (
               <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px' }}>
-                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', margin: '0 0 20px 0' }}>Mentor</h3>
+                <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px', margin: '0 0 20px 0' }}>Müəllim</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.3))', border: '2px solid rgba(255,44,168,0.4)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 700, fontSize: '18px', flexShrink: 0 }}>{course.mentor.initials}</div>
                   <div>
@@ -156,9 +156,9 @@ function DesktopCourseDetail({ course }) {
             )}
             <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '16px', padding: '24px', textAlign: 'center' }}>
               <div style={{ marginBottom: '12px', color: '#FF2CA8' }}><GraduationCap size={22} /></div>
-              <p style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 600, margin: '0 0 8px 0' }}>Hala sualin var?</p>
-              <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0' }}>Pulsuz konsultasiya al</p>
-              <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ile Yaz</a>
+              <p style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 600, margin: '0 0 8px 0' }}>Hələ də sualın var?</p>
+              <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0' }}>Ödənişsiz konsultasiyaya gəl</p>
+              <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ function MobileCourseDetail({ course }) {
                 </div>
               ))}
             </div>
-            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan Keç →</Link>
+            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
           </div>
           <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}><MessageCircle size={16} /> WhatsApp</a>
         </div>
@@ -217,7 +217,7 @@ function MobileCourseDetail({ course }) {
             <div style={{ marginBottom: '32px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                 <div style={{ width: '30px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-                <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 600 }}>CURRICULUM</span>
+                <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 600 }}>Tədris planı</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {course.curriculum.map((week, i) => (
@@ -236,7 +236,7 @@ function MobileCourseDetail({ course }) {
           )}
           {course.skills.length > 0 && (
             <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '18px', marginBottom: '16px' }}>
-              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', margin: '0 0 14px 0' }}>Öyrənəcəkləriniz</h3>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', margin: '0 0 14px 0' }}>Öyrənəcəklərin</h3>
               {course.skills.map((skill, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                   <div style={{ width: '18px', height: '18px', background: 'rgba(255,44,168,0.15)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', fontSize: '8px', flexShrink: 0 }}>✓</div>
@@ -247,7 +247,7 @@ function MobileCourseDetail({ course }) {
           )}
           {course.mentor.name && course.mentor.name !== 'Changers Academy' && (
             <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '18px', marginBottom: '16px' }}>
-              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', margin: '0 0 14px 0' }}>Mentor</h3>
+              <h3 style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px', margin: '0 0 14px 0' }}>Müəllim</h3>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ width: '48px', height: '48px', background: 'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.3))', border: '2px solid rgba(255,44,168,0.4)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', flexShrink: 0 }}>{course.mentor.initials}</div>
                 <div>
@@ -260,9 +260,9 @@ function MobileCourseDetail({ course }) {
           )}
           <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '14px', padding: '20px', textAlign: 'center' }}>
             <div style={{ marginBottom: '10px', color: '#FF2CA8' }}><GraduationCap size={20} /></div>
-            <p style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 600, margin: '0 0 6px 0' }}>Hala sualin var?</p>
-            <p style={{ color: '#A0A0B0', fontSize: '11px', margin: '0 0 14px 0' }}>Pulsuz konsultasiya al</p>
-            <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ile Yaz</a>
+            <p style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 600, margin: '0 0 6px 0' }}>Hələ də sualın var?</p>
+            <p style={{ color: '#A0A0B0', fontSize: '11px', margin: '0 0 14px 0' }}>Ödənişsiz konsultasiyaya gəl</p>
+            <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
           </div>
         </div>
       </section>
