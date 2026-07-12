@@ -38,11 +38,19 @@ export async function POST(request) {
     } else if (type === 'mentor' && id) {
       await pool.query('UPDATE site_mentors SET image=$1 WHERE id=$2', [imagePath, id]);
     } else if (type === 'banner') {
-      const result = await pool.query(
-        'INSERT INTO site_banners (image, link, title) VALUES ($1,$2,$3) RETURNING *',
-        [imagePath, link || '/kurslar', title || '']
-      );
-      return Response.json({ success: true, path: imagePath, banner: result.rows[0] });
+      if (id) {
+        const result = await pool.query(
+          'UPDATE site_banners SET image=$1 WHERE id=$2 RETURNING *',
+          [imagePath, id]
+        );
+        return Response.json({ success: true, path: imagePath, banner: result.rows[0] });
+      } else {
+        const result = await pool.query(
+          'INSERT INTO site_banners (image, link, title) VALUES ($1,$2,$3) RETURNING *',
+          [imagePath, link || '/kurslar', title || '']
+        );
+        return Response.json({ success: true, path: imagePath, banner: result.rows[0] });
+      }
     }
 
     return Response.json({ success: true, path: imagePath });

@@ -141,7 +141,7 @@ function MobileKurslar() {
   const c = usePageContent();
   const { categories, active, setActive, filtered } = useCategoryFilter(c.hero.categories, courses);
   return (
-    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
+    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'clip' }}>
       <Navbar activePage="Kurslar" />
       <section style={{ background: '#0B0B0F', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>

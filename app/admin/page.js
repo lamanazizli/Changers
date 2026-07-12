@@ -7,7 +7,7 @@ const TABS = [
   { id: 'home', label: 'Ana Sehife', icon: '🏠' },
   { id: 'banners', label: 'Bannerler', icon: '🖼' },
   { id: 'courses', label: 'Kurslar', icon: '📚' },
-  { id: 'mentors', label: 'Mentorlar', icon: '👨‍🏫' },
+  { id: 'mentors', label: 'Müəllimlər', icon: '👨‍🏫' },
   { id: 'students', label: 'Telebeler', icon: '🎓' },
   { id: 'pages', label: 'Sehifeler', icon: '📄' },
 ];
@@ -73,6 +73,7 @@ export default function AdminDashboard() {
   const [courses, setCourses] = useState([]);
   const [banners, setBanners] = useState([]);
   const [bannerLink, setBannerLink] = useState('/kurslar');
+  const [editingBanner, setEditingBanner] = useState(null);
   const [bannerTitle, setBannerTitle] = useState('');
   const [mentors, setMentors] = useState([]);
   const [students, setStudents] = useState([]);
@@ -416,20 +417,61 @@ export default function AdminDashboard() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
                 {banners.map(banner => (
                   <div key={banner.id} style={s.card}>
-                    <div style={{ borderRadius: '8px', overflow: 'hidden', height: '160px', marginBottom: '10px', background: 'rgba(255,255,255,0.04)' }}>
+                    <div style={{ borderRadius: '8px', overflow: 'hidden', height: '160px', marginBottom: '10px', background: 'rgba(255,255,255,0.04)', position: 'relative' }}>
                       <img src={banner.image} alt={banner.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <label style={{ position: 'absolute', bottom: '6px', right: '6px', background: 'rgba(0,0,0,0.7)', color: '#FFFFFF', fontSize: '11px', padding: '4px 8px', borderRadius: '6px', cursor: 'pointer' }}>
+                        📷 Sekli deyis
+                        <input type="file" accept="image/*" style={{ display: 'none' }} onChange={async (e) => {
+                          const file = e.target.files[0];
+                          if (!file) return;
+                          const fd = new FormData();
+                          fd.append('file', file);
+                          fd.append('type', 'banner');
+                          fd.append('id', banner.id);
+                          const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+                          const data = await res.json();
+                          if (data.success) fetchData();
+                        }} />
+                      </label>
                     </div>
-                    <p style={{ color: '#FFFFFF', fontSize: '13px', margin: '0 0 4px 0' }}>{banner.title || '(başlıqsız)'}</p>
-                    <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 12px 0' }}>🔗 {banner.link} · Sıra: {banner.sort_order}</p>
+
+                    {editingBanner === banner.id ? (
+                      <div style={{ marginBottom: '10px' }}>
+                        <label style={s.label}>LINK</label>
+                        <input defaultValue={banner.link} id={`link-${banner.id}`} style={{ ...s.input, marginBottom: '8px' }} />
+                        <label style={s.label}>BASHLIQ</label>
+                        <input defaultValue={banner.title} id={`title-${banner.id}`} style={{ ...s.input, marginBottom: '8px' }} />
+                        <div style={{ display: 'flex', gap: '6px' }}>
+                          <button onClick={async () => {
+                            const link = document.getElementById(`link-${banner.id}`).value;
+                            const title = document.getElementById(`title-${banner.id}`).value;
+                            await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, link, title }) });
+                            setEditingBanner(null);
+                            fetchData();
+                          }} style={{ ...s.btn, flex: 1 }}>Yadda saxla</button>
+                          <button onClick={() => setEditingBanner(null)} style={{ ...s.btn, background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: '#A0A0B0', flex: 1 }}>Legv et</button>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <p style={{ color: '#FFFFFF', fontSize: '13px', margin: '0 0 4px 0' }}>{banner.title || '(basliqsiz)'}</p>
+                        <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 12px 0' }}>{banner.link} · Sira: {banner.sort_order}</p>
+                      </>
+                    )}
+
                     <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
                       <button onClick={async () => {
                         await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, sort_order: (banner.sort_order || 0) - 1 }) });
                         fetchData();
-                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↑ Yuxarı</button>
+                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↑ Yuxari</button>
                       <button onClick={async () => {
                         await fetch('/api/admin/banners', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: banner.id, sort_order: (banner.sort_order || 0) + 1 }) });
                         fetchData();
-                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↓ Aşağı</button>
+                      }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↓ Asagi</button>
+                    </div>
+                    <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+                      <button onClick={() => setEditingBanner(banner.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', flex: 1 }}>Deyis</button>
+                      <button onClick={() => handleDelete('banners', banner.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', flex: 1 }}>Sil</button>
                     </div>
                     <div style={{ display: 'flex', gap: '6px' }}>
                       <button onClick={async () => {
@@ -438,7 +480,6 @@ export default function AdminDashboard() {
                       }} style={{ ...s.btn, background: banner.is_active ? 'rgba(0,214,143,0.15)' : 'rgba(160,160,176,0.15)', color: banner.is_active ? '#00D68F' : '#A0A0B0', border: 'none', flex: 1 }}>
                         {banner.is_active ? '✓ Aktiv' : '✗ Deaktiv'}
                       </button>
-                      <button onClick={() => handleDelete('banners', banner.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)' }}>Sil</button>
                     </div>
                   </div>
                 ))}

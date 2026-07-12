@@ -138,7 +138,7 @@ function DesktopElaqe() {
 function MobileElaqe() {
   const { form, update, sent, loading, handleSubmit } = useContactForm();
   return (
-    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
+    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'clip' }}>
       <Navbar activePage="Əlaqə" />
       <section style={{ padding: '32px 0 24px' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>

@@ -188,7 +188,7 @@ function DesktopHR() {
 function MobileHR() {
   const { form, update, sent, loading, handleSubmit, selectedField, setSelectedField } = useHRForm();
   return (
-    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
+    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'clip' }}>
       <Navbar />
       <section style={{ padding: '40px 0', textAlign: 'center' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>

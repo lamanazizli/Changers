@@ -6,7 +6,7 @@ const navLinks = [
   { href: '/', label: 'Ana Səhifə' },
   { href: '/kurslar', label: 'Kurslar' },
   { href: '/neticeler', label: 'Tələbələr' },
-  { href: '/mentorlar', label: 'Mentorlar' },
+  { href: '/mentorlar', label: 'Müəllimlər' },
   { href: '/elaqe', label: 'Əlaqə' },
   { href: '/korporativ', label: 'Korporativ' },
 ];

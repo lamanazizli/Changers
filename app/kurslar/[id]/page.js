@@ -158,7 +158,7 @@ function DesktopCourseDetail({ course }) {
 
 function MobileCourseDetail({ course }) {
   return (
-    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
+    <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'clip' }}>
       <Navbar activePage="Kurslar" />
       <section style={{ position: 'relative', overflow: 'hidden', padding: '20px 0 32px' }}>
         <div style={{ position: 'absolute', inset: 0, background: course.gradient, opacity: 0.15 }} />

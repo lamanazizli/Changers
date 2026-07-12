@@ -33,7 +33,7 @@ export default function Footer() {
     { label: 'Ana Səhifə', href: '/' },
     { label: 'Kurslar', href: '/kurslar' },
     { label: 'Tələbələr', href: '/neticeler' },
-    { label: 'Mentorlar', href: '/mentorlar' },
+    { label: 'Müəllimlər', href: '/mentorlar' },
     { label: 'Əlaqə', href: '/elaqe' },
     { label: 'Korporativ', href: '/korporativ' },
   ];
