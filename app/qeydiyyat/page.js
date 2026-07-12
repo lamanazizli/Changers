@@ -82,7 +82,7 @@ export default function QeydiyyatPage() {
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <a href="/" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>Ana Səhifə</a>
-            <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>WhatsApp</a>
+            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '10px' }}>WhatsApp</a>
           </div>
         </section>
         <Footer />

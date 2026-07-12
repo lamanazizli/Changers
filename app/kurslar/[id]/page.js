@@ -33,8 +33,8 @@ function useCourse(params) {
           title: found.title || '',
           subtitle: found.subtitle || found.description || '',
           duration: found.duration || '',
-          students: found.students || '—',
-          rating: found.rating || '—',
+          students: found.students || '',
+          rating: found.rating || '',
           gradient: GRADIENTS[found.id % GRADIENTS.length],
           about: found.about || found.description || '',
           curriculum: Array.isArray(found.curriculum) ? found.curriculum : [],
@@ -57,43 +57,31 @@ function DesktopCourseDetail({ course }) {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Kurslar" />
-      <section style={{ position: 'relative', overflow: 'hidden', padding: '80px 0' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: '48px 0 40px' }}>
         <div style={{ position: 'absolute', inset: 0, background: course.gradient, opacity: 0.15 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(11,11,15,0.5) 0%, rgba(11,11,15,0.95) 100%)' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', gap: '60px', alignItems: 'flex-start' }}>
-            <div style={{ flex: 1 }}>
-              <span style={{ background: course.color, color: '#fff', fontSize: '11px', fontWeight: 700, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px', display: 'inline-flex', alignItems: 'center' }}>
-                {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={13} style={{ marginRight: '4px' }} />; })()}{course.category}
-              </span>
-              <h1 style={{ fontWeight: 700, fontSize: '48px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>{course.title}</h1>
-              <p style={{ fontSize: '17px', color: '#A0A0B0', margin: '0 0 32px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
-              <div style={{ display: 'flex', gap: '24px', marginBottom: '40px', flexWrap: 'wrap' }}>
-                {[{ icon: Clock, label: course.duration }, { icon: Users, label: course.students + ' telebe' }, { icon: Star, label: course.rating + ' reytinq' }].map((s, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.06)', padding: '8px 16px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <s.icon size={14} /><span style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 500 }}>{s.label}</span>
-                  </div>
-                ))}
+          <span style={{ background: course.color, color: '#fff', fontSize: '11px', fontWeight: 700, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px', display: 'inline-flex', alignItems: 'center' }}>
+            {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={13} style={{ marginRight: '4px' }} />; })()}{course.category}
+          </span>
+          <h1 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 14px 0', lineHeight: 1.1 }}>{course.title}</h1>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 28px 0', lineHeight: 1.6, maxWidth: '600px' }}>{course.subtitle}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '28px' }}>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
+            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap' }}>
+            {[
+              course.duration && { value: course.duration, label: 'Kurs müddəti' },
+              course.curriculum.length > 0 && { value: course.curriculum.length + '+', label: 'Tədris bloku' },
+              course.skills.length > 0 && { value: course.skills.length + '+', label: 'Bacarıq' },
+              course.rating && { value: course.rating, label: 'Reytinq' },
+            ].filter(Boolean).slice(0, 4).map((stat, i) => (
+              <div key={i}>
+                <span style={{ fontSize: '20px', fontWeight: 700, color: '#FF2CA8' }}>{stat.value}</span>
+                <span style={{ fontSize: '13px', color: '#A0A0B0', marginLeft: '8px' }}>{stat.label}</span>
               </div>
-              <div style={{ display: 'flex', gap: '16px' }}>
-                <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
-                <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
-              </div>
-            </div>
-            <div style={{ background: '#13131A', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '20px', padding: '32px', minWidth: '300px', flexShrink: 0 }}>
-              <div style={{ fontSize: '32px', fontWeight: 700, color: '#FF2CA8', marginBottom: '4px' }}>{course.duration}</div>
-              <div style={{ fontSize: '13px', color: '#A0A0B0', marginBottom: '28px' }}>kurs müddəti</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-                {['Intensiv praktiki kurs', 'Real layihe portfeli', 'Mentor desteyi', 'Resmi sertifikat', 'Is tapma desteyi', 'Omurboyu materiallara giriş'].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '18px', height: '18px', background: 'rgba(255,44,168,0.15)', border: '1px solid rgba(255,44,168,0.4)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', fontSize: '9px', flexShrink: 0 }}>✓</div>
-                    <span style={{ color: '#FFFFFF', fontSize: '13px' }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
-              <div style={{ textAlign: 'center', color: '#A0A0B0', fontSize: '12px', marginTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><Lock size={13} /> Ödəniş təminatımız mövcuddur</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -155,10 +143,10 @@ function DesktopCourseDetail({ course }) {
               </div>
             )}
             <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '16px', padding: '24px', textAlign: 'center' }}>
-              <div style={{ marginBottom: '12px', color: '#FF2CA8' }}><GraduationCap size={22} /></div>
+              <div style={{ marginBottom: '12px', color: '#FF2CA8', display: 'flex', justifyContent: 'center' }}><GraduationCap size={22} /></div>
               <p style={{ color: '#FFFFFF', fontSize: '14px', fontWeight: 600, margin: '0 0 8px 0' }}>Hələ də sualın var?</p>
               <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0' }}>Ödənişsiz konsultasiyaya gəl</p>
-              <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
+              <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
             </div>
           </div>
         </div>
@@ -172,36 +160,32 @@ function MobileCourseDetail({ course }) {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
       <Navbar activePage="Kurslar" />
-      <section style={{ position: 'relative', overflow: 'hidden', padding: '24px 0 32px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', padding: '20px 0 32px' }}>
         <div style={{ position: 'absolute', inset: 0, background: course.gradient, opacity: 0.15 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(11,11,15,0.5) 0%, rgba(11,11,15,0.95) 100%)' }} />
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box', position: 'relative', zIndex: 1 }}>
           <span style={{ background: course.color, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '4px 12px', borderRadius: '100px', marginBottom: '14px', display: 'inline-flex', alignItems: 'center' }}>
             {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={13} style={{ marginRight: '4px' }} />; })()}{course.category}
           </span>
-          <h1 style={{ fontWeight: 700, fontSize: '24px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.2 }}>{course.title}</h1>
-          <p style={{ fontSize: '14px', color: '#A0A0B0', margin: '0 0 20px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', flexWrap: 'wrap' }}>
-            {[{ icon: Clock, label: course.duration }, { icon: Users, label: course.students }, { icon: Star, label: course.rating }].map((s, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.06)', padding: '6px 12px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <s.icon size={13} /><span style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 500 }}>{s.label}</span>
+          <h1 style={{ fontWeight: 700, fontSize: '22px', color: '#FFFFFF', margin: '0 0 10px 0', lineHeight: 1.2 }}>{course.title}</h1>
+          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 20px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
+            <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}><MessageCircle size={16} /> WhatsApp</a>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+            {[
+              course.duration && { value: course.duration, label: 'Kurs müddəti' },
+              course.curriculum.length > 0 && { value: course.curriculum.length + '+', label: 'Tədris bloku' },
+              course.skills.length > 0 && { value: course.skills.length + '+', label: 'Bacarıq' },
+              course.rating && { value: course.rating, label: 'Reytinq' },
+            ].filter(Boolean).slice(0, 4).map((stat, i) => (
+              <div key={i}>
+                <span style={{ fontSize: '16px', fontWeight: 700, color: '#FF2CA8' }}>{stat.value}</span>
+                <span style={{ fontSize: '11px', color: '#A0A0B0', marginLeft: '6px' }}>{stat.label}</span>
               </div>
             ))}
           </div>
-          <div style={{ background: '#13131A', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '16px', padding: '20px', marginBottom: '20px' }}>
-            <div style={{ fontSize: '24px', fontWeight: 700, color: '#FF2CA8', marginBottom: '4px' }}>{course.duration}</div>
-            <div style={{ fontSize: '12px', color: '#A0A0B0', marginBottom: '16px' }}>kurs müddəti</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '18px' }}>
-              {['Intensiv praktiki kurs', 'Real layihe portfeli', 'Mentor desteyi', 'Rəsmi sertifikat'].map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <div style={{ width: '16px', height: '16px', background: 'rgba(255,44,168,0.15)', border: '1px solid rgba(255,44,168,0.4)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF2CA8', fontSize: '8px', flexShrink: 0 }}>✓</div>
-                  <span style={{ color: '#FFFFFF', fontSize: '12px' }}>{item}</span>
-                </div>
-              ))}
-            </div>
-            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
-          </div>
-          <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}><MessageCircle size={16} /> WhatsApp</a>
         </div>
       </section>
       <section style={{ padding: '32px 0' }}>
@@ -259,10 +243,10 @@ function MobileCourseDetail({ course }) {
             </div>
           )}
           <div style={{ background: 'rgba(255,44,168,0.08)', border: '1px solid rgba(255,44,168,0.25)', borderRadius: '14px', padding: '20px', textAlign: 'center' }}>
-            <div style={{ marginBottom: '10px', color: '#FF2CA8' }}><GraduationCap size={20} /></div>
+            <div style={{ marginBottom: '10px', color: '#FF2CA8', display: 'flex', justifyContent: 'center' }}><GraduationCap size={20} /></div>
             <p style={{ color: '#FFFFFF', fontSize: '13px', fontWeight: 600, margin: '0 0 6px 0' }}>Hələ də sualın var?</p>
             <p style={{ color: '#A0A0B0', fontSize: '11px', margin: '0 0 14px 0' }}>Ödənişsiz konsultasiyaya gəl</p>
-            <a href="https://wa.me/994000000000" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
+            <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', padding: '12px', borderRadius: '8px' }}><MessageCircle size={14} /> WhatsApp ilə əlaqə</a>
           </div>
         </div>
       </section>

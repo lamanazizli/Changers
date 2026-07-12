@@ -4,32 +4,58 @@ import Footer from '../../components/Footer';
 import Link from 'next/link';
 import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
+import { useState, useEffect } from 'react';
 import { Trophy, Star, Briefcase, Clock, Building2, MessageCircle } from 'lucide-react';
 
-const telebeler = [
-  { initials: 'AM', name: 'Ayten M.', color: '#FF2CA8', course: 'Digital Marketing', rating: 5, evvel: 'SMM bilgisi yox idi', indi: 'Freelance musteri tapdi', quote: '4 heftede SMM mutexessisi oldum. Changers menim karyeramı tamamilə deyisdi!', company: 'Freelance', salary: '+800 AZN/ay' },
-  { initials: 'RE', name: 'Rauf E.', color: '#7B2FFF', course: 'BIM & Tikinti', rating: 5, evvel: 'Insaat fehilesi idi', indi: 'BIM menecer oldu', quote: 'Revit oyrendim, 2 ay sonra BIM menecer kimi ise dusdum.', company: 'Tikinti Sirketi', salary: '+1200 AZN/ay' },
-  { initials: 'NH', name: 'Nermin H.', color: '#00D68F', course: 'Daxili Dizayn', rating: 5, evvel: 'Evdar xanim idi', indi: '3D dizayner oldu', quote: 'Portfolio-m ilk hefteden musteri celb etdi. Artiq oz studiyam var!', company: 'Oz Studiyasi', salary: '+1500 AZN/ay' },
-  { initials: 'KM', name: 'Kamran M.', color: '#FFB800', course: 'Digital Marketing', rating: 5, evvel: 'Satici idi', indi: 'Marketing manager oldu', quote: 'Google Ads ve Meta Ads oyrendim. Ilk ayda 3 musteri tapdim.', company: 'Marketing Agency', salary: '+900 AZN/ay' },
-  { initials: 'LH', name: 'Leyla H.', color: '#FF2CA8', course: 'Arxitektura & BIM', rating: 5, evvel: 'Teze mezun idi', indi: 'Arxitekt kimi isleyir', quote: 'Kurs bitenden 2 hefte sonra muesseseye qebul olundum.', company: 'Arxitektura Burosu', salary: '+1000 AZN/ay' },
-  { initials: 'TA', name: 'Tural A.', color: '#7B2FFF', course: 'AutoCAD & Revit', rating: 5, evvel: 'Texniki ressam idi', indi: 'BIM spesialisti oldu', quote: 'AutoCAD-dan Revit-e kecidim ve karyeramda boyuk ireli addim atdim.', company: 'Muhendislik Sirketi', salary: '+1100 AZN/ay' },
-];
+function usePageContent() {
+  const [c, setC] = useState({
+    hero: { title1: 'Real Insanlar.', title2: 'Real Neticeler.', subtitle: 'Her kes oz hekayesini yazdi — sifirdan mutexessise.' },
+  });
+  useEffect(() => {
+    fetch('/api/content?page=neticeler')
+      .then(r => r.json())
+      .then(data => { if (data.content) setC(prev => ({ hero: { ...prev.hero, ...data.content.hero } })); })
+      .catch(() => {});
+  }, []);
+  return c;
+}
+
+function useStudents() {
+  const [students, setStudents] = useState([]);
+  useEffect(() => {
+    fetch('/api/admin/students')
+      .then(r => r.json())
+      .then(data => {
+        if (data.students) {
+          setStudents(data.students.filter(s => s.is_active !== false).map(s => ({
+            initials: s.initials, name: s.name, color: s.color || '#FF2CA8',
+            course: s.course, rating: s.rating || 5,
+            evvel: s.before_text, indi: s.after_text, quote: s.quote,
+            company: s.company, salary: s.salary,
+          })));
+        }
+      })
+      .catch(() => {});
+  }, []);
+  return students;
+}
 
 function DesktopTelebeler() {
   const isTablet = useIsTablet();
+  const telebeler = useStudents();
+  const c = usePageContent();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
-      <Navbar activePage="Telebeler" />
-      <section style={{ position: 'relative', padding: '80px 0 60px', overflow: 'hidden' }}>
-        
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-            <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>MEZUNLARIMIZIN HEKAYELER</span>
+      <Navbar activePage="Tələbələr" />
+      <section style={{ background: '#0B0B0F', padding: '80px 0 60px' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
+            <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Trophy size={14} /> Məzunlarımızın hekayələri</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FFFFFF', margin: '0 0 8px 0', lineHeight: 1.05 }}>Real Insanlar.</h1>
-          <h1 style={{ fontWeight: 700, fontSize: '72px', color: '#FF2CA8', margin: '0 0 24px 0', lineHeight: 1.05 }}>Real Neticeler.</h1>
-          <p style={{ fontSize: '18px', color: '#A0A0B0', margin: 0, maxWidth: '600px' }}>Her kes oz hekayesini yazdi — sifirdan mutexessise.</p>
+          <h1 style={{ fontWeight: 700, fontSize: '56px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>
+            {c.hero.title1}<br /><span style={{ color: '#FF2CA8' }}>{c.hero.title2}</span>
+          </h1>
+          <p style={{ fontSize: '16px', color: '#A0A0B0', margin: 0, maxWidth: '600px' }}>{c.hero.subtitle}</p>
         </div>
       </section>
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
@@ -58,7 +84,7 @@ function DesktopTelebeler() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexShrink: 0 }}>
               <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', textAlign: 'center', display: 'block' }}>Namizəd Tap →</Link>
-              <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: 'transparent', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '14px', padding: '14px 32px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={16} /> WhatsApp ile Yaz</a>
+              <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: 'transparent', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '14px', padding: '14px 32px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={16} /> WhatsApp ile Yaz</a>
             </div>
           </div>
         </div>
@@ -120,18 +146,20 @@ function DesktopTelebeler() {
 }
 
 function MobileTelebeler() {
+  const telebeler = useStudents();
+  const c = usePageContent();
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
-      <Navbar activePage="Telebeler" />
-      <section style={{ padding: '40px 0 24px' }}>
+      <Navbar activePage="Tələbələr" />
+      <section style={{ background: '#0B0B0F', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <div style={{ width: '30px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 600 }}>MƏZUNLARIMIZIN HEKAYƏLƏRİ</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 12px', marginBottom: '16px' }}>
+            <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><Trophy size={13} /> Məzunlarımızın hekayələri</span>
           </div>
-          <h1 style={{ fontWeight: 700, fontSize: '28px', color: '#FFFFFF', margin: '0 0 4px 0', lineHeight: 1.15 }}>Real İnsanlar.</h1>
-          <h1 style={{ fontWeight: 700, fontSize: '28px', color: '#FF2CA8', margin: '0 0 12px 0', lineHeight: 1.15 }}>Real Nəticələr.</h1>
-          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: 0 }}>Hər kəs öz hekayəsini yazdı — sıfırdan mütəxəssisə.</p>
+          <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>
+            {c.hero.title1}<br /><span style={{ color: '#FF2CA8' }}>{c.hero.title2}</span>
+          </h1>
+          <p style={{ fontSize: '13px', color: '#A0A0B0', margin: 0 }}>{c.hero.subtitle}</p>
         </div>
       </section>
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
@@ -155,7 +183,7 @@ function MobileTelebeler() {
             <p style={{ color: '#A0A0B0', fontSize: '13px', margin: '0 0 16px 0', lineHeight: 1.6 }}>500+ sertifikatlı məzun arasından doğru namizədi tapırıq.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center' }}>Namizəd Tap →</Link>
-              <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={14} /> WhatsApp ilə yaz</a>
+              <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={14} /> WhatsApp ilə yaz</a>
             </div>
           </div>
         </div>

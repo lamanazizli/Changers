@@ -8,6 +8,7 @@ const TABS = [
   { id: 'banners', label: 'Bannerler', icon: '🖼' },
   { id: 'courses', label: 'Kurslar', icon: '📚' },
   { id: 'mentors', label: 'Mentorlar', icon: '👨‍🏫' },
+  { id: 'students', label: 'Telebeler', icon: '🎓' },
   { id: 'pages', label: 'Sehifeler', icon: '📄' },
 ];
 
@@ -74,6 +75,7 @@ export default function AdminDashboard() {
   const [bannerLink, setBannerLink] = useState('/kurslar');
   const [bannerTitle, setBannerTitle] = useState('');
   const [mentors, setMentors] = useState([]);
+  const [students, setStudents] = useState([]);
   const [homeContent, setHomeContent] = useState({});
   const [pagesContent, setPagesContent] = useState({});
   const [activePage, setActivePage] = useState('kurslar');
@@ -113,6 +115,10 @@ export default function AdminDashboard() {
         const res = await fetch('/api/admin/mentors');
         const data = await res.json();
         setMentors(data.mentors || []);
+      } else if (tab === 'students') {
+        const res = await fetch('/api/admin/students');
+        const data = await res.json();
+        setStudents(data.students || []);
       } else if (tab === 'pages') {
         const res = await fetch('/api/content?page=' + activePage);
         const data = await res.json();
@@ -143,6 +149,7 @@ export default function AdminDashboard() {
       courses: '/api/admin/courses',
       mentors: '/api/admin/mentors',
       banners: '/api/admin/banners',
+      students: '/api/admin/students',
     };
     await fetch(endpoints[type], {
       method: 'DELETE',
@@ -162,7 +169,7 @@ export default function AdminDashboard() {
   };
 
   const handleSave = async () => {
-    const endpoints = { courses: '/api/admin/courses', mentors: '/api/admin/mentors' };
+    const endpoints = { courses: '/api/admin/courses', mentors: '/api/admin/mentors', students: '/api/admin/students' };
     const method = formData.id ? 'PATCH' : 'POST';
     await fetch(endpoints[modal], {
       method,
@@ -242,7 +249,7 @@ export default function AdminDashboard() {
             </div>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
               {saveMsg && <span style={{ color: '#00D68F', fontSize: '13px', fontWeight: 600 }}>{saveMsg}</span>}
-              {(tab === 'courses' || tab === 'mentors') && (
+              {(tab === 'courses' || tab === 'mentors' || tab === 'students') && (
                 <button onClick={() => { setFormData({}); setModal(tab); }} style={s.btn}>+ Yeni Elave Et</button>
               )}
             </div>
@@ -521,6 +528,44 @@ export default function AdminDashboard() {
             </div>
           )}
 
+          {/* === STUDENTS === */}
+          {!loading && tab === 'students' && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
+              {students.map(student => (
+                <div key={student.id} style={s.card}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ width: '44px', height: '44px', background: student.color || '#FF2CA8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>
+                        {student.initials}
+                      </div>
+                      <div>
+                        <div style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px' }}>{student.name}</div>
+                        <div style={{ color: '#FF2CA8', fontSize: '11px', marginTop: '2px' }}>{student.course}</div>
+                      </div>
+                    </div>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: student.is_active !== false ? '#00D68F' : '#A0A0B0', display: 'inline-block', marginTop: '6px' }} />
+                  </div>
+                  <p style={{ color: '#A0A0B0', fontSize: '12px', fontStyle: 'italic', margin: '0 0 12px 0', lineHeight: 1.5 }}>"{student.quote}"</p>
+                  <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                    <span style={{ flex: 1, background: 'rgba(255,255,255,0.04)', fontSize: '11px', color: '#A0A0B0', padding: '6px 10px', borderRadius: '6px' }}>Əvvəl: {student.before_text}</span>
+                    <span style={{ flex: 1, background: 'rgba(0,214,143,0.06)', fontSize: '11px', color: '#00D68F', padding: '6px 10px', borderRadius: '6px' }}>İndi: {student.after_text}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '10px' }}>
+                    <div>
+                      <span style={{ color: '#A0A0B0', fontSize: '11px' }}>{student.company}</span>
+                      <span style={{ color: '#00D68F', fontSize: '11px', fontWeight: 700, marginLeft: '8px' }}>{student.salary}</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      <button onClick={() => { setFormData(student); setModal('students'); }} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', padding: '6px 10px', fontSize: '12px' }}>Dəyiş</button>
+                      <button onClick={() => handleDelete('students', student.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', padding: '6px 10px', fontSize: '12px' }}>Sil</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {students.length === 0 && <div style={{ color: '#A0A0B0', gridColumn: '1/-1', textAlign: 'center', padding: '40px' }}>Tələbə tapılmadı</div>}
+            </div>
+          )}
+
           {/* === PAGES === */}
           {!loading && tab === 'pages' && (
             <div>
@@ -685,6 +730,34 @@ export default function AdminDashboard() {
                 ))}
                 <label style={s.label}>BİO</label>
                 <textarea value={formData.bio || ''} onChange={e => setFormData(d => ({ ...d, bio: e.target.value }))} placeholder="Mentor haqqında məlumat..." rows={3} style={s.input} />
+              </>
+            )}
+
+            {modal === 'students' && (
+              <>
+                {[
+                  { key: 'name', placeholder: 'Aygün M.', label: 'AD SOYAD' },
+                  { key: 'initials', placeholder: 'AM', label: 'BAŞ HƏRFLƏR (2)' },
+                  { key: 'color', placeholder: '#FF2CA8', label: 'RƏNG (hex)' },
+                  { key: 'course', placeholder: 'Digital Marketing', label: 'KURS' },
+                  { key: 'rating', placeholder: '5', label: 'REYTİNQ (1-5)' },
+                  { key: 'before_text', placeholder: 'SMM bilgisi yox idi', label: 'ƏVVƏL' },
+                  { key: 'after_text', placeholder: 'Freelance müştəri tapdı', label: 'İNDİ' },
+                  { key: 'company', placeholder: 'Freelance', label: 'ŞİRKƏT' },
+                  { key: 'salary', placeholder: '+800 AZN/ay', label: 'MAAŞ ARTIMI' },
+                ].map(f => (
+                  <div key={f.key}>
+                    <label style={s.label}>{f.label}</label>
+                    <input value={formData[f.key] || ''} onChange={e => setFormData(d => ({ ...d, [f.key]: e.target.value }))} placeholder={f.placeholder} style={s.input} />
+                  </div>
+                ))}
+                <label style={s.label}>SİTAT (uğur hekayəsi)</label>
+                <textarea value={formData.quote || ''} onChange={e => setFormData(d => ({ ...d, quote: e.target.value }))} placeholder="4 həftədə SMM mütəxəssisi oldum..." rows={3} style={s.input} />
+                <label style={s.label}>AKTIV STATUS</label>
+                <select value={formData.is_active === false ? 'false' : 'true'} onChange={e => setFormData(d => ({ ...d, is_active: e.target.value === 'true' }))} style={s.input}>
+                  <option value="true">Aktiv ✓</option>
+                  <option value="false">Deaktiv ✗</option>
+                </select>
               </>
             )}
 

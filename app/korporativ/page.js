@@ -51,7 +51,7 @@ function DesktopKorporativ() {
           <p style={{ fontSize: '18px', color: '#A0A0B0', margin: '0 auto 48px', maxWidth: '600px' }}>Sirketinizin emekdaslarina praktiki telim verin.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
             <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Muraciet Et</a>
-            <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px' }}>WhatsApp</a>
+            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px' }}>WhatsApp</a>
           </div>
         </div>
       </section>
@@ -161,7 +161,7 @@ function MobileKorporativ() {
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>Şirkətinizin əməkdaşlarına praktiki təlim verin.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət Et</a>
-            <a href="https://wa.me/994000000000" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>WhatsApp</a>
+            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>WhatsApp</a>
           </div>
         </div>
       </section>

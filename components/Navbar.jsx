@@ -5,7 +5,7 @@ import Link from 'next/link';
 const navLinks = [
   { href: '/', label: 'Ana Səhifə' },
   { href: '/kurslar', label: 'Kurslar' },
-  { href: '/neticeler', label: 'Telebeler' },
+  { href: '/neticeler', label: 'Tələbələr' },
   { href: '/mentorlar', label: 'Mentorlar' },
   { href: '/elaqe', label: 'Əlaqə' },
   { href: '/korporativ', label: 'Korporativ' },
