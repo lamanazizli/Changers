@@ -47,8 +47,8 @@ function DesktopMentorlar() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Mentorlar" />
-      <section style={{ position: 'relative', padding: '100px 0 80px', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: '50%', top: 0, transform: 'translateX(-50%)', width: '800px', height: '500px', background: 'radial-gradient(circle, rgba(123,47,255,0.15) 0%, rgba(255,44,168,0.08) 40%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', padding: '80px 0 60px', overflow: 'hidden' }}>
+        
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />

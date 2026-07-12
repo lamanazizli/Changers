@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
 import { Clock, BookOpen } from 'lucide-react';
+import { getCategoryIcon } from '../../lib/categoryIcon';
 
 const categories = ['Hamısı', 'Tikinti', 'Digital Marketing', 'Daxili Dizayn', 'Arxitektura', 'BIM & AutoCAD'];
 const GRADIENTS = [
@@ -33,8 +34,8 @@ function CourseCard({ course }) {
       <Link href={'/kurslar/' + course.id} style={{ position: 'absolute', inset: 0, zIndex: 1 }} />
       <div style={{ height: '180px', background: course.image ? '#000' : GRADIENTS[course.id % GRADIENTS.length], position: 'relative', overflow: 'hidden' }}>
         {course.image && <img src={course.image} alt={course.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
-        <span style={{ position: 'absolute', top: '16px', left: '16px', background: course.color || '#FF2CA8', color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px' }}>
-          {course.icon} {course.category}
+        <span style={{ position: 'absolute', top: '16px', left: '16px', background: course.color || '#FF2CA8', color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}>
+          {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} />; })()}{course.category}
         </span>
       </div>
       <div style={{ padding: '20px' }}>
@@ -61,7 +62,7 @@ function DesktopKurslar() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Kurslar" />
-      <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '80px 0 60px' }}>
+      <section style={{ background: '#0B0B0F', padding: '80px 0 60px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={14} /> Bütün kurslar</span>
@@ -113,7 +114,7 @@ function MobileKurslar() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
       <Navbar activePage="Kurslar" />
-      <section style={{ background: 'linear-gradient(180deg, rgba(123,47,255,0.15) 0%, rgba(11,11,15,0) 100%)', padding: '32px 0' }}>
+      <section style={{ background: '#0B0B0F', padding: '32px 0' }}>
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '6px 12px', marginBottom: '16px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '11px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}><BookOpen size={14} /> Bütün kurslar</span>

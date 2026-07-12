@@ -59,7 +59,6 @@ function DesktopElaqe() {
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar activePage="Əlaqə" />
       <section style={{ position: 'relative', padding: '80px 0 60px', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: '50%', top: 0, transform: 'translateX(-50%)', width: '700px', height: '400px', background: 'radial-gradient(circle, rgba(255,44,168,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />

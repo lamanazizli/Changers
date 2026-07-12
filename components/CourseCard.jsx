@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Clock, BookOpen } from 'lucide-react';
+import { getCategoryIcon } from '../lib/categoryIcon';
 import useIsMobile from '../lib/useIsMobile';
 import useIsTablet from '../lib/useIsTablet';
 
@@ -31,8 +32,8 @@ function Card({ course }) {
     <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,44,168,0.2)', borderRadius: '16px', overflow: 'hidden', display: 'flex', flexDirection: 'column', width: '100%', boxSizing: 'border-box' }}>
       <div style={{ width: '100%', height: '180px', flexShrink: 0, position: 'relative', overflow: 'hidden', background: course.image ? '#000' : (GRADIENTS[course.id % GRADIENTS.length]) }}>
         {course.image && <img src={course.image} alt={course.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
-        <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 1, background: course.color || '#FF2CA8', color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px' }}>
-          {course.icon} {course.category}
+        <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 1, background: course.color || '#FF2CA8', color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}>
+          {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} />; })()}{course.category}
         </span>
       </div>
       <div style={{ padding: '18px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>

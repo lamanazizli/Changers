@@ -41,8 +41,8 @@ function DesktopKorporativ() {
   return (
     <main style={{ background: '#0B0B0F', minHeight: '100vh' }}>
       <Navbar />
-      <section style={{ position: 'relative', padding: '100px 0 80px', overflow: 'hidden', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', left: '50%', top: 0, transform: 'translateX(-50%)', width: '800px', height: '500px', background: 'radial-gradient(circle, rgba(123,47,255,0.2), rgba(255,44,168,0.1) 40%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', padding: '80px 0 60px', overflow: 'hidden', textAlign: 'center' }}>
+        
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,44,168,0.1)', border: '1px solid rgba(255,44,168,0.3)', borderRadius: '100px', padding: '8px 16px', marginBottom: '24px' }}>
             <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 500 }}>Korporativ Emekdasliq</span>
