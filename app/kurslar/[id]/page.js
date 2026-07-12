@@ -111,7 +111,7 @@ function DesktopCourseDetail({ course }) {
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
                   <div style={{ width: '40px', height: '3px', background: '#FF2CA8', borderRadius: '2px' }} />
-                  <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>CURRICULUM</span>
+                  <span style={{ color: '#FF2CA8', fontSize: '12px', fontWeight: 600, letterSpacing: '2px' }}>Tədris planı</span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {course.curriculum.map((week, i) => (
