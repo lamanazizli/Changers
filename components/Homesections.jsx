@@ -53,7 +53,7 @@ function DesktopSections() {
           <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: '24px' }}>
             {features.map((f, i) => (
               <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: '28px', textAlign: 'center' }}>
-                <div style={{ marginBottom: '12px', color: '#FF2CA8' }}><f.icon size={32} /></div>
+                <div style={{ marginBottom: '12px', color: '#FF2CA8', display: 'flex', justifyContent: 'center' }}><f.icon size={32} /></div>
                 <div style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>{f.title}</div>
                 <div style={{ color: '#A0A0B0', fontSize: '13px', lineHeight: 1.4 }}>{f.desc}</div>
               </div>

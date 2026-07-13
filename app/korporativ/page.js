@@ -227,8 +227,8 @@ function MobileKorporativ() {
           <h1 style={{ fontWeight: 700, fontSize: '30px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.15 }}>{c.hero.title}</h1>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>{c.hero.subtitle}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <a href="#forma" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət et</a>
-            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>WhatsApp</a>
+            <a href="#forma" style={{ textDecoration: 'none', textAlign: 'center', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Müraciət et</a>
+            <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', textAlign: 'center', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>WhatsApp</a>
           </div>
         </div>
       </section>
