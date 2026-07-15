@@ -6,6 +6,7 @@ import Link from 'next/link';
 import useIsMobile from '../../../lib/useIsMobile';
 import { Clock, Users, Star, Lock, GraduationCap, MessageCircle } from 'lucide-react';
 import { getCategoryIcon } from '../../../lib/categoryIcon';
+import { getCategoryColor } from '../../../lib/categoryColor';
 
 const GRADIENTS = [
   'linear-gradient(135deg, rgba(255,44,168,0.4), rgba(123,47,255,0.5))',
@@ -61,13 +62,13 @@ function DesktopCourseDetail({ course }) {
         <div style={{ position: 'absolute', inset: 0, background: course.gradient, opacity: 0.15 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(11,11,15,0.5) 0%, rgba(11,11,15,0.95) 100%)' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 80px', position: 'relative', zIndex: 1 }}>
-          <span style={{ background: course.color, color: '#fff', fontSize: '11px', fontWeight: 700, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px', display: 'inline-flex', alignItems: 'center' }}>
+          <span style={{ background: getCategoryColor(course.category), color: '#fff', fontSize: '11px', fontWeight: 700, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px', display: 'inline-flex', alignItems: 'center' }}>
             {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={13} style={{ marginRight: '4px' }} />; })()}{course.category}
           </span>
           <h1 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 14px 0', lineHeight: 1.1 }}>{course.title}</h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 28px 0', lineHeight: 1.6, maxWidth: '600px' }}>{course.subtitle}</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '28px' }}>
-            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç</Link>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 24px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap' }}>
@@ -164,13 +165,13 @@ function MobileCourseDetail({ course }) {
         <div style={{ position: 'absolute', inset: 0, background: course.gradient, opacity: 0.15 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(11,11,15,0.5) 0%, rgba(11,11,15,0.95) 100%)' }} />
         <div style={{ width: '100%', padding: '0 16px', boxSizing: 'border-box', position: 'relative', zIndex: 1 }}>
-          <span style={{ background: course.color, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '4px 12px', borderRadius: '100px', marginBottom: '14px', display: 'inline-flex', alignItems: 'center' }}>
+          <span style={{ background: getCategoryColor(course.category), color: '#fff', fontSize: '10px', fontWeight: 700, padding: '4px 12px', borderRadius: '100px', marginBottom: '14px', display: 'inline-flex', alignItems: 'center' }}>
             {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={13} style={{ marginRight: '4px' }} />; })()}{course.category}
           </span>
           <h1 style={{ fontWeight: 700, fontSize: '22px', color: '#FFFFFF', margin: '0 0 10px 0', lineHeight: 1.2 }}>{course.title}</h1>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 20px 0', lineHeight: 1.6 }}>{course.subtitle}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
-            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç →</Link>
+            <Link href="/qeydiyyat" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>İndi Qeydiyyatdan keç</Link>
             <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}><MessageCircle size={16} /> WhatsApp</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>

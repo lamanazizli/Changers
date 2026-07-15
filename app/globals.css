@@ -38,3 +38,20 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Hover lift effects */
+.btn-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255,44,168,0.35);
+}
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+  border-color: rgba(255,44,168,0.4) !important;
+}

@@ -73,7 +73,7 @@ function DesktopHR() {
           </h1>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0', maxWidth: '600px' }}>Changers Academy məzunları praktiki hazırlıqlı, sertifikatlı mütəxəssislərdir.</p>
           <div style={{ display: 'flex', gap: '16px' }}>
-            <a href="#forma" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Namizəd Tap →</a>
+            <a href="#forma" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Namizəd Tap</a>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '15px', padding: '16px 28px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
           </div>
         </div>
@@ -174,7 +174,7 @@ function DesktopHR() {
                   </div>
                 </div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>TƏLƏBLƏR</label><textarea value={form.requirements} onChange={e => update('requirements', e.target.value)} placeholder="Namizəddən gözlədiklərinizi yazın..." rows={4} style={{ ...inp, resize: 'vertical' }} /></div>
-                <button type="submit" disabled={loading} style={{ background: '#00D68F', color: '#0B0B0F', border: 'none', borderRadius: '10px', padding: '18px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilir...' : 'Namizəd Tap →'}</button>
+                <button type="submit" disabled={loading} style={{ background: '#00D68F', color: '#0B0B0F', border: 'none', borderRadius: '10px', padding: '18px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilir...' : 'Namizəd Tap'}</button>
                 <div style={{ textAlign: 'center', color: '#00D68F', fontSize: '13px' }}>İlk namizəd yerləşdirməsi tamamilə ödənişsizdir</div>
               </form>
             </div>
@@ -201,7 +201,7 @@ function MobileHR() {
           </h1>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 24px 0' }}>Changers məzunları praktiki hazırlıqlı, sertifikatlıdır.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <a href="#forma" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Namizəd Tap →</a>
+            <a href="#forma" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Namizəd Tap</a>
             <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: '#25D366', color: '#FFFFFF', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}><MessageCircle size={16} /> WhatsApp</a>
           </div>
         </div>
@@ -293,7 +293,7 @@ function MobileHR() {
                   </select>
                 </div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>TƏLƏBLƏR</label><textarea value={form.requirements} onChange={e => update('requirements', e.target.value)} placeholder="Namizəddən gözlədiklərinizi yazın..." rows={4} style={{ ...inp, resize: 'vertical' }} /></div>
-                <button type="submit" disabled={loading} style={{ background: '#00D68F', color: '#0B0B0F', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilir...' : 'Namizəd Tap →'}</button>
+                <button type="submit" disabled={loading} style={{ background: '#00D68F', color: '#0B0B0F', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilir...' : 'Namizəd Tap'}</button>
                 <div style={{ textAlign: 'center', color: '#00D68F', fontSize: '12px' }}>İlk namizəd yerləşdirməsi pulsuzdur</div>
               </form>
             </div>

@@ -104,7 +104,7 @@ function DesktopMuellimler() {
           <h2 style={{ fontWeight: 700, fontSize: '44px', color: '#FFFFFF', margin: '0 0 16px 0' }}>Ekspert müəllimlərlə <span style={{ color: '#FF2CA8' }}>birbaşa işlə!</span></h2>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 36px 0' }}>Sualların var? Ödənişsiz konsultasiya al.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>Qeydiyyatdan keç</Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>Kurslara bax</Link>
           </div>
         </div>
@@ -171,7 +171,7 @@ function MobileMuellimler() {
           <h2 style={{ fontWeight: 700, fontSize: '22px', color: '#FFFFFF', margin: '0 0 12px 0' }}>Ekspert müəllimlərlə <span style={{ color: '#FF2CA8' }}>birbaşa işlə!</span></h2>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 20px 0' }}>Ödənişsiz konsultasiya al.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan keç →</Link>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Qeydiyyatdan keç</Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Kurslara bax</Link>
           </div>
         </div>

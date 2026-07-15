@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { PartyPopper, ClipboardList, Check, Lock } from 'lucide-react';
@@ -15,17 +15,22 @@ const steps = [
   { num: 4, label: 'Təsdiq' },
 ];
 
-const courses = [
-  'BIM & Tikinti Idarəetmesi',
-  'Digital Marketing & SMM Pro',
-  'Interior Design & 3D Viz',
-  'Arxitektura & BIM',
-  'AutoCAD & Revit Master',
-  'E-Commerce & Dropshipping',
-];
+function useCourses() {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    fetch('/api/admin/courses')
+      .then(r => r.json())
+      .then(data => {
+        if (data.courses) setCourses(data.courses.filter(c => c.is_active !== false).map(c => c.title));
+      })
+      .catch(() => {});
+  }, []);
+  return courses;
+}
 
 export default function QeydiyyatPage() {
   const isMobile = useIsMobile();
+  const courses = useCourses();
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({ name: '', phone: '+994 ', email: '', course: '', message: '', howFound: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -248,11 +253,11 @@ export default function QeydiyyatPage() {
                 boxShadow: '0px 4px 16px rgba(255,44,168,0.45)',
                 opacity: (step === 1 && (!form.name || !form.email || !isValidEmail(form.email))) || (step === 2 && !form.course) || (step === 3 && (!form.phone || !isValidPhone(form.phone))) ? 0.5 : 1,
               }}>
-                İrəli →
+                İrəli
               </button>
             ) : (
               <button onClick={handleSubmit} disabled={loading} style={{ padding: '14px 32px', background: '#FF2CA8', border: 'none', borderRadius: '10px', color: '#FFFFFF', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0px 4px 16px rgba(255,44,168,0.45)' }}>
-                {loading ? 'Gonderilib...' : 'Müraciəti göndər →'}
+                {loading ? 'Gonderilib...' : 'Müraciəti göndər'}
               </button>
             )}
           </div>

@@ -87,7 +87,7 @@ function DesktopElaqe() {
             <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#25D366', borderRadius: '14px', padding: '20px 24px', textDecoration: 'none' }}>
               <MessageCircle size={26} color="#FFFFFF" />
               <div><div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '16px' }}>WhatsApp ilə yaz</div><div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', marginTop: '2px' }}>Sürətli cavab al</div></div>
-              <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '20px' }}>→</span>
+              <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '20px' }}></span>
             </a>
           </div>
           <div>
@@ -107,7 +107,7 @@ function DesktopElaqe() {
                   </div>
                   <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>EMAIL</label><input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@example.com" type="email" style={inputStyle} /></div>
                   <div><label style={{ color: '#A0A0B0', fontSize: '12px', fontWeight: 600, display: 'block', marginBottom: '8px' }}>MESAJINIZ *</label><textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Sualınızı yazın..." required rows={5} style={{ ...inputStyle, resize: 'vertical' }} /></div>
-                  <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilib...' : 'Mesaj Göndər →'}</button>
+                  <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '16px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilib...' : 'Mesaj Göndər'}</button>
                 </form>
               </div>
             )}
@@ -168,7 +168,7 @@ function MobileElaqe() {
           <a href="https://wa.me/994102557555" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#25D366', borderRadius: '12px', padding: '16px', textDecoration: 'none', marginBottom: '24px' }}>
             <MessageCircle size={20} color="#FFFFFF" />
             <div><div style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '14px' }}>WhatsApp ilə yaz</div></div>
-            <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '16px' }}>→</span>
+            <span style={{ color: '#FFFFFF', marginLeft: 'auto', fontSize: '16px' }}></span>
           </a>
           {sent ? (
             <div style={{ background: 'rgba(0,214,143,0.08)', border: '1px solid rgba(0,214,143,0.3)', borderRadius: '16px', padding: '28px 20px', textAlign: 'center' }}>
@@ -184,7 +184,7 @@ function MobileElaqe() {
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>TELEFON *</label><input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="+994 50 XXX XX XX" required style={inputStyle} /></div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>EMAIL</label><input value={form.email} onChange={e => update('email', e.target.value)} placeholder="email@example.com" type="email" style={inputStyle} /></div>
                 <div><label style={{ color: '#A0A0B0', fontSize: '11px', fontWeight: 600, display: 'block', marginBottom: '6px' }}>MESAJINIZ *</label><textarea value={form.message} onChange={e => update('message', e.target.value)} placeholder="Sualınızı yazın..." required rows={4} style={{ ...inputStyle, resize: 'vertical' }} /></div>
-                <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '15px', fontSize: '14px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilib...' : 'Mesaj Göndər →'}</button>
+                <button type="submit" disabled={loading} style={{ background: '#FF2CA8', color: '#FFFFFF', border: 'none', borderRadius: '10px', padding: '15px', fontSize: '14px', fontWeight: 700, cursor: 'pointer', opacity: loading ? 0.7 : 1 }}>{loading ? 'Göndərilib...' : 'Mesaj Göndər'}</button>
               </form>
             </div>
           )}

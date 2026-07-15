@@ -83,7 +83,7 @@ function DesktopTelebeler() {
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flexShrink: 0 }}>
-              <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', textAlign: 'center', display: 'block' }}>Namizəd Tap →</Link>
+              <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', textAlign: 'center', display: 'block' }}>Namizəd Tap</Link>
               <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', background: 'transparent', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '14px', padding: '14px 32px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={16} /> WhatsApp ilə Yaz</a>
             </div>
           </div>
@@ -114,7 +114,7 @@ function DesktopTelebeler() {
                     <div style={{ color: '#A0A0B0', fontSize: '10px', fontWeight: 600, marginBottom: '4px' }}>ƏVVƏL</div>
                     <div style={{ color: '#FFFFFF', fontSize: '13px' }}>{m.evvel}</div>
                   </div>
-                  <div style={{ color: '#FF2CA8', fontSize: '20px' }}>→</div>
+                  <div style={{ color: '#FF2CA8', fontSize: '20px' }}></div>
                   <div style={{ flex: 1, background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: '10px', padding: '10px 14px' }}>
                     <div style={{ color: '#00D68F', fontSize: '10px', fontWeight: 600, marginBottom: '4px' }}>İNDİ</div>
                     <div style={{ color: '#FFFFFF', fontSize: '13px' }}>{m.indi}</div>
@@ -135,7 +135,7 @@ function DesktopTelebeler() {
           <h2 style={{ fontWeight: 700, fontSize: '48px', color: '#FFFFFF', margin: '0 0 16px 0', lineHeight: 1.1 }}>Sıradakı <span style={{ color: '#FF2CA8' }}>Uğur Hekayəsi</span><br />Sənin Olsun</h2>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 40px 0' }}>500+ məzunun yanına qoş. Karyerini bu gün başla.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>İndi Başlat →</Link>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px' }}>İndi Başlat</Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '15px', padding: '16px 32px', borderRadius: '10px' }}>Kurslara Bax</Link>
           </div>
         </div>
@@ -182,7 +182,7 @@ function MobileTelebeler() {
             <h2 style={{ fontWeight: 700, fontSize: '20px', color: '#FFFFFF', margin: '0 0 10px 0', lineHeight: 1.25 }}>Kadrınızı <span style={{ color: '#00D68F' }}>Bizdə Tapın</span></h2>
             <p style={{ color: '#A0A0B0', fontSize: '13px', margin: '0 0 16px 0', lineHeight: 1.6 }}>500+ sertifikatlı məzun arasından doğru namizədi tapırıq.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center' }}>Namizəd Tap →</Link>
+              <Link href="/hr" style={{ textDecoration: 'none', background: '#00D68F', color: '#0B0B0F', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center' }}>Namizəd Tap</Link>
               <a href="https://wa.me/994102557555" style={{ textDecoration: 'none', border: '1px solid rgba(0,214,143,0.3)', color: '#00D68F', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}><MessageCircle size={14} /> WhatsApp ilə yaz</a>
             </div>
           </div>
@@ -217,7 +217,7 @@ function MobileTelebeler() {
           <h2 style={{ fontWeight: 700, fontSize: '22px', color: '#FFFFFF', margin: '0 0 12px 0', lineHeight: 1.2 }}>Sıradakı <span style={{ color: '#FF2CA8' }}>Uğur Hekayəsi</span> Sənin Olsun</h2>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 20px 0' }}>500+ məzunun yanına qoş.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>İndi Başlat →</Link>
+            <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>İndi Başlat</Link>
             <Link href="/kurslar" style={{ textDecoration: 'none', border: '1px solid rgba(255,44,168,0.4)', color: '#FF2CA8', fontWeight: 600, fontSize: '14px', padding: '14px', borderRadius: '10px' }}>Kurslara Bax</Link>
           </div>
         </div>

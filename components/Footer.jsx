@@ -80,7 +80,7 @@ export default function Footer() {
               <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><Phone size={14} /> +994 10 255 75 55</div>
               <div style={{ color: '#A0A0B0', fontSize: '13px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><Mail size={14} /> info@changers.az</div>
               <Link href="/qeydiyyat" style={{ display: 'inline-block', marginTop: '8px', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '8px' }}>
-                Qeydiyyat →
+                Qeydiyyat
               </Link>
             </div>
           </div>

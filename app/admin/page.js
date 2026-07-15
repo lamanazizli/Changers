@@ -535,7 +535,7 @@ export default function AdminDashboard() {
                   </div>
                   <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '15px', margin: '0 0 8px 0' }}>{course.title}</h3>
                   <p style={{ color: '#A0A0B0', fontSize: '12px', margin: '0 0 16px 0', lineHeight: 1.5 }}>{course.description}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '12px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '12px', marginBottom: '10px' }}>
                     <div>
                       <span style={{ color: '#FF2CA8', fontWeight: 700, fontSize: '14px' }}>{course.price}</span>
                       <span style={{ color: '#A0A0B0', fontSize: '12px', marginLeft: '8px' }}>⏱ {course.duration}</span>
@@ -544,6 +544,16 @@ export default function AdminDashboard() {
                       <button onClick={() => { setFormData(course); setModal('courses'); }} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', padding: '6px 12px' }}>Dəyiş</button>
                       <button onClick={() => handleDelete('courses', course.id)} style={{ ...s.btn, background: 'rgba(255,44,168,0.1)', color: '#FF2CA8', border: '1px solid rgba(255,44,168,0.3)', padding: '6px 12px' }}>Sil</button>
                     </div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '6px' }}>
+                    <button onClick={async () => {
+                      await fetch('/api/admin/courses/reorder', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: course.id, sort_order: (course.sort_order || 0) - 1 }) });
+                      fetchData();
+                    }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↑ Yuxarı</button>
+                    <button onClick={async () => {
+                      await fetch('/api/admin/courses/reorder', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: course.id, sort_order: (course.sort_order || 0) + 1 }) });
+                      fetchData();
+                    }} style={{ ...s.btn, background: 'rgba(255,255,255,0.06)', color: '#FFFFFF', border: 'none', flex: 1 }}>↓ Aşağı</button>
                   </div>
                 </div>
               ))}
@@ -556,8 +566,28 @@ export default function AdminDashboard() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
               {mentors.map(mentor => (
                 <div key={mentor.id} style={{ ...s.card, display: 'flex', gap: '16px' }}>
-                  <div style={{ width: '60px', height: '60px', background: mentor.color || '#FF2CA8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 700, fontSize: '18px', flexShrink: 0 }}>
-                    {mentor.initials}
+                  <div style={{ position: 'relative', width: '60px', height: '60px', flexShrink: 0 }}>
+                    {mentor.image ? (
+                      <img src={mentor.image} alt={mentor.name} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }} />
+                    ) : (
+                      <div style={{ width: '60px', height: '60px', background: mentor.color || '#FF2CA8', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 700, fontSize: '18px' }}>
+                        {mentor.initials}
+                      </div>
+                    )}
+                    <label style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '22px', height: '22px', borderRadius: '50%', background: '#FF2CA8', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', border: '2px solid #0B0B0F', fontSize: '11px' }}>
+                      📷
+                      <input type="file" accept="image/*" style={{ display: 'none' }} onChange={async (e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const fd = new FormData();
+                        fd.append('file', file);
+                        fd.append('type', 'mentor');
+                        fd.append('id', mentor.id);
+                        const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+                        const data = await res.json();
+                        if (data.success) fetchData();
+                      }} />
+                    </label>
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

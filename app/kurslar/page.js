@@ -7,6 +7,7 @@ import useIsMobile from '../../lib/useIsMobile';
 import useIsTablet from '../../lib/useIsTablet';
 import { Clock, BookOpen } from 'lucide-react';
 import { getCategoryIcon } from '../../lib/categoryIcon';
+import { getCategoryColor } from '../../lib/categoryColor';
 
 const GRADIENTS = [
   'linear-gradient(135deg, rgba(255,44,168,0.3), rgba(123,47,255,0.4))',
@@ -58,7 +59,7 @@ function CourseCard({ course }) {
       <Link href={'/kurslar/' + course.id} style={{ position: 'absolute', inset: 0, zIndex: 1 }} />
       <div style={{ height: '180px', background: course.image ? '#000' : GRADIENTS[course.id % GRADIENTS.length], position: 'relative', overflow: 'hidden' }}>
         {course.image && <img src={course.image} alt={course.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
-        <span style={{ position: 'absolute', top: '16px', left: '16px', background: course.color || '#FF2CA8', color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}>
+        <span style={{ position: 'absolute', top: '16px', left: '16px', background: getCategoryColor(course.category), color: '#FFFFFF', fontSize: '11px', fontWeight: 700, padding: '5px 12px', borderRadius: '100px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}>
           {(() => { const Icon = getCategoryIcon(course.category); return <Icon size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} />; })()}{course.category}
         </span>
       </div>
@@ -70,7 +71,7 @@ function CourseCard({ course }) {
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           <Link href="/qeydiyyat" style={{ position: 'relative', zIndex: 2, flex: 1, textAlign: 'center', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '13px', padding: '12px', borderRadius: '8px' }}>
-            Qeydiyyat →
+            Qeydiyyat
           </Link>
           <Link href={'/kurslar/' + course.id} style={{ position: 'relative', zIndex: 2, padding: '12px 16px', background: 'transparent', border: '1px solid rgba(255,44,168,0.4)', borderRadius: '8px', color: '#FF2CA8', fontSize: '13px', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>Ətraflı</Link>
         </div>
@@ -128,7 +129,7 @@ function DesktopKurslar() {
             Hansı kursu seçəcəyini <span style={{ color: '#FF2CA8' }}>bilmirsən?</span>
           </h2>
           <p style={{ fontSize: '16px', color: '#A0A0B0', margin: '0 0 32px 0' }}>Konsultasiya al, sənin üçün ən uyğun kursu birlikdə seçək.</p>
-          <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', display: 'inline-block' }}>Ödənişsiz konsultasiya al →</Link>
+          <Link href="/qeydiyyat" style={{ textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '15px', padding: '16px 40px', borderRadius: '10px', display: 'inline-block' }}>Ödənişsiz konsultasiya al</Link>
         </div>
       </section>
       <Footer />
@@ -184,7 +185,7 @@ function MobileKurslar() {
             Hansı kursu seçəcəyini <span style={{ color: '#FF2CA8' }}>bilmirsən?</span>
           </h2>
           <p style={{ fontSize: '13px', color: '#A0A0B0', margin: '0 0 20px 0' }}>Konsultasiya al, sənə uyğun kursu seçək.</p>
-          <Link href="/qeydiyyat" style={{ display: 'inline-block', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px 28px', borderRadius: '10px' }}>Ödənişsiz konsultasiya al →</Link>
+          <Link href="/qeydiyyat" style={{ display: 'inline-block', textDecoration: 'none', background: '#FF2CA8', color: '#FFFFFF', fontWeight: 700, fontSize: '14px', padding: '14px 28px', borderRadius: '10px' }}>Ödənişsiz konsultasiya al</Link>
         </div>
       </section>
       <Footer />
